@@ -10,8 +10,8 @@ namespace TPSecurity.Application.Core.SecuWeb.RefApplicationCore.Queries.GetAllR
             orderOrientation = "asc";
         }
 
-        public string? Libelle { get; set; };
+        public string? Libelle { get; set; }
 
-        public bool? EstActif { get; set; };
+        public bool? EstActif { get; set; }
     }
 }
