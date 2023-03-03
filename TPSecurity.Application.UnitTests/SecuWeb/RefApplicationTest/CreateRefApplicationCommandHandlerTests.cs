@@ -4,6 +4,7 @@ using Moq;
 using TPSecurity.Application.Common.Interfaces.Persistence;
 using TPSecurity.Application.Core.SecuWeb.RefApplicationCore.Commands.Create;
 using TPSecurity.Domain.Common.Entities.SecuWeb;
+using TPSecurity.Domain.Common.Errors;
 using Xunit;
 
 namespace TPSecurity.Application.UnitTests.SecuWeb.RefApplicationTest
@@ -27,10 +28,28 @@ namespace TPSecurity.Application.UnitTests.SecuWeb.RefApplicationTest
         public async Task CreateRefApplicationCommand_ShouldReturnError_WhenLibelleNotValid(string libelle)
         {
             var command = new CreateRefApplicationCommand(libelle, true);
+            _uow.Setup(x => x.RefApplication.GetByLibelle(It.IsAny<string>()))
+                .Returns(RefApplication.Init(0, "libelle", true));
 
             var result = await _handler.Handle(command, CancellationToken.None);
 
             result.IsError.Should().BeTrue();
+            _uow.Verify(x => x.RefApplication.Create(It.IsAny<RefApplication>()), Times.Never);
+            _uow.Verify(x => x.SaveChanges(), Times.Never);
+        }
+
+        [Fact]
+        public async Task CreateRefApplicationCommand_ShouldReturnError_WhenLibelleAlreadyExists()
+        {    
+            var command = new CreateRefApplicationCommand("libelle", true);
+            _uow.Setup(x => x.RefApplication.GetByLibelle(It.IsAny<string>()))
+                .Returns(RefApplication.Init(0, "libelle", true));
+
+            var result = await _handler.Handle(command, CancellationToken.None);
+
+            result.IsError.Should().BeTrue();
+            result.Errors[0].Code.Should().Be(Errors.DuplicateLibelle.Code);
+            _uow.Verify(x => x.RefApplication.GetByLibelle(It.IsAny<string>()), Times.Once);
             _uow.Verify(x => x.RefApplication.Create(It.IsAny<RefApplication>()), Times.Never);
             _uow.Verify(x => x.SaveChanges(), Times.Never);
         }

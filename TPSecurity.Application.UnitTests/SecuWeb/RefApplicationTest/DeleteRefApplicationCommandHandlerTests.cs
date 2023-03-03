@@ -35,7 +35,7 @@ namespace TPSecurity.Application.UnitTests.SecuWeb.RefApplicationTest
             //Assert
             result.IsError.Should().BeTrue();
             result.Errors[0].Code.Should().Be(Errors.NotFound.Code);
-            _uow.Verify(x => x.RefApplication.GetById(It.IsAny<int>()), Times.Once);
+            _uow.Verify(x => x.RefApplication.GetByIdWithReferences(It.IsAny<int>()), Times.Once);
             _uow.Verify(x => x.RefApplication.Delete(It.IsAny<RefApplication>()), Times.Never);
             _uow.Verify(x => x.SaveChanges(), Times.Never);
         }

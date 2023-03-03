@@ -4,6 +4,7 @@ using MediatR;
 using TPSecurity.Application.Common.Interfaces.Persistence;
 using TPSecurity.Application.Core.SecuWeb.RefApplicationCore.Common;
 using TPSecurity.Domain.Common.Entities.SecuWeb;
+using TPSecurity.Domain.Common.Errors;
 
 namespace TPSecurity.Application.Core.SecuWeb.RefApplicationCore.Commands.Create;
 
@@ -22,6 +23,12 @@ public class CreateRefApplicationCommandHandler : IRequestHandler<CreateRefAppli
     {
         await Task.CompletedTask;
 
+        RefApplication refAppli = _uow.RefApplication.GetByLibelle(command.Libelle);
+        if (refAppli is not null)
+        {
+            return Errors.DuplicateLibelle;
+        }
+
         ErrorOr<RefApplication> refApplication = RefApplication.Create(command.Libelle, command.EstActif);
 
         if (refApplication.IsError)
@@ -32,6 +39,5 @@ public class CreateRefApplicationCommandHandler : IRequestHandler<CreateRefAppli
 
         var created = _uow.RefApplication.GetById(dto.Id);
         return _mapper.Map<RefApplicationResult>((created, created.GetHashCodeAsString()));
-
     }
 }

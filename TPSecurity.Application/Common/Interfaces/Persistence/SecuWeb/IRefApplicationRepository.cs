@@ -10,6 +10,8 @@ namespace TPSecurity.Application.Common.Interfaces.Persistence.SecuWeb
 
         RefApplication? GetByIdWithReferences(int id);
 
+        RefApplication? GetByLibelle(string libelle);
+
         PagedList<RefApplication> GetRefApplications(RefApplicationParameters queryParameters);
 
         IBaseClass Create(RefApplication refApplication);

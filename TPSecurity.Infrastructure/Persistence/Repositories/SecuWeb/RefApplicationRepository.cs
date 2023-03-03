@@ -1,11 +1,9 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using System.Security.Cryptography.X509Certificates;
 using TPSecurity.Application.Common;
 using TPSecurity.Application.Common.Interfaces.Persistence;
 using TPSecurity.Application.Common.Interfaces.Persistence.SecuWeb;
 using TPSecurity.Application.Core.SecuWeb.RefApplicationCore.Queries.GetAllRefApplication;
 using TPSecurity.Domain.Common.Entities.SecuWeb;
-using TPSecurity.Infrastructure.Interfaces;
 using TPSecurity.Infrastructure.Models.SecuWeb;
 using TPSecurity.Infrastructure.Services;
 
@@ -34,6 +32,11 @@ namespace TPSecurity.Infrastructure.Persistence.Repositories.SecuWeb
                     .Where(x => x.Id == id)
                     .Select(x => FromDTO(x))
                     .SingleOrDefault();
+        }
+
+        public RefApplication? GetByLibelle(string libelle)
+        {
+            return _context.RefApplication.Where(x => x.Libelle.ToLower() == libelle.Trim().ToLower()).Select(x => FromDTO(x)).SingleOrDefault();
         }
 
         public PagedList<RefApplication> GetRefApplications(RefApplicationParameters queryParameters)
