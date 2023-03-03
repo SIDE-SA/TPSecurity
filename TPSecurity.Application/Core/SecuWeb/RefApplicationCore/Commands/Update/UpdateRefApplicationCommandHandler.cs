@@ -31,6 +31,12 @@ public class UpdateRefApplicationCommandHandler : IRequestHandler<UpdateRefAppli
             return Errors.Concurrency;
         }
 
+        var refAppli = _uow.RefApplication.GetByLibelle(command.Libelle);
+        if (refAppli is not null && refAppli.Id != refApplication.Id)
+        {
+            return Errors.DuplicateLibelle;
+        }
+
         ErrorOr<Updated> error = refApplication.Update(command.Libelle, command.EstActif);
         
         if (error.IsError)
@@ -41,6 +47,5 @@ public class UpdateRefApplicationCommandHandler : IRequestHandler<UpdateRefAppli
 
         var updated = _uow.RefApplication.GetById(dto.Id);
         return _mapper.Map<RefApplicationResult>((updated, updated.GetHashCodeAsString()));
-
     }
 }
