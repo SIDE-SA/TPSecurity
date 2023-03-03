@@ -1,0 +1,1327 @@
+openapi: 3.0.1
+info:
+  title: TPSecurity
+  description : Api de gestion de la securité
+  version: '1.0'
+paths:
+  /reference-application:
+    get:
+      tags: 
+        - Référence Application
+      parameters:
+       - $ref: '#/components/parameters/offSetParam'
+       - $ref: '#/components/parameters/limitParam'
+       - $ref: '#/components/parameters/orderByParam'
+       - $ref: '#/components/parameters/orderOrientationParam'
+       - name: libelle
+         in: query
+         schema:
+          type: string
+         required: false
+       - name: estActif
+         in: query
+         schema: 
+          type: boolean
+      responses:
+        '200':
+          description: Success
+          content: 
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ReferenceApplicationResponse'
+        '400':
+           $ref: '#/components/responses/400BadRequest'
+        '401':
+           $ref: '#/components/responses/401Unauthorized'
+        '500':
+           $ref: '#/components/responses/500ServerError'
+    post:
+      tags:
+        - Référence Application
+      parameters:
+          - $ref: '#/components/parameters/userParam'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateReferenceApplicationRequest'
+      responses:
+        '200':
+          description: Success
+          content: 
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ReferenceApplicationResponse'
+        '400':
+           $ref: '#/components/responses/400BadRequest'
+        '401':
+           $ref: '#/components/responses/401Unauthorized'
+        '409':
+          $ref: '#/components/responses/409Conflict'
+        '500':
+           $ref: '#/components/responses/500ServerError'  
+  /reference-application/{id}:
+    get:
+      tags:
+        - Référence Application
+      parameters:
+        - $ref: '#/components/parameters/idParam'  
+      responses:
+        '200':
+          description: Success
+          content: 
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ReferenceApplicationResponse'
+        '400':
+           $ref: '#/components/responses/400BadRequest'
+        '401':
+           $ref: '#/components/responses/401Unauthorized'
+        '404':
+          $ref: '#/components/responses/404NotFound'
+        '500':
+           $ref: '#/components/responses/500ServerError'   
+    put:
+      tags:
+        - Référence Application
+      parameters:
+        - $ref: '#/components/parameters/idParam'
+        - $ref: '#/components/parameters/userParam'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateReferenceApplicationRequest'
+      responses:
+        '200':
+          description: Success
+          content: 
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ReferenceApplicationResponse'
+        '400':
+           $ref: '#/components/responses/400BadRequest'
+        '401':
+           $ref: '#/components/responses/401Unauthorized'
+        '404':
+          $ref: '#/components/responses/404NotFound'
+        '409':
+          $ref: '#/components/responses/409Conflict'
+        '500':
+           $ref: '#/components/responses/500ServerError' 
+    delete:
+      tags:
+        - Référence Application
+      parameters:
+        - $ref: '#/components/parameters/idParam' 
+      responses:
+        '204':
+          $ref:  '#/components/responses/204NoContent'
+        '400':
+           $ref: '#/components/responses/400BadRequest'
+        '401':
+           $ref: '#/components/responses/401Unauthorized'
+        '404':
+          $ref: '#/components/responses/404NotFound'
+        '409':
+          $ref: '#/components/responses/409Conflict'
+        '500':
+           $ref: '#/components/responses/500ServerError' 
+  /reference-module:
+    get:
+      tags: 
+        - Référence Module
+      parameters:
+        - $ref: '#/components/parameters/offSetParam'
+        - $ref: '#/components/parameters/limitParam'
+        - $ref: '#/components/parameters/orderByParam'
+        - $ref: '#/components/parameters/orderOrientationParam'
+        - name: libelle
+          in: query
+          schema:
+            type: string
+          required: false
+        - name: estActif
+          in: query
+          schema: 
+            type: boolean
+        - name: idRefApplication
+          in: query
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Success
+          content: 
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ReferenceModuleResponse'
+        '400':
+           $ref: '#/components/responses/400BadRequest'
+        '401':
+           $ref: '#/components/responses/401Unauthorized'
+        '500':
+           $ref: '#/components/responses/500ServerError'
+    post:
+      tags:
+        - Référence Module
+      parameters:
+          - $ref: '#/components/parameters/userParam'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateReferenceModuleRequest'
+      responses:
+        '200':
+          description: Success
+          content: 
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ReferenceModuleResponse'
+        '400':
+           $ref: '#/components/responses/400BadRequest'
+        '401':
+           $ref: '#/components/responses/401Unauthorized'
+        '409':
+          $ref: '#/components/responses/409Conflict'
+        '500':
+           $ref: '#/components/responses/500ServerError'  
+  /reference-module/{id}:
+    get:
+      tags:
+        - Référence Module
+      parameters:
+        - $ref: '#/components/parameters/idParam'  
+      responses:
+        '200':
+          description: Success
+          content: 
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ReferenceModuleResponse'
+        '400':
+           $ref: '#/components/responses/400BadRequest'
+        '401':
+           $ref: '#/components/responses/401Unauthorized'
+        '404':
+          $ref: '#/components/responses/404NotFound'
+        '500':
+           $ref: '#/components/responses/500ServerError'   
+    put:
+      tags:
+        - Référence Module
+      parameters:
+        - $ref: '#/components/parameters/idParam'
+        - $ref: '#/components/parameters/userParam'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateReferenceModuleRequest'
+      responses:
+        '200':
+          description: Success
+          content: 
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ReferenceModuleResponse'
+        '400':
+           $ref: '#/components/responses/400BadRequest'
+        '401':
+           $ref: '#/components/responses/401Unauthorized'
+        '404':
+          $ref: '#/components/responses/404NotFound'
+        '409':
+          $ref: '#/components/responses/409Conflict'
+        '500':
+           $ref: '#/components/responses/500ServerError' 
+    delete:
+      tags:
+        - Référence Module
+      parameters:
+        - $ref: '#/components/parameters/idParam' 
+      responses:
+        '204':
+          $ref:  '#/components/responses/204NoContent'
+        '400':
+           $ref: '#/components/responses/400BadRequest'
+        '401':
+           $ref: '#/components/responses/401Unauthorized'
+        '404':
+          $ref: '#/components/responses/404NotFound'
+        '409':
+          $ref: '#/components/responses/409Conflict'
+        '500':
+           $ref: '#/components/responses/500ServerError' 
+  /reference-fonctionnalite:
+    get:
+      tags: 
+        - Référence Fonctionnalite
+      parameters:
+       - $ref: '#/components/parameters/offSetParam'
+       - $ref: '#/components/parameters/limitParam'
+       - $ref: '#/components/parameters/orderByParam'
+       - $ref: '#/components/parameters/orderOrientationParam'
+      responses:
+        '200':
+          description: Success
+          content: 
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ReferenceFonctionnaliteResponse'
+        '400':
+           $ref: '#/components/responses/400BadRequest'
+        '401':
+           $ref: '#/components/responses/401Unauthorized'
+        '500':
+           $ref: '#/components/responses/500ServerError'
+    post:
+      tags:
+        - Référence Fonctionnalite
+      parameters:
+          - $ref: '#/components/parameters/userParam'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateReferenceFonctionnaliteRequest'
+      responses:
+        '200':
+          description: Success
+          content: 
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ReferenceFonctionnaliteResponse'
+        '400':
+           $ref: '#/components/responses/400BadRequest'
+        '401':
+           $ref: '#/components/responses/401Unauthorized'
+        '409':
+          $ref: '#/components/responses/409Conflict'
+        '500':
+           $ref: '#/components/responses/500ServerError'  
+  /reference-fonctionnalite/{id}:
+    get:
+      tags:
+        - Référence Fonctionnalite
+      parameters:
+        - $ref: '#/components/parameters/idParam'  
+      responses:
+        '200':
+          description: Success
+          content: 
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ReferenceFonctionnaliteResponse'
+        '400':
+           $ref: '#/components/responses/400BadRequest'
+        '401':
+           $ref: '#/components/responses/401Unauthorized'
+        '404':
+          $ref: '#/components/responses/404NotFound'
+        '500':
+           $ref: '#/components/responses/500ServerError'   
+    put:
+      tags:
+        - Référence Fonctionnalite
+      parameters:
+        - $ref: '#/components/parameters/idParam'
+        - $ref: '#/components/parameters/userParam'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateReferenceFonctionnaliteRequest'
+      responses:
+        '200':
+          description: Success
+          content: 
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ReferenceFonctionnaliteResponse'
+        '400':
+           $ref: '#/components/responses/400BadRequest'
+        '401':
+           $ref: '#/components/responses/401Unauthorized'
+        '404':
+          $ref: '#/components/responses/404NotFound'
+        '409':
+          $ref: '#/components/responses/409Conflict'
+        '500':
+           $ref: '#/components/responses/500ServerError' 
+    delete:
+      tags:
+        - Référence Fonctionnalite
+      parameters:
+        - $ref: '#/components/parameters/idParam' 
+      responses:
+        '204':
+          $ref:  '#/components/responses/204NoContent'
+        '400':
+           $ref: '#/components/responses/400BadRequest'
+        '401':
+           $ref: '#/components/responses/401Unauthorized'
+        '404':
+          $ref: '#/components/responses/404NotFound'
+        '409':
+          $ref: '#/components/responses/409Conflict'
+        '500':
+           $ref: '#/components/responses/500ServerError'
+  /acces-application:
+    get:
+      tags: 
+        - Acces Application
+      parameters:
+       - $ref: '#/components/parameters/offSetParam'
+       - $ref: '#/components/parameters/limitParam'
+       - $ref: '#/components/parameters/orderByParam'
+       - $ref: '#/components/parameters/orderOrientationParam'
+      responses:
+        '200':
+          description: Success
+          content: 
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AccesApplicationResponse'
+        '400':
+           $ref: '#/components/responses/400BadRequest'
+        '401':
+           $ref: '#/components/responses/401Unauthorized'
+        '500':
+           $ref: '#/components/responses/500ServerError'
+    post:
+      tags:
+        - Acces Application
+      parameters:
+          - $ref: '#/components/parameters/userParam'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateAccesApplicationRequest'
+      responses:
+        '200':
+          description: Success
+          content: 
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AccesApplicationResponse'
+        '400':
+           $ref: '#/components/responses/400BadRequest'
+        '401':
+           $ref: '#/components/responses/401Unauthorized'
+        '409':
+          $ref: '#/components/responses/409Conflict'
+        '500':
+           $ref: '#/components/responses/500ServerError'  
+  /acces-application/{id}:
+    get:
+      tags:
+        - Acces Application
+      parameters:
+        - $ref: '#/components/parameters/idParam'  
+      responses:
+        '200':
+          description: Success
+          content: 
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AccesApplicationResponse'
+        '400':
+           $ref: '#/components/responses/400BadRequest'
+        '401':
+           $ref: '#/components/responses/401Unauthorized'
+        '404':
+          $ref: '#/components/responses/404NotFound'
+        '500':
+           $ref: '#/components/responses/500ServerError'   
+    put:
+      tags:
+        - Acces Application
+      parameters:
+        - $ref: '#/components/parameters/idParam'
+        - $ref: '#/components/parameters/userParam'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateAccesApplicationRequest'
+      responses:
+        '200':
+          description: Success
+          content: 
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AccesApplicationResponse'
+        '400':
+           $ref: '#/components/responses/400BadRequest'
+        '401':
+           $ref: '#/components/responses/401Unauthorized'
+        '404':
+          $ref: '#/components/responses/404NotFound'
+        '409':
+          $ref: '#/components/responses/409Conflict'
+        '500':
+           $ref: '#/components/responses/500ServerError' 
+    delete:
+      tags:
+        - Acces Application
+      parameters:
+        - $ref: '#/components/parameters/idParam' 
+      responses:
+        '204':
+          $ref:  '#/components/responses/204NoContent'
+        '400':
+           $ref: '#/components/responses/400BadRequest'
+        '401':
+           $ref: '#/components/responses/401Unauthorized'
+        '404':
+          $ref: '#/components/responses/404NotFound'
+        '409':
+          $ref: '#/components/responses/409Conflict'
+        '500':
+           $ref: '#/components/responses/500ServerError'          
+  /acces-module:
+    get:
+      tags: 
+        - Acces Module
+      parameters:
+       - $ref: '#/components/parameters/offSetParam'
+       - $ref: '#/components/parameters/limitParam'
+       - $ref: '#/components/parameters/orderByParam'
+       - $ref: '#/components/parameters/orderOrientationParam'
+      responses:
+        '200':
+          description: Success
+          content: 
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AccesModuleResponse'
+        '400':
+           $ref: '#/components/responses/400BadRequest'
+        '401':
+           $ref: '#/components/responses/401Unauthorized'
+        '500':
+           $ref: '#/components/responses/500ServerError'
+    post:
+      tags:
+        - Acces Module
+      parameters:
+          - $ref: '#/components/parameters/userParam'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateAccesModuleRequest'
+      responses:
+        '200':
+          description: Success
+          content: 
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AccesModuleResponse'
+        '400':
+           $ref: '#/components/responses/400BadRequest'
+        '401':
+           $ref: '#/components/responses/401Unauthorized'
+        '409':
+          $ref: '#/components/responses/409Conflict'
+        '500':
+           $ref: '#/components/responses/500ServerError'  
+  /acces-module/{id}:
+    get:
+      tags:
+        - Acces Module
+      parameters:
+        - $ref: '#/components/parameters/idParam'  
+      responses:
+        '200':
+          description: Success
+          content: 
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AccesModuleResponse'
+        '400':
+           $ref: '#/components/responses/400BadRequest'
+        '401':
+           $ref: '#/components/responses/401Unauthorized'
+        '404':
+          $ref: '#/components/responses/404NotFound'
+        '500':
+           $ref: '#/components/responses/500ServerError'   
+    put:
+      tags:
+        - Acces Module
+      parameters:
+        - $ref: '#/components/parameters/idParam'
+        - $ref: '#/components/parameters/userParam'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateAccesModuleRequest'
+      responses:
+        '200':
+          description: Success
+          content: 
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AccesModuleResponse'
+        '400':
+           $ref: '#/components/responses/400BadRequest'
+        '401':
+           $ref: '#/components/responses/401Unauthorized'
+        '404':
+          $ref: '#/components/responses/404NotFound'
+        '409':
+          $ref: '#/components/responses/409Conflict'
+        '500':
+           $ref: '#/components/responses/500ServerError' 
+    delete:
+      tags:
+        - Acces Module
+      parameters:
+        - $ref: '#/components/parameters/idParam' 
+      responses:
+        '204':
+          $ref:  '#/components/responses/204NoContent'
+        '400':
+           $ref: '#/components/responses/400BadRequest'
+        '401':
+           $ref: '#/components/responses/401Unauthorized'
+        '404':
+          $ref: '#/components/responses/404NotFound'
+        '409':
+          $ref: '#/components/responses/409Conflict'
+        '500':
+           $ref: '#/components/responses/500ServerError'    
+  /acces-fonctionnalite:
+    get:
+      tags: 
+        - Acces Fonctionnalite
+      parameters:
+       - $ref: '#/components/parameters/offSetParam'
+       - $ref: '#/components/parameters/limitParam'
+       - $ref: '#/components/parameters/orderByParam'
+       - $ref: '#/components/parameters/orderOrientationParam'
+      responses:
+        '200':
+          description: Success
+          content: 
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AccesFonctionnaliteResponse'
+        '400':
+           $ref: '#/components/responses/400BadRequest'
+        '401':
+           $ref: '#/components/responses/401Unauthorized'
+        '500':
+           $ref: '#/components/responses/500ServerError'
+    post:
+      tags:
+        - Acces Fonctionnalite
+      parameters:
+          - $ref: '#/components/parameters/userParam'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateAccesFonctionnaliteRequest'
+      responses:
+        '200':
+          description: Success
+          content: 
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AccesFonctionnaliteResponse'
+        '400':
+           $ref: '#/components/responses/400BadRequest'
+        '401':
+           $ref: '#/components/responses/401Unauthorized'
+        '409':
+          $ref: '#/components/responses/409Conflict'
+        '500':
+           $ref: '#/components/responses/500ServerError'  
+  /acces-fonctionnalite/{id}:
+    get:
+      tags:
+        - Acces Fonctionnalite
+      parameters:
+        - $ref: '#/components/parameters/idParam'  
+      responses:
+        '200':
+          description: Success
+          content: 
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AccesFonctionnaliteResponse'
+        '400':
+           $ref: '#/components/responses/400BadRequest'
+        '401':
+           $ref: '#/components/responses/401Unauthorized'
+        '404':
+          $ref: '#/components/responses/404NotFound'
+        '500':
+           $ref: '#/components/responses/500ServerError'   
+    put:
+      tags:
+        - Acces Fonctionnalite
+      parameters:
+        - $ref: '#/components/parameters/idParam'
+        - $ref: '#/components/parameters/userParam'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateAccesFonctionnaliteRequest'
+      responses:
+        '200':
+          description: Success
+          content: 
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AccesFonctionnaliteResponse'
+        '400':
+           $ref: '#/components/responses/400BadRequest'
+        '401':
+           $ref: '#/components/responses/401Unauthorized'
+        '404':
+          $ref: '#/components/responses/404NotFound'
+        '409':
+          $ref: '#/components/responses/409Conflict'
+        '500':
+           $ref: '#/components/responses/500ServerError' 
+    delete:
+      tags:
+        - Acces Fonctionnalite
+      parameters:
+        - $ref: '#/components/parameters/idParam' 
+      responses:
+        '204':
+          $ref:  '#/components/responses/204NoContent'
+        '400':
+           $ref: '#/components/responses/400BadRequest'
+        '401':
+           $ref: '#/components/responses/401Unauthorized'
+        '404':
+          $ref: '#/components/responses/404NotFound'
+        '409':
+          $ref: '#/components/responses/409Conflict'
+        '500':
+           $ref: '#/components/responses/500ServerError'
+  /acces-groupe:
+    get:
+      tags: 
+        - Acces Groupe
+      parameters:
+       - $ref: '#/components/parameters/offSetParam'
+       - $ref: '#/components/parameters/limitParam'
+       - $ref: '#/components/parameters/orderByParam'
+       - $ref: '#/components/parameters/orderOrientationParam'
+      responses:
+        '200':
+          description: Success
+          content: 
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AccesGroupeResponse'
+        '400':
+           $ref: '#/components/responses/400BadRequest'
+        '401':
+           $ref: '#/components/responses/401Unauthorized'
+        '500':
+           $ref: '#/components/responses/500ServerError'
+    post:
+      tags:
+        - Acces Groupe
+      parameters:
+          - $ref: '#/components/parameters/userParam'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateAccesGroupeRequest'
+      responses:
+        '200':
+          description: Success
+          content: 
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AccesGroupeResponse'
+        '400':
+           $ref: '#/components/responses/400BadRequest'
+        '401':
+           $ref: '#/components/responses/401Unauthorized'
+        '409':
+          $ref: '#/components/responses/409Conflict'
+        '500':
+           $ref: '#/components/responses/500ServerError'  
+  /acces-groupe/{id}:
+    get:
+      tags:
+        - Acces Groupe
+      parameters:
+        - $ref: '#/components/parameters/idParam'  
+      responses:
+        '200':
+          description: Success
+          content: 
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AccesGroupeResponse'
+        '400':
+           $ref: '#/components/responses/400BadRequest'
+        '401':
+           $ref: '#/components/responses/401Unauthorized'
+        '404':
+          $ref: '#/components/responses/404NotFound'
+        '500':
+           $ref: '#/components/responses/500ServerError'   
+    put:
+      tags:
+        - Acces Groupe
+      parameters:
+        - $ref: '#/components/parameters/idParam'
+        - $ref: '#/components/parameters/userParam'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateAccesGroupeRequest'
+      responses:
+        '200':
+          description: Success
+          content: 
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AccesGroupeResponse'
+        '400':
+           $ref: '#/components/responses/400BadRequest'
+        '401':
+           $ref: '#/components/responses/401Unauthorized'
+        '404':
+          $ref: '#/components/responses/404NotFound'
+        '409':
+          $ref: '#/components/responses/409Conflict'
+        '500':
+           $ref: '#/components/responses/500ServerError' 
+    delete:
+      tags:
+        - Acces Groupe
+      parameters:
+        - $ref: '#/components/parameters/idParam' 
+      responses:
+        '204':
+          $ref:  '#/components/responses/204NoContent'
+        '400':
+           $ref: '#/components/responses/400BadRequest'
+        '401':
+           $ref: '#/components/responses/401Unauthorized'
+        '404':
+          $ref: '#/components/responses/404NotFound'
+        '409':
+          $ref: '#/components/responses/409Conflict'
+        '500':
+           $ref: '#/components/responses/500ServerError'
+  /acces-utilisateur:
+    get:
+      tags: 
+        - Acces Utilisateur
+      parameters:
+       - $ref: '#/components/parameters/offSetParam'
+       - $ref: '#/components/parameters/limitParam'
+       - $ref: '#/components/parameters/orderByParam'
+       - $ref: '#/components/parameters/orderOrientationParam'
+      responses:
+        '200':
+          description: Success
+          content: 
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AccesUtilisateurResponse'
+        '400':
+           $ref: '#/components/responses/400BadRequest'
+        '401':
+           $ref: '#/components/responses/401Unauthorized'
+        '500':
+           $ref: '#/components/responses/500ServerError'
+    post:
+      tags:
+        - Acces Utilisateur
+      parameters:
+          - $ref: '#/components/parameters/userParam'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateAccesUtilisateurRequest'
+      responses:
+        '200':
+          description: Success
+          content: 
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AccesUtilisateurResponse'
+        '400':
+           $ref: '#/components/responses/400BadRequest'
+        '401':
+           $ref: '#/components/responses/401Unauthorized'
+        '409':
+          $ref: '#/components/responses/409Conflict'
+        '500':
+           $ref: '#/components/responses/500ServerError'  
+  /acces-utilisateur/{id}:
+    get:
+      tags:
+        - Acces Utilisateur
+      parameters:
+        - $ref: '#/components/parameters/idParam'  
+      responses:
+        '200':
+          description: Success
+          content: 
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AccesUtilisateurResponse'
+        '400':
+           $ref: '#/components/responses/400BadRequest'
+        '401':
+           $ref: '#/components/responses/401Unauthorized'
+        '404':
+          $ref: '#/components/responses/404NotFound'
+        '500':
+           $ref: '#/components/responses/500ServerError'   
+    put:
+      tags:
+        - Acces Utilisateur
+      parameters:
+        - $ref: '#/components/parameters/idParam'
+        - $ref: '#/components/parameters/userParam'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateAccesUtilisateurRequest'
+      responses:
+        '200':
+          description: Success
+          content: 
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AccesUtilisateurResponse'
+        '400':
+           $ref: '#/components/responses/400BadRequest'
+        '401':
+           $ref: '#/components/responses/401Unauthorized'
+        '404':
+          $ref: '#/components/responses/404NotFound'
+        '409':
+          $ref: '#/components/responses/409Conflict'
+        '500':
+           $ref: '#/components/responses/500ServerError' 
+    delete:
+      tags:
+        - Acces Utilisateur
+      parameters:
+        - $ref: '#/components/parameters/idParam' 
+      responses:
+        '204':
+          $ref:  '#/components/responses/204NoContent'
+        '400':
+           $ref: '#/components/responses/400BadRequest'
+        '401':
+           $ref: '#/components/responses/401Unauthorized'
+        '404':
+          $ref: '#/components/responses/404NotFound'
+        '409':
+          $ref: '#/components/responses/409Conflict'
+        '500':
+           $ref: '#/components/responses/500ServerError'
+  /utilisateur/{id}/acces:
+    get:
+      tags:
+        - Utilisateur
+      parameters:
+        - $ref: '#/components/parameters/idParam'  
+      responses:
+        '200':
+          description: Success
+          content: 
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AccesByUtilisateurResponse'
+        '400':
+           $ref: '#/components/responses/400BadRequest'
+        '401':
+           $ref: '#/components/responses/401Unauthorized'
+        '404':
+          $ref: '#/components/responses/404NotFound'
+        '500':
+           $ref: '#/components/responses/500ServerError' 
+components:
+  securitySchemes:
+    basicAuth:
+      type: http
+      scheme: basic
+  parameters:
+    offSetParam:
+      name: offSet
+      in: query
+      required: false
+      schema:
+        type: integer
+    limitParam:
+      name: limit
+      in: query
+      required: false
+      schema:
+        type: integer
+    orderByParam:
+      name: orderBy
+      in: query
+      required: false
+      schema:
+        type: string
+    orderOrientationParam:
+      name: orderOrientation
+      in: query
+      required: false
+      schema:
+        type: string
+    userParam:
+      name: x-User
+      in: header
+      required: true
+      schema:
+        type: string
+    idParam:
+      name: id
+      in: path
+      schema:
+        type: integer
+      required: true
+  responses:
+    204NoContent:
+      description : NoContent
+    400BadRequest:
+      description : Bad Request
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ValidationProblemDetails'
+    401Unauthorized:
+      description: Unauthorized
+      content:
+        application/json:
+          schema:
+             $ref: '#/components/schemas/ValidationProblemDetails'
+    404NotFound:
+      description: NotFound
+      content:
+        application/json:
+          schema:
+             $ref: '#/components/schemas/ValidationProblemDetails'
+    409Conflict:
+      description: Conflict
+      content:
+        application/json:
+          schema:
+             $ref: '#/components/schemas/ValidationProblemDetails'
+    500ServerError:
+      description: Server Error
+      content:
+        application/json:
+          schema:
+            $ref:  '#/components/schemas/ValidationProblemDetails'
+  schemas:
+    ReferenceApplicationResponse:
+      type: object
+      properties:
+        identifiant:
+          type: integer
+        libelle:
+          type: string
+        estActif:
+          type: boolean
+    CreateReferenceApplicationRequest:
+      type: object
+      properties:
+        libelle:
+          type: string
+        estActif:
+          type: boolean
+    UpdateReferenceApplicationRequest:
+      type: object
+      properties:
+        libelle:
+          type: string
+        estActif:
+          type: boolean
+    ReferenceModuleResponse:
+      type: object
+      properties:
+        identifiant:
+          type: integer
+        idRefApplication:
+          type: integer
+        libelle:
+          type: string
+        estActif:
+          type: boolean
+    CreateReferenceModuleRequest:
+      type: object
+      properties:
+        idRefApplication:
+          type: integer
+        libelle: 
+          type: string
+        estActif:
+          type: boolean
+    UpdateReferenceModuleRequest:
+      type: object
+      properties:
+        libelle: 
+          type: string
+        estActif:
+          type: boolean
+    ReferenceFonctionnaliteResponse:
+      type: object
+      properties:
+        identifiant:
+          type: integer
+        idRefModule:
+          type: integer
+        libelle: 
+          type: string
+        estDefault:
+          type: boolean
+        autorise:
+          type: boolean
+        estActif:
+          type: boolean
+    CreateReferenceFonctionnaliteRequest:
+      type: object
+      properties:
+        idRefModule:
+          type: integer
+        libelle:
+          type: string
+        estDefault:
+          type: boolean
+        autorise:
+          type: boolean
+        estActif:
+          type: boolean
+    UpdateReferenceFonctionnaliteRequest:
+      type: object
+      properties:
+        libelle:
+          type: string
+        estDefault:
+          type: boolean
+        estActif:
+          type: boolean
+    AccesApplicationResponse:
+      type: object
+      properties:
+        identifiant:
+          type: integer
+        idAccesGroupe:
+          type: integer
+        idRefApplication:
+          type: integer
+        estActif:
+          type: boolean
+    CreateAccesApplicationRequest:
+      type: object
+      properties:
+        idAccesGroupe:
+          type: integer
+        idRefApplication:
+          type: integer
+        estActif:
+          type: boolean
+    UpdateAccesApplicationRequest:
+      type: object
+      properties:
+        estActif:
+          type: boolean
+    AccesModuleResponse:
+      type: object
+      properties:
+        identifiant:
+          type: integer
+        idAccesApplication:
+          type: integer
+        idRefModule:
+          type: integer
+        estActif:
+          type: boolean
+    CreateAccesModuleRequest:
+      type: object
+      properties:
+        idAccesApplication:
+          type: integer
+        idRefModule:
+          type: integer
+        estActif:
+          type: boolean
+    UpdateAccesModuleRequest:
+      type: object
+      properties:
+        estActif:
+          type: boolean 
+    AccesFonctionnaliteResponse:
+      type: object
+      properties:
+        identifiant:
+          type: integer
+        idAccesModule:
+          type: integer
+        idRefFonctionnalite:
+          type: integer
+        estActif:
+          type: boolean
+    CreateAccesFonctionnaliteRequest:
+      type: object
+      properties:
+        idAccesModule:
+          type: integer
+        idRefFonctionnalite:
+          type: integer
+        estActif:
+          type: boolean
+    UpdateAccesFonctionnaliteRequest:
+      type: object
+      properties:
+        estActif:
+          type: boolean  
+    AccesGroupeResponse:
+      type: object
+      properties:
+        identifiant:
+          type: integer
+        idSociete:
+          type: string
+          format: uuid
+        libelle:
+          type: string
+        estGroupeSpecial:
+          type: boolean
+        estActif: 
+          type: boolean
+    CreateAccesGroupeRequest:
+      type: object
+      properties:
+        idSociete:
+          type: string
+          format: uuid
+        libelle:
+          type: string
+        estGroupeSpecial:
+          type: boolean
+        estActif:
+          type: boolean
+    UpdateAccesGroupeRequest:
+      type: object
+      properties:
+        libelle:
+          type: string
+        estGroupeSpecial:
+          type: boolean
+        estActif:
+          type: boolean 
+    AccesUtilisateurResponse:
+      type: object
+      properties:
+        identifiant:
+          type: integer
+        idUtilisateur:
+          type: integer
+        idAccesGroupe:
+          type: integer
+        estActif:
+          type: boolean
+    CreateAccesUtilisateurRequest:
+      type: object
+      properties:
+        idUtilisateur:
+          type: integer
+        idAccesGroupe:
+          type: integer
+        estActif:
+          type: boolean
+    UpdateAccesUtilisateurRequest:
+      type: object
+      properties:
+        estActif:
+          type: boolean
+    Permission:
+      type: string
+      enum:
+        - Allow
+        - Restrict
+        - Read
+        - Write
+    AccesByUtilisateurResponse:
+      type: array
+      items:
+        type : object
+        properties:
+          idSociete: 
+            type: string
+            format: uuid
+          applications:
+            type: array
+            items:
+              type: object
+              properties:
+                idApplication:
+                  type: integer
+                modules:
+                  type: array
+                  items:
+                    type: object
+                    properties:
+                      idModule:
+                        type: integer
+                      fonctionnalites:
+                        type: array
+                        items:
+                          type: object
+                          properties:
+                            libelle:
+                              type: string
+                            type:
+                                $ref: '#/components/schemas/Permission'
+    ValidationProblemDetails:
+      type: object
+      properties:
+        type:
+          type: string
+          nullable: true
+        title:
+          type: string
+          nullable: true
+        status:
+          type: integer
+          format: int32
+          nullable: true
+        detail:
+          type: string
+          nullable: true
+        instance:
+          type: string
+          nullable: true
+        errors:
+          type: object
+          additionalProperties:
+            type: array
+            items:
+              type: string
+          nullable: true
+          readOnly: true
+      additionalProperties: {}
+security:
+  - basicAuth: []

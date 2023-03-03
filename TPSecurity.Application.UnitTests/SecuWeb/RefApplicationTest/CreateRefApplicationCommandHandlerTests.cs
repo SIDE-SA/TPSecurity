@@ -1,0 +1,54 @@
+﻿using FluentAssertions;
+using MapsterMapper;
+using Moq;
+using TPSecurity.Application.Common.Interfaces.Persistence;
+using TPSecurity.Application.Core.SecuWeb.RefApplicationCore.Commands.Create;
+using TPSecurity.Domain.Common.Entities.SecuWeb;
+using Xunit;
+
+namespace TPSecurity.Application.UnitTests.SecuWeb.RefApplicationTest
+{
+    public class CreateRefApplicationCommandHandlerTests
+    {
+        private readonly Mock<IUnitOfWorkGTP> _uow = new Mock<IUnitOfWorkGTP>();
+        private readonly Mock<IMapper> _mapper = new Mock<IMapper>();
+        private readonly Mock<IBaseClass> _baseClass = new Mock<IBaseClass>();
+
+        private readonly CreateRefApplicationCommandHandler _handler;
+
+        public CreateRefApplicationCommandHandlerTests()
+        {
+            _handler = new CreateRefApplicationCommandHandler(_uow.Object, _mapper.Object);
+        }
+
+        [Theory]
+        [InlineData("")]
+        [InlineData("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")]
+        public async Task CreateRefApplicationCommand_ShouldReturnError_WhenLibelleNotValid(string libelle)
+        {
+            var command = new CreateRefApplicationCommand(libelle, true);
+
+            var result = await _handler.Handle(command, CancellationToken.None);
+
+            result.IsError.Should().BeTrue();
+            _uow.Verify(x => x.RefApplication.Create(It.IsAny<RefApplication>()), Times.Never);
+            _uow.Verify(x => x.SaveChanges(), Times.Never);
+        }
+
+        [Fact]
+        public async Task CreateRefApplicationCommand_ShouldReturnResult_WhenCommandOk()
+        {
+            var command = new CreateRefApplicationCommand("libelle", true);
+            _uow.Setup(x => x.RefApplication.Create(It.IsAny<RefApplication>()))
+                .Returns(_baseClass.Object);
+            _uow.Setup(x => x.RefApplication.GetById(It.IsAny<int>()))
+                .Returns(RefApplication.Init(1, "libelle", true));
+
+            var result = await _handler.Handle(command, CancellationToken.None);
+
+            result.IsError.Should().BeFalse();
+            _uow.Verify(x => x.RefApplication.Create(It.IsAny<RefApplication>()), Times.Once);
+            _uow.Verify(x => x.SaveChanges(), Times.Once);
+        }
+    }
+}

@@ -1,0 +1,24 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <ItemGroup>
+    <PackageReference Include="FluentValidation" Version="11.5.0" />
+    <PackageReference Include="FluentValidation.AspNetCore" Version="11.1.2" />
+    <PackageReference Include="Mapster" Version="7.3.0" />
+    <PackageReference Include="Mapster.DependencyInjection" Version="1.0.0" />
+    <PackageReference Include="MediatR" Version="10.0.1" />
+    <PackageReference Include="MediatR.Extensions.Microsoft.DependencyInjection" Version="10.0.1" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="6.0.0" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
+    <PackageReference Include="TPUtilities" Version="1.0.3" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\TPSecurity.Domain\TPSecurity.Domain.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Core\SecuWeb\RefApplicationCore\Validations\" />
+  </ItemGroup>
+
+
+</Project>
