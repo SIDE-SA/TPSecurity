@@ -14,6 +14,8 @@ namespace TPSecurity.Infrastructure.Persistence
 
         public IRefApplicationRepository RefApplication { get; private set; }
 
+        public IRefModuleRepository RefModule { get; private set; }
+
         public UnitOfWorkGTP(ApplicationContextGTP context,
                              ITenantService tenantService)
         {

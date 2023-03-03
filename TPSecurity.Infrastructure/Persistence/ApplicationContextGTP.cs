@@ -28,6 +28,7 @@ namespace TPSecurity.Infrastructure.Persistence
         }      
 
         public virtual DbSet<RefApplicationDTO> RefApplication { get; set; }
+        public virtual DbSet<RefModuleDTO> RefModule { get; set; }
 
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
