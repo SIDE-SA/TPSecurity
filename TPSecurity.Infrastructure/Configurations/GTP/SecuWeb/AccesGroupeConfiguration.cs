@@ -20,7 +20,6 @@ namespace TPSecurity.Infrastructure.Configurations.GTP.SecuWeb
             builder.Property(e => e.Id);
             builder.Property(e => e.DateCreation).HasColumnType("datetime");
             builder.Property(e => e.DateModification).HasColumnType("datetime");
-            builder.Property(e => e.EstActif).HasMaxLength(50);
             builder.Property(e => e.Libelle).HasMaxLength(50);
             builder.Property(e => e.UserCreation).HasMaxLength(40);
             builder.Property(e => e.UserModification).HasMaxLength(40);

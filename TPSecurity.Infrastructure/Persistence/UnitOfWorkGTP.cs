@@ -16,6 +16,8 @@ namespace TPSecurity.Infrastructure.Persistence
 
         public IRefModuleRepository RefModule { get; private set; }
 
+        public IAccesGroupeRepository AccesGroupe { get; private set; }
+
         public UnitOfWorkGTP(ApplicationContextGTP context,
                              ITenantService tenantService)
         {
@@ -23,6 +25,7 @@ namespace TPSecurity.Infrastructure.Persistence
 
             RefApplication = new RefApplicationRepository(context);
             RefModule = new RefModuleRepository(context);
+            AccesGroupe = new AccesGroupeRepository(context);
         }
 
         public async Task SaveChangesAsync()
