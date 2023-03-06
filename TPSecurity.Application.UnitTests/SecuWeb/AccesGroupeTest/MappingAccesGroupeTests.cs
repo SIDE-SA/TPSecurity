@@ -6,9 +6,9 @@ using Xunit;
 
 namespace TPSecurity.Application.UnitTests.SecuWeb.AccesGroupeTest
 {
-    public class AccesGroupeMappingTests
+    public class MappingAccesGroupeTests
     {
-        public AccesGroupeMappingTests()
+        public MappingAccesGroupeTests()
         {
             TypeAdapterConfig.GlobalSettings.Scan(typeof(Application.AssemblyReference).Assembly);
         }
