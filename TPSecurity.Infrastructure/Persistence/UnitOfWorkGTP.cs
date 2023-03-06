@@ -13,6 +13,7 @@ namespace TPSecurity.Infrastructure.Persistence
         private readonly DbContext _context;
 
         public IRefApplicationRepository RefApplication { get; private set; }
+        public IRefFonctionnaliteRepository RefFonctionnalite { get; private set; }
 
         public UnitOfWorkGTP(ApplicationContextGTP context,
                              ITenantService tenantService)
@@ -20,6 +21,7 @@ namespace TPSecurity.Infrastructure.Persistence
             _context = context;
 
             RefApplication = new RefApplicationRepository(context);
+            RefFonctionnalite = new RefFonctionnaliteRepository(context);
         }
 
         public async Task SaveChangesAsync()
