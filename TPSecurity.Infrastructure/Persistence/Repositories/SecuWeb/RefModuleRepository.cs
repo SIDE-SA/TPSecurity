@@ -48,6 +48,7 @@ namespace TPSecurity.Infrastructure.Persistence.Repositories.SecuWeb
 
             SearchByLibelle(ref refModuleDTOs, queryParameters.Libelle);
             SearchByEstActif(ref refModuleDTOs, queryParameters.EstActif);
+            SearchByRefApplication(ref refModuleDTOs, queryParameters.IdRefApplication);
             SortHelper.ApplySort(ref refModuleDTOs, queryParameters.orderBy, queryParameters.orderOrientation);
             PagedList<RefModuleDTO>.ApplyPagination(ref refModuleDTOs, queryParameters.offSet, queryParameters.limit, out int totalCount);
             var refModules = FromDTO(refModuleDTOs);
@@ -58,6 +59,12 @@ namespace TPSecurity.Infrastructure.Persistence.Repositories.SecuWeb
         {
             if (string.IsNullOrWhiteSpace(libelle)) return;
             refModules = refModules.Where(x => x.Libelle.ToLower().Contains(libelle.Trim().ToLower()));
+        }
+
+        private void SearchByRefApplication(ref IQueryable<RefModuleDTO> refModules, int? idRefApplication)
+        {
+            if (idRefApplication is null) return;
+            refModules = refModules.Where(x => x.IdRefApplication == idRefApplication);
         }
 
         private void SearchByEstActif(ref IQueryable<RefModuleDTO> refModules, bool? estActif)

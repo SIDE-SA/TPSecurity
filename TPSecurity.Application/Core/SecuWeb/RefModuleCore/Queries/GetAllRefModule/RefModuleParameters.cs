@@ -13,5 +13,7 @@ namespace TPSecurity.Application.Core.SecuWeb.RefModuleCore.Queries.GetAllRefMod
         public string? Libelle { get; set; }
 
         public bool? EstActif { get; set; }
+
+        public int? IdRefApplication { get; set; }
     }
 }
