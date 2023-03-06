@@ -44,7 +44,7 @@ namespace TPSecurity.Application.UnitTests.SecuWeb.RefFonctionnaliteTest
         public async Task UpdateRefFonctionnaliteCommand_ShouldReturnConcurrency_WhenHashCodeIsNotEqual()
         {
             //Arrange        
-            RefFonctionnalite refApplication = RefFonctionnalite.Init(1, "libelle", true, true, "permission", 1);
+            RefFonctionnalite refApplication = RefFonctionnalite.Init(1, "libelle", true, true, "Allow", 1);
             var command = new UpdateRefFonctionnaliteCommand(1, "libelle", true, true, "hashCode");
 
             _uow.Setup(x => x.RefFonctionnalite.GetById(It.IsAny<int>()))
@@ -66,7 +66,7 @@ namespace TPSecurity.Application.UnitTests.SecuWeb.RefFonctionnaliteTest
         [InlineData("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")]
         public async Task UpdateRefFonctionnaliteCommand_ShouldReturnError_WhenLibelleNotValid(string libelle)
         {
-            RefFonctionnalite refApplication = RefFonctionnalite.Init(1, libelle, true, true, "permission", 1);
+            RefFonctionnalite refApplication = RefFonctionnalite.Init(1, libelle, true, true, "Allow", 1);
             var hashCode = refApplication.GetHashCodeAsString();
             var command = new UpdateRefFonctionnaliteCommand(1, libelle, true, true, hashCode);
             _uow.Setup(x => x.RefFonctionnalite.GetById(It.IsAny<int>()))
@@ -83,14 +83,14 @@ namespace TPSecurity.Application.UnitTests.SecuWeb.RefFonctionnaliteTest
         [Fact]
         public async Task UpdateRefFonctionnaliteCommand_ShouldReturnError_WhenLibelleAlreadyExists()
         {
-            RefFonctionnalite refApplication = RefFonctionnalite.Init(1, "libelle", true, true, "permission", 1);            
+            RefFonctionnalite refApplication = RefFonctionnalite.Init(1, "libelle", true, true, "Allow", 1);            
             var hashCode = refApplication.GetHashCodeAsString();
 
             var command = new UpdateRefFonctionnaliteCommand(1, "libelle", true, true, hashCode);
             _uow.Setup(x => x.RefFonctionnalite.GetById(It.IsAny<int>()))
                 .Returns(refApplication);
             _uow.Setup(x => x.RefFonctionnalite.GetByLibelle(It.IsAny<string>()))
-                .Returns(RefFonctionnalite.Init(0, "libelle", true, true, "permission", 1));
+                .Returns(RefFonctionnalite.Init(0, "libelle", true, true, "Allow", 1));
 
             var result = await _handler.Handle(command, CancellationToken.None);
 
@@ -104,7 +104,7 @@ namespace TPSecurity.Application.UnitTests.SecuWeb.RefFonctionnaliteTest
         [Fact]
         public async Task UpdateRefFonctionnaliteCommand_ShouldReturnResult_WhenCommandOk()
         {
-            RefFonctionnalite refApplication = RefFonctionnalite.Init(1, "libelle", true, true, "permission", 1);
+            RefFonctionnalite refApplication = RefFonctionnalite.Init(1, "libelle", true, true, "Allow", 1);
             var hashCode = refApplication.GetHashCodeAsString();
             var command = new UpdateRefFonctionnaliteCommand(1, "libelle", true, true, hashCode);
             _uow.Setup(x => x.RefFonctionnalite.GetById(It.IsAny<int>()))

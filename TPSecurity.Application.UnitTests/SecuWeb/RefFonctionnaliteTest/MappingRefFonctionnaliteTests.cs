@@ -6,9 +6,9 @@ using Xunit;
 
 namespace TPSecurity.Application.UnitTests.SecuWeb.RefFonctionnaliteTest
 {
-    public class RefFonctionnaliteMappingTests
+    public class MappingRefFonctionnaliteTests
     {
-        public RefFonctionnaliteMappingTests()
+        public MappingRefFonctionnaliteTests()
         {
             TypeAdapterConfig.GlobalSettings.Scan(typeof(Application.AssemblyReference).Assembly);
         }

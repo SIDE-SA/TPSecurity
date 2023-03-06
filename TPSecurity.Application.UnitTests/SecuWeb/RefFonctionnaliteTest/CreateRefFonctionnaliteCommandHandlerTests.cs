@@ -41,18 +41,19 @@ namespace TPSecurity.Application.UnitTests.SecuWeb.RefFonctionnaliteTest
         }
 
         [Theory]
+        [InlineData("")]
         [InlineData("Ecrit")]
         public async Task CreateRefFonctionnaliteCommand_ShouldReturnError_WhenPermissionNotAllowed(string permission)
         {
             var command = new CreateRefFonctionnaliteCommand("libelle", true, true, permission, 1);
             _uow.Setup(x => x.RefFonctionnalite.GetByLibelle(It.IsAny<string>()));
-            _uow.Setup(x => x.RefApplication.GetById(It.IsAny<int>()))
-                .Returns(RefApplication.Init(1, "libelle", true));
+            _uow.Setup(x => x.RefModule.GetById(It.IsAny<int>()))
+                .Returns(RefModule.Init(1, "libelle", true, 1));
 
             var result = await _handler.Handle(command, CancellationToken.None);
 
             result.IsError.Should().BeTrue();
-            result.Errors[0].Code.Should().Be(Errors.RefFonctionnalite.PermissionNotAllowed.Code);
+            result.Errors[0].Type.Should().Be(ErrorOr.ErrorType.Validation);
             _uow.Verify(x => x.RefFonctionnalite.Create(It.IsAny<RefFonctionnalite>()), Times.Never);
             _uow.Verify(x => x.SaveChanges(), Times.Never);
         }

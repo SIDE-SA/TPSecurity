@@ -32,8 +32,8 @@ public class UpdateRefFonctionnaliteCommandHandler : IRequestHandler<UpdateRefFo
             return Errors.Concurrency;
         }
 
-        var refAppli = _uow.RefFonctionnalite.GetByLibelle(command.Libelle);
-        if (refAppli is not null && refAppli.Id != refFonctionnalite.Id)
+        var refFonct = _uow.RefFonctionnalite.GetByLibelle(command.Libelle);
+        if (refFonct is not null && refFonct.Id != refFonctionnalite.Id)
         {
             return Errors.DuplicateLibelle;
         }

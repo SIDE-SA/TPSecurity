@@ -24,15 +24,9 @@ public class CreateRefFonctionnaliteCommandHandler : IRequestHandler<CreateRefFo
     {
         await Task.CompletedTask;
 
-        RefFonctionnalite refAppli = _uow.RefFonctionnalite.GetByLibelle(command.Libelle);
-        if (refAppli is not null)
+        if (_uow.RefFonctionnalite.GetByLibelle(command.Libelle) is not null)
         {
             return Errors.DuplicateLibelle;
-        }
-
-        if (!EnumPermissions.IsAllowedValue(command.Permission))
-        {
-            return Errors.RefFonctionnalite.PermissionNotAllowed;
         }
 
         RefModule refModule = _uow.RefModule.GetById(command.IdRefModule);
