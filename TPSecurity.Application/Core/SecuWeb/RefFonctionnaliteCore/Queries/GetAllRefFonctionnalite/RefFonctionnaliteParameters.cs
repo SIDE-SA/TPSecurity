@@ -14,6 +14,6 @@ namespace TPSecurity.Application.Core.SecuWeb.RefFonctionnaliteCore.Queries.GetA
 
         public bool? EstActif { get; set; }
 
-        public int? idRefModule { get; set; }
+        public int? IdRefModule { get; set; }
     }
 }
