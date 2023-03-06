@@ -27,7 +27,7 @@ namespace TPSecurity.Infrastructure.Configurations.GTP.SecuWeb
             builder.HasOne(d => d.IdRefApplicationNavigation).WithMany(p => p.RefModules)
                 .HasForeignKey(d => d.IdRefApplication)
                 .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("fk_RefModule_RefApplicaiton");
+                .HasConstraintName("fk_RefModule_RefApplication");
         }
     }
 }

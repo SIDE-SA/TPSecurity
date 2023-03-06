@@ -28,12 +28,12 @@ namespace TPSecurity.Application.UnitTests.SecuWeb.RefApplicationTest
         public async Task CreateRefApplicationCommand_ShouldReturnError_WhenLibelleNotValid(string libelle)
         {
             var command = new CreateRefApplicationCommand(libelle, true);
-            _uow.Setup(x => x.RefApplication.GetByLibelle(It.IsAny<string>()))
-                .Returns(RefApplication.Init(0, "libelle", true));
+            _uow.Setup(x => x.RefApplication.GetByLibelle(It.IsAny<string>()));
 
             var result = await _handler.Handle(command, CancellationToken.None);
 
             result.IsError.Should().BeTrue();
+            result.Errors[0].Type.Should().Be(ErrorOr.ErrorType.Validation);
             _uow.Verify(x => x.RefApplication.Create(It.IsAny<RefApplication>()), Times.Never);
             _uow.Verify(x => x.SaveChanges(), Times.Never);
         }

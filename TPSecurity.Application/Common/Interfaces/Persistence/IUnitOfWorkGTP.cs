@@ -8,6 +8,8 @@ namespace TPSecurity.Application.Common.Interfaces.Persistence
         
         IRefApplicationRepository RefApplication { get; }
 
+        IRefModuleRepository RefModule { get; }
+
         Task SaveChangesAsync();
 
         ErrorOr<int> SaveChanges();
