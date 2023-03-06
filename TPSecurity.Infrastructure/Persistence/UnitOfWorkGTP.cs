@@ -22,6 +22,7 @@ namespace TPSecurity.Infrastructure.Persistence
             _context = context;
 
             RefApplication = new RefApplicationRepository(context);
+            RefModule = new RefModuleRepository(context);
         }
 
         public async Task SaveChangesAsync()

@@ -75,6 +75,7 @@ namespace TPSecurity.Application.UnitTests.SecuWeb.RefApplicationTest
             var result = await _handler.Handle(command, CancellationToken.None);
 
             result.IsError.Should().BeTrue();
+            result.Errors[0].Type.Should().Be(ErrorOr.ErrorType.Validation);
             _uow.Verify(x => x.RefApplication.Update(It.IsAny<RefApplication>()), Times.Never);
             _uow.Verify(x => x.SaveChanges(), Times.Never);
         }

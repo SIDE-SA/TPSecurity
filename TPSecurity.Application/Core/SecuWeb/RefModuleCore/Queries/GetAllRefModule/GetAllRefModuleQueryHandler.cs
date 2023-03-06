@@ -22,9 +22,9 @@ namespace TPSecurity.Application.Core.SecuWeb.RefModuleCore.Queries.GetAllRefMod
         public async Task<ErrorOr<PagedList<RefModuleResult>>> Handle(GetAllRefModuleQuery request, CancellationToken cancellationToken)
         {
             await Task.CompletedTask;
-            PagedList<RefModule> refApplications = _uow.RefModule.GetRefModules(request.queryParameters);
+            PagedList<RefModule> refModules = _uow.RefModule.GetRefModules(request.queryParameters);
 
-            return new PagedList<RefModuleResult>(_mapper.Map<List<RefModuleResult>>(refApplications), refApplications.TotalCount);
+            return new PagedList<RefModuleResult>(_mapper.Map<List<RefModuleResult>>(refModules), refModules.TotalCount);
         }
     }
 }

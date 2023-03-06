@@ -22,27 +22,27 @@ public class UpdateRefModuleCommandHandler : IRequestHandler<UpdateRefModuleComm
     {
         await Task.CompletedTask;
 
-        RefModule refApplication = _uow.RefModule.GetById(command.Id);
-        if (refApplication is null)
+        RefModule refModule = _uow.RefModule.GetById(command.Id);
+        if (refModule is null)
             return Errors.NotFound;
 
-        if(command.HashCode != refApplication.GetHashCodeAsString())
+        if(command.HashCode != refModule.GetHashCodeAsString())
         {
             return Errors.Concurrency;
         }
 
-        var refAppli = _uow.RefModule.GetByLibelle(command.Libelle);
-        if (refAppli is not null && refAppli.Id != refApplication.Id)
+        var refMod = _uow.RefModule.GetByLibelle(command.Libelle);
+        if (refMod is not null && refMod.Id != refModule.Id)
         {
             return Errors.DuplicateLibelle;
         }
 
-        ErrorOr<Updated> error = refApplication.Update(command.Libelle, command.EstActif);
+        ErrorOr<Updated> error = refModule.Update(command.Libelle, command.EstActif);
         
         if (error.IsError)
             return error.Errors;
 
-        var dto = _uow.RefModule.Update(refApplication);
+        var dto = _uow.RefModule.Update(refModule);
         _uow.SaveChanges();
 
         var updated = _uow.RefModule.GetById(dto.Id);

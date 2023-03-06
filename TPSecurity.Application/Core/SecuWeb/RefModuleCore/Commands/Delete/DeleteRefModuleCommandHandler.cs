@@ -24,11 +24,11 @@ namespace TPSecurity.Application.Core.SecuWeb.RefModuleCore.Commands.Delete
         {
             await Task.CompletedTask;
 
-            RefModule refApplication = _uow.RefModule.GetByIdWithReferences(command.id);
-            if (refApplication is null)
+            RefModule refModule = _uow.RefModule.GetByIdWithReferences(command.id);
+            if (refModule is null)
                 return Errors.NotFound;
 
-            bool canDelete = _uow.RefModule.Delete(refApplication);
+            bool canDelete = _uow.RefModule.Delete(refModule);
             if (!canDelete)
                 return Errors.InUse;
 

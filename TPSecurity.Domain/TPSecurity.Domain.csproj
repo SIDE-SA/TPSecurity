@@ -1,14 +1,6 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <ItemGroup>
-    <Compile Remove="Common\Errors\SecuWeb\Errors.RefModule.cs" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <None Include="Common\Errors\SecuWeb\Errors.RefModule.cs" />
-  </ItemGroup>
-
-  <ItemGroup>
     <PackageReference Include="ErrorOr" Version="1.2.0" />
     <PackageReference Include="FluentValidation" Version="11.5.0" />
   </ItemGroup>

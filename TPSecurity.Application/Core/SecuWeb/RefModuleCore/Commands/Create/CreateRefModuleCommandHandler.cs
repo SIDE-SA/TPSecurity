@@ -23,13 +23,18 @@ public class CreateRefModuleCommandHandler : IRequestHandler<CreateRefModuleComm
     {
         await Task.CompletedTask;
 
-        RefModule refAppli = _uow.RefModule.GetByLibelle(command.Libelle);
-        if (refAppli is not null)
+        if (_uow.RefModule.GetByLibelle(command.Libelle) is not null)
         {
             return Errors.DuplicateLibelle;
         }
 
-        ErrorOr<RefModule> refModule = RefModule.Create(command.Libelle, command.EstActif, _uow.RefApplication.GetById(command.IdRefApplication));
+        RefApplication refApp = _uow.RefApplication.GetById(command.IdRefApplication);
+        if (refApp is null)
+        {
+            return Errors.RefModule.RefApplicationNotFound;
+        }
+
+        ErrorOr<RefModule> refModule = RefModule.Create(command.Libelle, command.EstActif, refApp);
 
         if (refModule.IsError)
             return refModule.Errors;

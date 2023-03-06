@@ -23,13 +23,13 @@ namespace TPSecurity.Application.Core.SecuWeb.RefModuleCore.Queries.GetByIdRefMo
         {
             await Task.CompletedTask;
 
-            RefModule? refApplication = _uow.RefModule.GetById(request.Id);
-            if (refApplication is null)
+            RefModule? refModule = _uow.RefModule.GetById(request.Id);
+            if (refModule is null)
             {
                 return Errors.NotFound;
             }
 
-            return _mapper.Map<RefModuleResult>((refApplication, refApplication.GetHashCodeAsString()));
+            return _mapper.Map<RefModuleResult>((refModule, refModule.GetHashCodeAsString()));
         }
     }
 }

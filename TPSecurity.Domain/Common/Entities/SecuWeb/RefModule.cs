@@ -9,12 +9,12 @@ namespace TPSecurity.Domain.Common.Entities.SecuWeb
         private RefModule(int id,
                                string libelle,
                                bool estActif,
-                               RefApplication refApplication)
+                               RefApplication idRefApplication)
         {
             Id = id;
             Libelle = libelle;
             EstActif = estActif;
-            IdRefApplication = refApplication;
+            IdRefApplication = idRefApplication;
         }
 
         public int Id { get; init; }

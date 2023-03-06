@@ -72,10 +72,10 @@ namespace TPSecurity.Infrastructure.Persistence.Repositories.SecuWeb
 
         public IBaseClass Update(RefApplication refApplication)
         {
-            RefApplicationDTO contactBanqueDTO = _context.RefApplication.Find(refApplication.Id);
-            ApplyChanges(contactBanqueDTO, refApplication);
-            _context.RefApplication.Update(contactBanqueDTO);
-            return contactBanqueDTO;
+            RefApplicationDTO refApplicationDTO = _context.RefApplication.Find(refApplication.Id);
+            ApplyChanges(refApplicationDTO, refApplication);
+            _context.RefApplication.Update(refApplicationDTO);
+            return refApplicationDTO;
         }
 
         public bool Delete(RefApplication refApplication)
