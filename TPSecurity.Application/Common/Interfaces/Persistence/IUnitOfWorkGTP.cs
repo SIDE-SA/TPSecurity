@@ -12,6 +12,8 @@ namespace TPSecurity.Application.Common.Interfaces.Persistence
 
         IAccesGroupeRepository AccesGroupe { get; }
 
+        IAccesApplicationRepository AccesApplication { get; }
+
         Task SaveChangesAsync();
 
         ErrorOr<int> SaveChanges();

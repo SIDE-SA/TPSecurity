@@ -2,11 +2,18 @@
 
 public partial class AccesApplicationDTO : BaseClass
 {
+    public AccesApplicationDTO(int id, bool estActif, int idAccesGroupe, int idRefApplication)
+    {
+        this.Id = id;
+        this.EstActif = estActif;
+        this.IdAccesGroupe = idAccesGroupe;
+        this.IdRefApplication = idRefApplication;
+    }
     public int IdAccesGroupe { get; set; }
 
     public int IdRefApplication { get; set; }
 
-    public string EstActif { get; set; } = null!;   
+    public bool EstActif { get; set; }   
 
     public virtual ICollection<AccesModuleDTO> AccesModules { get; } = new List<AccesModuleDTO>();
 
