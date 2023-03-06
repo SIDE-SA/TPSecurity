@@ -8,7 +8,6 @@ namespace TPSecurity.Domain.Common.Validation.SecuWeb
         public RefModuleValidator()
         {
             RuleFor(x => x.Libelle).NotEmpty().MaximumLength(50);
-            RuleFor(x => x.IdRefApplication).NotEmpty();
         }
     }
 }
