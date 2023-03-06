@@ -44,7 +44,7 @@ namespace TPSecurity.Application.UnitTests.SecuWeb.RefModuleTest
         public async Task DeleteRefModuleCommand_ShouldReturnInUse_ReferencesExists()
         {
             //Arrange
-            RefModule refApplication = RefModule.Init(1, "libelle", true, null);
+            RefModule refApplication = RefModule.Init(1, "libelle", true, 1);
             var command = new DeleteRefModuleCommand(1);
             _uow.Setup(x => x.RefModule.GetByIdWithReferences(It.IsAny<int>()))
                 .Returns(refApplication);
@@ -66,7 +66,7 @@ namespace TPSecurity.Application.UnitTests.SecuWeb.RefModuleTest
         public async Task DeleteRefModuleCommand_ShouldReturnDeleted_WhenCommandOk()
         {
             //Arrange
-            RefModule refApplication = RefModule.Init(1, "libelle", true, null);
+            RefModule refApplication = RefModule.Init(1, "libelle", true, 1);
             var command = new DeleteRefModuleCommand(1);
             _uow.Setup(x => x.RefModule.GetByIdWithReferences(It.IsAny<int>()))
                 .Returns(refApplication);

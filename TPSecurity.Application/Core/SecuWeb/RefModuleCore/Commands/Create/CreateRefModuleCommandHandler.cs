@@ -34,7 +34,7 @@ public class CreateRefModuleCommandHandler : IRequestHandler<CreateRefModuleComm
             return Errors.RefModule.RefApplicationNotFound;
         }
 
-        ErrorOr<RefModule> refModule = RefModule.Create(command.Libelle, command.EstActif, refApp);
+        ErrorOr<RefModule> refModule = RefModule.Create(command.Libelle, command.EstActif, command.IdRefApplication);
 
         if (refModule.IsError)
             return refModule.Errors;

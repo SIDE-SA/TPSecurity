@@ -9,7 +9,7 @@ namespace TPSecurity.Domain.Common.Entities.SecuWeb
         private RefModule(int id,
                                string libelle,
                                bool estActif,
-                               RefApplication idRefApplication)
+                               int idRefApplication)
         {
             Id = id;
             Libelle = libelle;
@@ -22,13 +22,13 @@ namespace TPSecurity.Domain.Common.Entities.SecuWeb
         public string Libelle { get; private set; }
 
         public bool EstActif { get; private set; }
-        public RefApplication IdRefApplication { get; private set; } = null!;
+        public int IdRefApplication { get; private set; }
 
         public static ErrorOr<RefModule> Create(string libelle,
                                                 bool estActif,
-                                                RefApplication refApplication)
+                                                int idRefApplication)
         {
-            RefModule refModule = new RefModule(0, libelle, estActif, refApplication);
+            RefModule refModule = new RefModule(0, libelle, estActif, idRefApplication);
 
             var validator = new RefModuleValidator();
             var result = validator.Validate(refModule);
@@ -38,9 +38,9 @@ namespace TPSecurity.Domain.Common.Entities.SecuWeb
             return refModule;
         }
 
-        public static RefModule Init(int id, string libelle, bool estActif, RefApplication refApplication)
+        public static RefModule Init(int id, string libelle, bool estActif, int idRefApplication)
         {
-            RefModule refModule = new RefModule(id, libelle, estActif, refApplication);
+            RefModule refModule = new RefModule(id, libelle, estActif, idRefApplication);
             return refModule;
         }
 

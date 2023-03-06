@@ -45,7 +45,7 @@ namespace TPSecurity.Application.UnitTests.SecuWeb.RefModuleTest
         {
             var command = new CreateRefModuleCommand("libelle", true, 1) ;
             _uow.Setup(x => x.RefModule.GetByLibelle(It.IsAny<string>()))
-                .Returns(RefModule.Init(0, "libelle", true, null));
+                .Returns(RefModule.Init(0, "libelle", true, 1));
 
             var result = await _handler.Handle(command, CancellationToken.None);
 
@@ -81,7 +81,7 @@ namespace TPSecurity.Application.UnitTests.SecuWeb.RefModuleTest
             _uow.Setup(x => x.RefModule.Create(It.IsAny<RefModule>()))
                 .Returns(_baseClass.Object);
             _uow.Setup(x => x.RefModule.GetById(It.IsAny<int>()))
-                .Returns(RefModule.Init(1, "libelle", true, RefApplication.Init(1, "libelle", true)));
+                .Returns(RefModule.Init(1, "libelle", true, 1));
 
             var result = await _handler.Handle(command, CancellationToken.None);
 

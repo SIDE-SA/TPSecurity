@@ -45,7 +45,7 @@ namespace TPSecurity.Application.UnitTests.SecuWeb.RefModuleTest
             //Arrange        
             var command = new GetByIdRefModuleQuery(1);
             _uow.Setup(x => x.RefModule.GetById(It.IsAny<int>()))
-                .Returns(RefModule.Init(1, "libelle", true, null));
+                .Returns(RefModule.Init(1, "libelle", true, 1));
 
             //Act
             var result = await _handler.Handle(command, CancellationToken.None);

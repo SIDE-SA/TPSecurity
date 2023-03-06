@@ -21,7 +21,6 @@ namespace TPSecurity.Infrastructure.Persistence.Repositories.SecuWeb
         public RefModule? GetById(int id)
         {
             return _context.RefModule
-                    .Include(x => x.IdRefApplicationNavigation)
                     .Where(x => x.Id == id).Select(x => FromDTO(x)).SingleOrDefault();            
         }
 
@@ -31,7 +30,6 @@ namespace TPSecurity.Infrastructure.Persistence.Repositories.SecuWeb
                     .AsSplitQuery()
                     .Include(x => x.RefFonctionnalites)
                     .Include(x => x.AccesModules)
-                    .Include(x => x.IdRefApplicationNavigation)
                     .Where(x => x.Id == id)
                     .Select(x => FromDTO(x))
                     .SingleOrDefault();
@@ -40,14 +38,12 @@ namespace TPSecurity.Infrastructure.Persistence.Repositories.SecuWeb
         public RefModule? GetByLibelle(string libelle)
         {
             return _context.RefModule
-                    .Include(x => x.IdRefApplicationNavigation)
                     .Where(x => x.Libelle.ToLower() == libelle.Trim().ToLower()).Select(x => FromDTO(x)).SingleOrDefault();
         }
 
         public PagedList<RefModule> GetRefModules(RefModuleParameters queryParameters)
         {
             var refModuleDTOs = _context.RefModule
-                    .Include(x => x.IdRefApplicationNavigation)
                     .AsQueryable();
 
             SearchByLibelle(ref refModuleDTOs, queryParameters.Libelle);
@@ -102,15 +98,13 @@ namespace TPSecurity.Infrastructure.Persistence.Repositories.SecuWeb
 
         public RefModuleDTO ToDTO(RefModule refModule)
         {
-            RefModuleDTO dto = new RefModuleDTO(refModule.Id, refModule.Libelle, refModule.EstActif, refModule.IdRefApplication.Id);
+            RefModuleDTO dto = new RefModuleDTO(refModule.Id, refModule.Libelle, refModule.EstActif, refModule.IdRefApplication);
             return dto;
         }
 
         public static RefModule FromDTO(RefModuleDTO dto)
         {
-            RefModule refModule = RefModule.Init(dto.Id, dto.Libelle, dto.EstActif, dto.IdRefApplication != null ?
-                                                                        RefApplicationRepository.FromDTO(dto.IdRefApplicationNavigation)
-                                                                        : null);
+            RefModule refModule = RefModule.Init(dto.Id, dto.Libelle, dto.EstActif, dto.IdRefApplication);
             return refModule;
         }
 

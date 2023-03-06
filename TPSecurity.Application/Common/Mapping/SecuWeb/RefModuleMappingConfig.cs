@@ -10,11 +10,9 @@ namespace TPSecurity.Application.Common.Mapping.SecuWeb
         {
             config.NewConfig<(RefModule refModule, string HashCode), RefModuleResult>()
                 .Map(dest => dest.HashCode, src => src.HashCode)
-                .Map(dest => dest.IdRefApplication, src => src.refModule.IdRefApplication.Id)
                 .Map(dest => dest, src => src.refModule);
 
             config.NewConfig<RefModule, RefModuleResult>()
-                .Map(dest => dest.IdRefApplication, src => src.IdRefApplication.Id)
                 .Map(dest => dest, src => src);
         }
     }
