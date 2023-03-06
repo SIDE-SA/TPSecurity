@@ -27,7 +27,7 @@ namespace TPSecurity.Domain.Common.Entities.SecuWeb
 
         public bool EstActif { get; private set; }
 
-        public int IdRefModule { get; init; }
+        public int IdRefModule { get; private set; }
 
         public string Permission { get; private set; }
 
