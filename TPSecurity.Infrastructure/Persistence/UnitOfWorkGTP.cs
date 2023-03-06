@@ -15,13 +15,18 @@ namespace TPSecurity.Infrastructure.Persistence
         public IRefApplicationRepository RefApplication { get; private set; }
         public IRefFonctionnaliteRepository RefFonctionnalite { get; private set; }
 
+        public IRefModuleRepository RefModule { get; private set; }
+
         public UnitOfWorkGTP(ApplicationContextGTP context,
                              ITenantService tenantService)
         {
             _context = context;
 
             RefApplication = new RefApplicationRepository(context);
+
             RefFonctionnalite = new RefFonctionnaliteRepository(context);
+
+            RefModule = new RefModuleRepository(context);
         }
 
         public async Task SaveChangesAsync()
