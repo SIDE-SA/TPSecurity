@@ -54,7 +54,7 @@ namespace TPSecurity.Domain.Common.Entities.SecuWeb
         {
             this.Libelle = Libelle;
             this.EstActif = estActif;
-            this.EstGroupeSpecial = EstGroupeSpecial;
+            this.EstGroupeSpecial = estGroupeSpecial;
 
             var validator = new AccesGroupeValidator();
             var result = validator.Validate(this);
