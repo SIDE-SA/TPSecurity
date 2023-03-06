@@ -6,7 +6,7 @@
 
         public static bool IsAllowedValue(string value)
         {
-            return lValue.Contains(value);
+            return lValue.Any(a => a.ToLower() == value.Trim().ToLower());
         }
     }
 }

@@ -4,6 +4,7 @@ using MediatR;
 using TPSecurity.Application.Common.Interfaces.Persistence;
 using TPSecurity.Application.Core.SecuWeb.RefFonctionnaliteCore.Common;
 using TPSecurity.Domain.Common.Entities.SecuWeb;
+using TPSecurity.Domain.Common.Enums;
 using TPSecurity.Domain.Common.Errors;
 
 namespace TPSecurity.Application.Core.SecuWeb.RefFonctionnaliteCore.Commands.Create;
@@ -27,6 +28,17 @@ public class CreateRefFonctionnaliteCommandHandler : IRequestHandler<CreateRefFo
         if (refAppli is not null)
         {
             return Errors.DuplicateLibelle;
+        }
+
+        if (!EnumPermissions.IsAllowedValue(command.Permission))
+        {
+            return Errors.RefFonctionnalite.PermissionNotAllowed;
+        }
+
+        RefModule refModule = _uow.RefModule.GetById(command.IdRefModule);
+        if (refModule is null)
+        {
+            return Errors.RefFonctionnalite.RefModuleNotFound;
         }
 
         ErrorOr<RefFonctionnalite> refFonctionnalite = RefFonctionnalite.Create(command.Libelle, command.EstActif, command.EstDefaut, command.Permission, command.IdRefModule);
