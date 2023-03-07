@@ -22,9 +22,9 @@ namespace TPSecurity.Application.Core.SecuWeb.RefFonctionnaliteCore.Queries.GetA
         public async Task<ErrorOr<PagedList<RefFonctionnaliteResult>>> Handle(GetAllRefFonctionnaliteQuery request, CancellationToken cancellationToken)
         {
             await Task.CompletedTask;
-            PagedList<RefFonctionnalite> refApplications = _uow.RefFonctionnalite.GetRefFonctionnalites(request.queryParameters);
+            PagedList<RefFonctionnalite> refFonctionnalites = _uow.RefFonctionnalite.GetRefFonctionnalites(request.queryParameters);
 
-            return new PagedList<RefFonctionnaliteResult>(_mapper.Map<List<RefFonctionnaliteResult>>(refApplications), refApplications.TotalCount);
+            return new PagedList<RefFonctionnaliteResult>(_mapper.Map<List<RefFonctionnaliteResult>>(refFonctionnalites), refFonctionnalites.TotalCount);
         }
     }
 }

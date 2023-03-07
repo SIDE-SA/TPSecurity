@@ -23,8 +23,7 @@ public class CreateRefApplicationCommandHandler : IRequestHandler<CreateRefAppli
     {
         await Task.CompletedTask;
 
-        RefApplication refAppli = _uow.RefApplication.GetByLibelle(command.Libelle);
-        if (refAppli is not null)
+        if (_uow.RefApplication.GetByLibelle(command.Libelle) is not null)
         {
             return Errors.DuplicateLibelle;
         }

@@ -9,6 +9,7 @@ public partial class AccesApplicationDTO : BaseClass
         this.IdAccesGroupe = idAccesGroupe;
         this.IdRefApplication = idRefApplication;
     }
+
     public int IdAccesGroupe { get; set; }
 
     public int IdRefApplication { get; set; }

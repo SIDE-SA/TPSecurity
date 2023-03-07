@@ -51,9 +51,9 @@ namespace TPSecurity.Domain.Common.Entities.SecuWeb
             return accesGroupe;
         }
 
-        public ErrorOr<Updated> Update(string Libelle, bool estActif, bool estGroupeSpecial)
+        public ErrorOr<Updated> Update(string libelle, bool estActif, bool estGroupeSpecial)
         {
-            this.Libelle = Libelle;
+            this.Libelle = libelle;
             this.EstActif = estActif;
             this.EstGroupeSpecial = estGroupeSpecial;
 

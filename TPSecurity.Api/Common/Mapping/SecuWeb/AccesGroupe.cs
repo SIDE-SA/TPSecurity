@@ -1,5 +1,4 @@
-﻿
-using Mapster;
+﻿using Mapster;
 using TPSecurity.Application.Core.SecuWeb.AccesGroupeCore.Common;
 using TPSecurity.Contracts.SecuWeb.AccesGroupe;
 

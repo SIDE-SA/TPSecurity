@@ -13,6 +13,7 @@ namespace TPSecurity.Infrastructure.Persistence
         private readonly DbContext _context;
 
         public IRefApplicationRepository RefApplication { get; private set; }
+
         public IRefFonctionnaliteRepository RefFonctionnalite { get; private set; }
 
         public IRefModuleRepository RefModule { get; private set; }

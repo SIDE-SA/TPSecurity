@@ -27,9 +27,9 @@ namespace TPSecurity.Api.Controllers.SecuWeb
 
         [HttpGet]
         [ProducesResponseType(200, Type = typeof(AccesGroupeResponse))]
-        public async Task<IActionResult> Get([FromQuery] AccesGroupeParameters refModuleParameters)
+        public async Task<IActionResult> Get([FromQuery] AccesGroupeParameters accesGroupeParameters)
         {
-            var command = new GetAllAccesGroupeQuery(refModuleParameters);
+            var command = new GetAllAccesGroupeQuery(accesGroupeParameters);
             var result = await _mediator.Send(command);
 
             return result.Match(

@@ -55,9 +55,9 @@ namespace TPSecurity.Domain.Common.Entities.SecuWeb
             return refFonctionnalite;
         }
 
-        public ErrorOr<Updated> Update(string Libelle, bool estActif, bool estDefaut)
+        public ErrorOr<Updated> Update(string libelle, bool estActif, bool estDefaut)
         {
-            this.Libelle = Libelle;
+            this.Libelle = libelle;
             this.EstActif = estActif;
             this.EstDefaut = estDefaut;
 

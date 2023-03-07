@@ -2,7 +2,6 @@
 
 public partial class RefApplicationDTO : BaseClass
 {
-
     public RefApplicationDTO(int id, string libelle, bool estActif)
     {
         this.Id = id;

@@ -10,7 +10,6 @@ namespace TPSecurity.Application.Core.SecuWeb.AccesApplicationCore.Queries.GetAl
             orderOrientation = "asc";
         }
 
-
         public bool? EstActif { get; set; }
 
         public int? IdAccesGroupe { get; set; }
