@@ -34,7 +34,7 @@ public class CreateAccesGroupeCommandHandler : IRequestHandler<CreateAccesGroupe
         bool societyExist = await _generalConceptService.Societe.Exist(command.IdSociete);
         if (!societyExist)
         {
-            return Errors.AccesGroupe.SocietyNotFound;
+            return Errors.AccesGroupe.SocieteNotFound;
         }
 
         ErrorOr<AccesGroupe> accesGroupe = AccesGroupe.Create(command.Libelle, command.EstActif, command.EstGroupeSpecial, command.IdSociete);

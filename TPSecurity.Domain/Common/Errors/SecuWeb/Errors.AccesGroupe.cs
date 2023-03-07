@@ -6,7 +6,7 @@ namespace TPSecurity.Domain.Common.Errors
     {
         public static class AccesGroupe
         {
-            public static Error SocietyNotFound => Error.Conflict(code: "AccesGroupe.SocietyNotFound", description: "La société n'existe pas");
+            public static Error SocieteNotFound => Error.Conflict(code: "AccesGroupe.SocieteNotFound", description: "La société n'existe pas");
         }
     }
 }

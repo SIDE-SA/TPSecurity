@@ -48,6 +48,8 @@ namespace TPSecurity.Infrastructure.Persistence.Repositories.SecuWeb
 
             SearchByLibelle(ref accesGroupeDTOs, queryParameters.Libelle);
             SearchByEstActif(ref accesGroupeDTOs, queryParameters.EstActif);
+            SearchByEstGroupeSpecial(ref accesGroupeDTOs, queryParameters.EstGroupeSpecial);
+            SearchByIdSociete(ref accesGroupeDTOs, queryParameters.IdSociete);
             SortHelper.ApplySort(ref accesGroupeDTOs, queryParameters.orderBy, queryParameters.orderOrientation);
             PagedList<AccesGroupeDTO>.ApplyPagination(ref accesGroupeDTOs, queryParameters.offSet, queryParameters.limit, out int totalCount);
             var accesGroupes = FromDTO(accesGroupeDTOs);
@@ -58,6 +60,18 @@ namespace TPSecurity.Infrastructure.Persistence.Repositories.SecuWeb
         {
             if (string.IsNullOrWhiteSpace(libelle)) return;
             accesGroupes = accesGroupes.Where(x => x.Libelle.ToLower().Contains(libelle.Trim().ToLower()));
+        }
+
+        private void SearchByEstGroupeSpecial(ref IQueryable<AccesGroupeDTO> accesGroupes, bool? estGroupeSpecial)
+        {
+            if (!estGroupeSpecial.HasValue) return;
+            accesGroupes = accesGroupes.Where(x => x.EstGroupeSpecial == estGroupeSpecial);
+        }
+
+        private void SearchByIdSociete(ref IQueryable<AccesGroupeDTO> accesGroupes, Guid? idSociete)
+        {
+            if (idSociete is null) return;
+            accesGroupes = accesGroupes.Where(x => x.IdSociete == idSociete);
         }
 
         private void SearchByEstActif(ref IQueryable<AccesGroupeDTO> accesGroupes, bool? estActif)

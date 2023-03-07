@@ -69,7 +69,7 @@ namespace TPSecurity.Application.UnitTests.SecuWeb.AccesGroupeTest
             var result = await _handler.Handle(command, CancellationToken.None);
 
             result.IsError.Should().BeTrue();
-            result.Errors[0].Code.Should().Be(Errors.AccesGroupe.SocietyNotFound.Code);
+            result.Errors[0].Code.Should().Be(Errors.AccesGroupe.SocieteNotFound.Code);
             _uow.Verify(x => x.AccesGroupe.GetByLibelle(It.IsAny<string>()), Times.Once);
             _uow.Verify(x => x.AccesGroupe.Create(It.IsAny<AccesGroupe>()), Times.Never);
             _uow.Verify(x => x.SaveChanges(), Times.Never);
