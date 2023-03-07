@@ -10,11 +10,11 @@ namespace TPSecurity.Application.UnitTests.SecuWeb.RefFonctionnaliteTest
     {
         public MappingRefFonctionnaliteTests()
         {
-            TypeAdapterConfig.GlobalSettings.Scan(typeof(Application.AssemblyReference).Assembly);
+            TypeAdapterConfig.GlobalSettings.Scan(typeof(AssemblyReference).Assembly);
         }
 
         [Fact]
-        public void TupleLigneCautionAndString_ShouldMap_LigneCautionResult()
+        public void TupleRefFonctionnaliteAndString_ShouldMap_RefFonctionnaliteResult()
         {
             (RefFonctionnalite refFonctionnalite, string hashCode) poco = (RefFonctionnalite.Init(1, "libelle", true, true, "permission", 1), "hashcode");
 

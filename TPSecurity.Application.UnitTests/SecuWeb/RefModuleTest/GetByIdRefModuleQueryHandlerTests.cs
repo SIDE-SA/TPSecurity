@@ -2,7 +2,6 @@
 using MapsterMapper;
 using Moq;
 using TPSecurity.Application.Common.Interfaces.Persistence;
-using TPSecurity.Application.Core.SecuWeb.RefModuleCore.Commands.Delete;
 using TPSecurity.Application.Core.SecuWeb.RefModuleCore.Queries.GetByIdRefModule;
 using TPSecurity.Domain.Common.Entities.SecuWeb;
 using TPSecurity.Domain.Common.Errors;
@@ -14,7 +13,6 @@ namespace TPSecurity.Application.UnitTests.SecuWeb.RefModuleTest
     {
         private readonly Mock<IUnitOfWorkGTP> _uow = new Mock<IUnitOfWorkGTP>();
         private readonly Mock<IMapper> _mapper = new Mock<IMapper>();
-        private readonly Mock<IBaseClass> _baseClass = new Mock<IBaseClass>();
 
         private readonly GetByIdRefModuleQueryHandler _handler;
 

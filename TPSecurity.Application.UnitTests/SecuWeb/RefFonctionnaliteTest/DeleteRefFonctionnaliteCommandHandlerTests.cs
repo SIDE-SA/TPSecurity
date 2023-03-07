@@ -13,7 +13,6 @@ namespace TPSecurity.Application.UnitTests.SecuWeb.RefFonctionnaliteTest
     {
         private readonly Mock<IUnitOfWorkGTP> _uow = new Mock<IUnitOfWorkGTP>();
         private readonly Mock<IMapper> _mapper = new Mock<IMapper>();
-        private readonly Mock<IBaseClass> _baseClass = new Mock<IBaseClass>();
 
         private readonly DeleteRefFonctionnaliteCommandHandler _handler;
 
@@ -44,11 +43,11 @@ namespace TPSecurity.Application.UnitTests.SecuWeb.RefFonctionnaliteTest
         public async Task DeleteRefFonctionnaliteCommand_ShouldReturnInUse_ReferencesExists()
         {
             //Arrange
-            RefFonctionnalite refApplication = RefFonctionnalite.Init(1, "libelle", true, true, "permission", 1);
+            RefFonctionnalite refFonctionnalite = RefFonctionnalite.Init(1, "libelle", true, true, "permission", 1);
             var command = new DeleteRefFonctionnaliteCommand(1);
             _uow.Setup(x => x.RefFonctionnalite.GetByIdWithReferences(It.IsAny<int>()))
-                .Returns(refApplication);
-            _uow.Setup(x => x.RefFonctionnalite.Delete(refApplication))
+                .Returns(refFonctionnalite);
+            _uow.Setup(x => x.RefFonctionnalite.Delete(refFonctionnalite))
                 .Returns(false);
 
             //Act
@@ -66,11 +65,11 @@ namespace TPSecurity.Application.UnitTests.SecuWeb.RefFonctionnaliteTest
         public async Task DeleteRefFonctionnaliteCommand_ShouldReturnDeleted_WhenCommandOk()
         {
             //Arrange
-            RefFonctionnalite refApplication = RefFonctionnalite.Init(1, "libelle", true, true, "permission", 1);
+            RefFonctionnalite refFonctionnalite = RefFonctionnalite.Init(1, "libelle", true, true, "permission", 1);
             var command = new DeleteRefFonctionnaliteCommand(1);
             _uow.Setup(x => x.RefFonctionnalite.GetByIdWithReferences(It.IsAny<int>()))
-                .Returns(refApplication);
-            _uow.Setup(x => x.RefFonctionnalite.Delete(refApplication))
+                .Returns(refFonctionnalite);
+            _uow.Setup(x => x.RefFonctionnalite.Delete(refFonctionnalite))
                 .Returns(true);
 
             //Act

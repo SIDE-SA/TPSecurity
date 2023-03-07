@@ -13,7 +13,6 @@ namespace TPSecurity.Application.UnitTests.SecuWeb.AccesApplicationTest
     {
         private readonly Mock<IUnitOfWorkGTP> _uow = new Mock<IUnitOfWorkGTP>();
         private readonly Mock<IMapper> _mapper = new Mock<IMapper>();
-        private readonly Mock<IBaseClass> _baseClass = new Mock<IBaseClass>();
 
         private readonly DeleteAccesApplicationCommandHandler _handler;
 
@@ -44,11 +43,11 @@ namespace TPSecurity.Application.UnitTests.SecuWeb.AccesApplicationTest
         public async Task DeleteAccesApplicationCommand_ShouldReturnInUse_ReferencesExists()
         {
             //Arrange
-            AccesApplication refApplication = AccesApplication.Init(1, true, 1, 1);
+            AccesApplication accesApplication = AccesApplication.Init(1, true, 1, 1);
             var command = new DeleteAccesApplicationCommand(1);
             _uow.Setup(x => x.AccesApplication.GetByIdWithReferences(It.IsAny<int>()))
-                .Returns(refApplication);
-            _uow.Setup(x => x.AccesApplication.Delete(refApplication))
+                .Returns(accesApplication);
+            _uow.Setup(x => x.AccesApplication.Delete(accesApplication))
                 .Returns(false);
 
             //Act
@@ -66,11 +65,11 @@ namespace TPSecurity.Application.UnitTests.SecuWeb.AccesApplicationTest
         public async Task DeleteAccesApplicationCommand_ShouldReturnDeleted_WhenCommandOk()
         {
             //Arrange
-            AccesApplication refApplication = AccesApplication.Init(1, true, 1, 1);
+            AccesApplication accesApplication = AccesApplication.Init(1, true, 1, 1);
             var command = new DeleteAccesApplicationCommand(1);
             _uow.Setup(x => x.AccesApplication.GetByIdWithReferences(It.IsAny<int>()))
-                .Returns(refApplication);
-            _uow.Setup(x => x.AccesApplication.Delete(refApplication))
+                .Returns(accesApplication);
+            _uow.Setup(x => x.AccesApplication.Delete(accesApplication))
                 .Returns(true);
 
             //Act

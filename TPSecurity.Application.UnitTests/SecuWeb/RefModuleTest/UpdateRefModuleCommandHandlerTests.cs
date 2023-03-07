@@ -44,11 +44,11 @@ namespace TPSecurity.Application.UnitTests.SecuWeb.RefModuleTest
         public async Task UpdateRefModuleCommand_ShouldReturnConcurrency_WhenHashCodeIsNotEqual()
         {
             //Arrange        
-            RefModule refApplication = RefModule.Init(1, "libelle", true, 1);
+            RefModule refModule = RefModule.Init(1, "libelle", true, 1);
             var command = new UpdateRefModuleCommand(1, "libelle", true, "hashCode");
 
             _uow.Setup(x => x.RefModule.GetById(It.IsAny<int>()))
-                .Returns(refApplication);           
+                .Returns(refModule);           
 
             //Act
             var result = await _handler.Handle(command, CancellationToken.None);
@@ -66,11 +66,11 @@ namespace TPSecurity.Application.UnitTests.SecuWeb.RefModuleTest
         [InlineData("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")]
         public async Task UpdateRefModuleCommand_ShouldReturnError_WhenLibelleNotValid(string libelle)
         {
-            RefModule refApplication = RefModule.Init(1, libelle, true, 1);
-            var hashCode = refApplication.GetHashCodeAsString();
+            RefModule refModule = RefModule.Init(1, libelle, true, 1);
+            var hashCode = refModule.GetHashCodeAsString();
             var command = new UpdateRefModuleCommand(1, libelle, true, hashCode);
             _uow.Setup(x => x.RefModule.GetById(It.IsAny<int>()))
-                .Returns(refApplication);
+                .Returns(refModule);
 
             var result = await _handler.Handle(command, CancellationToken.None);
 
@@ -83,12 +83,12 @@ namespace TPSecurity.Application.UnitTests.SecuWeb.RefModuleTest
         [Fact]
         public async Task UpdateRefModuleCommand_ShouldReturnError_WhenLibelleAlreadyExists()
         {
-            RefModule refApplication = RefModule.Init(1, "libelle", true, 1);            
-            var hashCode = refApplication.GetHashCodeAsString();
+            RefModule refModule = RefModule.Init(1, "libelle", true, 1);            
+            var hashCode = refModule.GetHashCodeAsString();
 
             var command = new UpdateRefModuleCommand(1, "libelle", true, hashCode);
             _uow.Setup(x => x.RefModule.GetById(It.IsAny<int>()))
-                .Returns(refApplication);
+                .Returns(refModule);
             _uow.Setup(x => x.RefModule.GetByLibelle(It.IsAny<string>()))
                 .Returns(RefModule.Init(0, "libelle", true, 1));
 
@@ -104,11 +104,11 @@ namespace TPSecurity.Application.UnitTests.SecuWeb.RefModuleTest
         [Fact]
         public async Task UpdateRefModuleCommand_ShouldReturnResult_WhenCommandOk()
         {
-            RefModule refApplication = RefModule.Init(1, "libelle", true, 1);
-            var hashCode = refApplication.GetHashCodeAsString();
+            RefModule refModule = RefModule.Init(1, "libelle", true, 1);
+            var hashCode = refModule.GetHashCodeAsString();
             var command = new UpdateRefModuleCommand(1, "libelle", true, hashCode);
             _uow.Setup(x => x.RefModule.GetById(It.IsAny<int>()))
-                .Returns(refApplication);
+                .Returns(refModule);
             _uow.Setup(x => x.RefModule.Update(It.IsAny<RefModule>()))
               .Returns(_baseClass.Object);
 
