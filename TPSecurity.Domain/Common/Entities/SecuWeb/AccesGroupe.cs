@@ -1,6 +1,7 @@
 ﻿using ErrorOr;
 using TPSecurity.Domain.Common.Validation;
 using TPSecurity.Domain.Common.Validation.SecuWeb;
+using static TPSecurity.Domain.Common.Errors.Errors;
 
 namespace TPSecurity.Domain.Common.Entities.SecuWeb
 {
@@ -34,20 +35,20 @@ namespace TPSecurity.Domain.Common.Entities.SecuWeb
                                                    bool estGroupeSpecial,
                                                    Guid idSociete)
         {
-            AccesGroupe refModule = new AccesGroupe(0, libelle, estActif, estGroupeSpecial, idSociete);
+            AccesGroupe accesGroupe = new AccesGroupe(0, libelle, estActif, estGroupeSpecial, idSociete);
 
             var validator = new AccesGroupeValidator();
-            var result = validator.Validate(refModule);
+            var result = validator.Validate(accesGroupe);
             if (!result.IsValid)
                 return ValidationHelper.GenerateErrorList(result);
 
-            return refModule;
+            return accesGroupe;
         }
 
         public static AccesGroupe Init(int id, string libelle, bool estActif, bool estGroupeSpecial, Guid idSociete)
         {
-            AccesGroupe refModule = new AccesGroupe(id, libelle, estActif, estGroupeSpecial, idSociete);
-            return refModule;
+            AccesGroupe accesGroupe = new AccesGroupe(id, libelle, estActif, estGroupeSpecial, idSociete);
+            return accesGroupe;
         }
 
         public ErrorOr<Updated> Update(string libelle, bool estActif, bool estGroupeSpecial)

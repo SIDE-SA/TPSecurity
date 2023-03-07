@@ -78,10 +78,10 @@ namespace TPSecurity.Infrastructure.Persistence.Repositories.SecuWeb
 
         public IBaseClass Update(RefFonctionnalite refFonctionnalite)
         {
-            RefFonctionnaliteDTO contactBanqueDTO = _context.RefFonctionnalite.Find(refFonctionnalite.Id);
-            ApplyChanges(contactBanqueDTO, refFonctionnalite);
-            _context.RefFonctionnalite.Update(contactBanqueDTO);
-            return contactBanqueDTO;
+            RefFonctionnaliteDTO refFonctionnaliteDTO = _context.RefFonctionnalite.Find(refFonctionnalite.Id);
+            ApplyChanges(refFonctionnaliteDTO, refFonctionnalite);
+            _context.RefFonctionnalite.Update(refFonctionnaliteDTO);
+            return refFonctionnaliteDTO;
         }
 
         public bool Delete(RefFonctionnalite refFonctionnalite)
@@ -123,8 +123,6 @@ namespace TPSecurity.Infrastructure.Persistence.Repositories.SecuWeb
             dest.Libelle = source.Libelle;
             dest.EstActif = source.EstActif;
             dest.EstDefaut = source.EstDefaut;
-        }
-
-       
+        }       
     }
 }

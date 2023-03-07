@@ -27,9 +27,9 @@ namespace TPSecurity.Api.Controllers.SecuWeb
 
         [HttpGet]
         [ProducesResponseType(200, Type = typeof(RefFonctionnaliteResponse))]
-        public async Task<IActionResult> Get([FromQuery] RefFonctionnaliteParameters refApplicationParameters)
+        public async Task<IActionResult> Get([FromQuery] RefFonctionnaliteParameters refFonctionnaliteParameters)
         {
-            var command = new GetAllRefFonctionnaliteQuery(refApplicationParameters);
+            var command = new GetAllRefFonctionnaliteQuery(refFonctionnaliteParameters);
             var result = await _mediator.Send(command);
 
             return result.Match(

@@ -2,7 +2,6 @@
 using Mapster;
 using TPSecurity.Application.Core.SecuWeb.RefApplicationCore.Common;
 using TPSecurity.Contracts.SecuWeb.RefApplication;
-using TPSecurity.Domain.Common.Entities.SecuWeb;
 using Xunit;
 
 namespace TPSecurity.Api.Tests.SecuWeb

@@ -1,5 +1,4 @@
-﻿
-using Mapster;
+﻿using Mapster;
 using TPSecurity.Application.Core.SecuWeb.RefApplicationCore.Common;
 using TPSecurity.Contracts.SecuWeb.RefApplication;
 

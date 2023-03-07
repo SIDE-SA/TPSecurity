@@ -10,11 +10,11 @@ namespace TPSecurity.Application.UnitTests.SecuWeb.AccesGroupeTest
     {
         public MappingAccesGroupeTests()
         {
-            TypeAdapterConfig.GlobalSettings.Scan(typeof(Application.AssemblyReference).Assembly);
+            TypeAdapterConfig.GlobalSettings.Scan(typeof(AssemblyReference).Assembly);
         }
 
         [Fact]
-        public void TupleLigneCautionAndString_ShouldMap_LigneCautionResult()
+        public void TupleAccesGroupeAndString_ShouldMap_AccesGroupeResult()
         {
             (AccesGroupe accesGroupe, string hashCode) poco = (AccesGroupe.Init(1, "libelle", true, true, new Guid()), "hashcode");
 

@@ -2,8 +2,6 @@
 using MapsterMapper;
 using MediatR;
 using TPSecurity.Application.Common.Interfaces.Persistence;
-using TPSecurity.Application.Core.SecuWeb.RefModuleCore.Commands.Delete;
-using TPSecurity.Application.Core.SecuWeb.RefModuleCore.Common;
 using TPSecurity.Domain.Common.Entities.SecuWeb;
 using TPSecurity.Domain.Common.Errors;
 

@@ -4,7 +4,6 @@ using MediatR;
 using TPSecurity.Application.Common.Interfaces.Persistence;
 using TPSecurity.Application.Core.SecuWeb.RefFonctionnaliteCore.Common;
 using TPSecurity.Domain.Common.Entities.SecuWeb;
-using TPSecurity.Domain.Common.Enums;
 using TPSecurity.Domain.Common.Errors;
 
 namespace TPSecurity.Application.Core.SecuWeb.RefFonctionnaliteCore.Commands.Create;

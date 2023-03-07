@@ -5,7 +5,6 @@ using TPSecurity.Application.Common.Interfaces.Persistence;
 using TPSecurity.Application.Core.SecuWeb.RefFonctionnaliteCore.Commands.Update;
 using TPSecurity.Application.Core.SecuWeb.RefFonctionnaliteCore.Common;
 using TPSecurity.Domain.Common.Entities.SecuWeb;
-using TPSecurity.Domain.Common.Enums;
 using TPSecurity.Domain.Common.Errors;
 
 public class UpdateRefFonctionnaliteCommandHandler : IRequestHandler<UpdateRefFonctionnaliteCommand, ErrorOr<RefFonctionnaliteResult>>

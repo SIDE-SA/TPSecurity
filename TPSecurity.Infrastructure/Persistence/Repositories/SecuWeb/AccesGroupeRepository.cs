@@ -47,6 +47,7 @@ namespace TPSecurity.Infrastructure.Persistence.Repositories.SecuWeb
                     .AsQueryable();
 
             SearchByLibelle(ref accesGroupeDTOs, queryParameters.Libelle);
+            SearchByEstActif(ref accesGroupeDTOs, queryParameters.EstActif);
             SearchByEstGroupeSpecial(ref accesGroupeDTOs, queryParameters.EstGroupeSpecial);
             SearchByIdSociete(ref accesGroupeDTOs, queryParameters.IdSociete);
             SortHelper.ApplySort(ref accesGroupeDTOs, queryParameters.orderBy, queryParameters.orderOrientation);
@@ -135,8 +136,6 @@ namespace TPSecurity.Infrastructure.Persistence.Repositories.SecuWeb
             dest.Libelle = source.Libelle;
             dest.EstActif = source.EstActif;
             dest.EstGroupeSpecial = source.EstGroupeSpecial;
-        }
-
-       
+        }    
     }
 }

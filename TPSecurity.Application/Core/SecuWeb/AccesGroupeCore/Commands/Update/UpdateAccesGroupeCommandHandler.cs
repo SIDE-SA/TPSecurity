@@ -31,8 +31,8 @@ public class UpdateAccesGroupeCommandHandler : IRequestHandler<UpdateAccesGroupe
             return Errors.Concurrency;
         }
 
-        var refMod = _uow.AccesGroupe.GetByLibelle(command.Libelle);
-        if (refMod is not null && refMod.Id != accesGroupe.Id)
+        var accesGrp = _uow.AccesGroupe.GetByLibelle(command.Libelle);
+        if (accesGrp is not null && accesGrp.Id != accesGroupe.Id)
         {
             return Errors.DuplicateLibelle;
         }

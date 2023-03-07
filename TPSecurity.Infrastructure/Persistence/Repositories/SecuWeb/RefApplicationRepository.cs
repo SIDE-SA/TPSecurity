@@ -118,8 +118,6 @@ namespace TPSecurity.Infrastructure.Persistence.Repositories.SecuWeb
             if (dest is null || source is null) return;
             dest.Libelle = source.Libelle;
             dest.EstActif = source.EstActif;
-        }
-
-       
+        }       
     }
 }

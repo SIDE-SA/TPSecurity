@@ -44,11 +44,11 @@ namespace TPSecurity.Application.UnitTests.SecuWeb.AccesGroupeTest
         public async Task UpdateAccesGroupeCommand_ShouldReturnConcurrency_WhenHashCodeIsNotEqual()
         {
             //Arrange        
-            AccesGroupe refApplication = AccesGroupe.Init(1, "libelle", true, true, new Guid());
+            AccesGroupe accesGroupe = AccesGroupe.Init(1, "libelle", true, true, new Guid());
             var command = new UpdateAccesGroupeCommand(1, "libelle", true, true, "hashCode");
 
             _uow.Setup(x => x.AccesGroupe.GetById(It.IsAny<int>()))
-                .Returns(refApplication);           
+                .Returns(accesGroupe);           
 
             //Act
             var result = await _handler.Handle(command, CancellationToken.None);
@@ -66,11 +66,11 @@ namespace TPSecurity.Application.UnitTests.SecuWeb.AccesGroupeTest
         [InlineData("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")]
         public async Task UpdateAccesGroupeCommand_ShouldReturnError_WhenLibelleNotValid(string libelle)
         {
-            AccesGroupe refApplication = AccesGroupe.Init(1, libelle, true, true, new Guid());
-            var hashCode = refApplication.GetHashCodeAsString();
+            AccesGroupe accesGroupe = AccesGroupe.Init(1, libelle, true, true, new Guid());
+            var hashCode = accesGroupe.GetHashCodeAsString();
             var command = new UpdateAccesGroupeCommand(1, libelle, true, true, hashCode);
             _uow.Setup(x => x.AccesGroupe.GetById(It.IsAny<int>()))
-                .Returns(refApplication);
+                .Returns(accesGroupe);
 
             var result = await _handler.Handle(command, CancellationToken.None);
 
@@ -83,12 +83,12 @@ namespace TPSecurity.Application.UnitTests.SecuWeb.AccesGroupeTest
         [Fact]
         public async Task UpdateAccesGroupeCommand_ShouldReturnError_WhenLibelleAlreadyExists()
         {
-            AccesGroupe refApplication = AccesGroupe.Init(1, "libelle", true, true, new Guid());            
-            var hashCode = refApplication.GetHashCodeAsString();
+            AccesGroupe accesGroupe = AccesGroupe.Init(1, "libelle", true, true, new Guid());            
+            var hashCode = accesGroupe.GetHashCodeAsString();
 
             var command = new UpdateAccesGroupeCommand(1, "libelle", true, true, hashCode);
             _uow.Setup(x => x.AccesGroupe.GetById(It.IsAny<int>()))
-                .Returns(refApplication);
+                .Returns(accesGroupe);
             _uow.Setup(x => x.AccesGroupe.GetByLibelle(It.IsAny<string>()))
                 .Returns(AccesGroupe.Init(0, "libelle", true, true, new Guid()));
 
@@ -104,11 +104,11 @@ namespace TPSecurity.Application.UnitTests.SecuWeb.AccesGroupeTest
         [Fact]
         public async Task UpdateAccesGroupeCommand_ShouldReturnResult_WhenCommandOk()
         {
-            AccesGroupe refApplication = AccesGroupe.Init(1, "libelle", true, true, new Guid());
-            var hashCode = refApplication.GetHashCodeAsString();
+            AccesGroupe accesGroupe = AccesGroupe.Init(1, "libelle", true, true, new Guid());
+            var hashCode = accesGroupe.GetHashCodeAsString();
             var command = new UpdateAccesGroupeCommand(1, "libelle", true, true, hashCode);
             _uow.Setup(x => x.AccesGroupe.GetById(It.IsAny<int>()))
-                .Returns(refApplication);
+                .Returns(accesGroupe);
             _uow.Setup(x => x.AccesGroupe.Update(It.IsAny<AccesGroupe>()))
               .Returns(_baseClass.Object);
 

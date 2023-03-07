@@ -13,7 +13,6 @@ namespace TPSecurity.Application.UnitTests.SecuWeb.AccesGroupeTest
     {
         private readonly Mock<IUnitOfWorkGTP> _uow = new Mock<IUnitOfWorkGTP>();
         private readonly Mock<IMapper> _mapper = new Mock<IMapper>();
-        private readonly Mock<IBaseClass> _baseClass = new Mock<IBaseClass>();
 
         private readonly DeleteAccesGroupeCommandHandler _handler;
 
@@ -44,11 +43,11 @@ namespace TPSecurity.Application.UnitTests.SecuWeb.AccesGroupeTest
         public async Task DeleteAccesGroupeCommand_ShouldReturnInUse_ReferencesExists()
         {
             //Arrange
-            AccesGroupe refApplication = AccesGroupe.Init(1, "libelle", true, true, new Guid());
+            AccesGroupe accesGroupe = AccesGroupe.Init(1, "libelle", true, true, new Guid());
             var command = new DeleteAccesGroupeCommand(1);
             _uow.Setup(x => x.AccesGroupe.GetByIdWithReferences(It.IsAny<int>()))
-                .Returns(refApplication);
-            _uow.Setup(x => x.AccesGroupe.Delete(refApplication))
+                .Returns(accesGroupe);
+            _uow.Setup(x => x.AccesGroupe.Delete(accesGroupe))
                 .Returns(false);
 
             //Act
@@ -66,11 +65,11 @@ namespace TPSecurity.Application.UnitTests.SecuWeb.AccesGroupeTest
         public async Task DeleteAccesGroupeCommand_ShouldReturnDeleted_WhenCommandOk()
         {
             //Arrange
-            AccesGroupe refApplication = AccesGroupe.Init(1, "libelle", true, true, new Guid());
+            AccesGroupe accesGroupe = AccesGroupe.Init(1, "libelle", true, true, new Guid());
             var command = new DeleteAccesGroupeCommand(1);
             _uow.Setup(x => x.AccesGroupe.GetByIdWithReferences(It.IsAny<int>()))
-                .Returns(refApplication);
-            _uow.Setup(x => x.AccesGroupe.Delete(refApplication))
+                .Returns(accesGroupe);
+            _uow.Setup(x => x.AccesGroupe.Delete(accesGroupe))
                 .Returns(true);
 
             //Act

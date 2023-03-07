@@ -10,11 +10,11 @@ namespace TPSecurity.Application.UnitTests.SecuWeb.RefApplicationTest
     {
         public MappingRefApplicationTests()
         {
-            TypeAdapterConfig.GlobalSettings.Scan(typeof(Application.AssemblyReference).Assembly);
+            TypeAdapterConfig.GlobalSettings.Scan(typeof(AssemblyReference).Assembly);
         }
 
         [Fact]
-        public void TupleLigneCautionAndString_ShouldMap_LigneCautionResult()
+        public void TupleRefApplicationAndString_ShouldMap_RefApplicationResult()
         {
             (RefApplication refApplication, string hashCode) poco = (RefApplication.Init(1, "libelle", true), "hashcode");
 

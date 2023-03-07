@@ -22,9 +22,9 @@ namespace TPSecurity.Application.Core.SecuWeb.AccesGroupeCore.Queries.GetAllAcce
         public async Task<ErrorOr<PagedList<AccesGroupeResult>>> Handle(GetAllAccesGroupeQuery request, CancellationToken cancellationToken)
         {
             await Task.CompletedTask;
-            PagedList<AccesGroupe> refModules = _uow.AccesGroupe.GetAccesGroupes(request.queryParameters);
+            PagedList<AccesGroupe> accesGroupes = _uow.AccesGroupe.GetAccesGroupes(request.queryParameters);
 
-            return new PagedList<AccesGroupeResult>(_mapper.Map<List<AccesGroupeResult>>(refModules), refModules.TotalCount);
+            return new PagedList<AccesGroupeResult>(_mapper.Map<List<AccesGroupeResult>>(accesGroupes), accesGroupes.TotalCount);
         }
     }
 }

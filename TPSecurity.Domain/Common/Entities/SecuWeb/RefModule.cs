@@ -45,9 +45,9 @@ namespace TPSecurity.Domain.Common.Entities.SecuWeb
             return refModule;
         }
 
-        public ErrorOr<Updated> Update(string Libelle, bool estActif)
+        public ErrorOr<Updated> Update(string libelle, bool estActif)
         {
-            this.Libelle = Libelle;
+            this.Libelle = libelle;
             this.EstActif = estActif;
 
             var validator = new RefModuleValidator();

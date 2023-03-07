@@ -10,11 +10,11 @@ namespace TPSecurity.Application.UnitTests.SecuWeb.RefModuleTest
     {
         public MappingRefModuleTests()
         {
-            TypeAdapterConfig.GlobalSettings.Scan(typeof(Application.AssemblyReference).Assembly);
+            TypeAdapterConfig.GlobalSettings.Scan(typeof(AssemblyReference).Assembly);
         }
 
         [Fact]
-        public void TupleLigneCautionAndString_ShouldMap_LigneCautionResult()
+        public void TupleRefModuleAndString_ShouldMap_RefModuleResult()
         {
             (RefModule refModule, string hashCode) poco = (RefModule.Init(1, "libelle", true, 1), "hashcode");
 

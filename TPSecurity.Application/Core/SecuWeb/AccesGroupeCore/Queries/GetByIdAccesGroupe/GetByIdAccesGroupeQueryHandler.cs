@@ -23,13 +23,13 @@ namespace TPSecurity.Application.Core.SecuWeb.AccesGroupeCore.Queries.GetByIdAcc
         {
             await Task.CompletedTask;
 
-            AccesGroupe? refModule = _uow.AccesGroupe.GetById(request.Id);
-            if (refModule is null)
+            AccesGroupe? accesGroupe = _uow.AccesGroupe.GetById(request.Id);
+            if (accesGroupe is null)
             {
                 return Errors.NotFound;
             }
 
-            return _mapper.Map<AccesGroupeResult>((refModule, refModule.GetHashCodeAsString()));
+            return _mapper.Map<AccesGroupeResult>((accesGroupe, accesGroupe.GetHashCodeAsString()));
         }
     }
 }

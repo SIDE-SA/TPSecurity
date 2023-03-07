@@ -13,11 +13,14 @@ namespace TPSecurity.Infrastructure.Persistence
         private readonly DbContext _context;
 
         public IRefApplicationRepository RefApplication { get; private set; }
+
         public IRefFonctionnaliteRepository RefFonctionnalite { get; private set; }
 
         public IRefModuleRepository RefModule { get; private set; }
 
         public IAccesGroupeRepository AccesGroupe { get; private set; }
+
+        public IAccesApplicationRepository AccesApplication { get; private set; }
 
         public UnitOfWorkGTP(ApplicationContextGTP context,
                              ITenantService tenantService)
@@ -29,7 +32,10 @@ namespace TPSecurity.Infrastructure.Persistence
             RefFonctionnalite = new RefFonctionnaliteRepository(context);
 
             RefModule = new RefModuleRepository(context);
+			
             AccesGroupe = new AccesGroupeRepository(context);
+			
+            AccesApplication = new AccesApplicationRepository(context);
         }
 
         public async Task SaveChangesAsync()
