@@ -17,7 +17,9 @@ namespace TPSecurity.Application.Common.Interfaces.Persistence
         IAccesApplicationRepository AccesApplication { get; }
 
         IAccesModuleRepository AccesModule{ get; }
-		
+
+        IAccesFonctionnaliteRepository AccesFonctionnalite { get; }
+
         Task SaveChangesAsync();
 
         ErrorOr<int> SaveChanges();

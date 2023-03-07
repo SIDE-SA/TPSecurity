@@ -2,12 +2,22 @@
 
 public partial class AccesFonctionnaliteDTO : BaseClass
 {
+    public AccesFonctionnaliteDTO(int id,
+                   bool estActif,
+                   int idAccesModule,
+                   int idRefFonctionnalite)
+    {
+        Id = id;
+        EstActif = estActif;
+        IdAccesModule = idAccesModule;
+        IdRefFonctionnalite = idRefFonctionnalite;
+    }
 
     public int IdAccesModule { get; set; }
 
     public int IdRefFonctionnalite { get; set; }
 
-    public string EstActif { get; set; } = null!;    
+    public bool EstActif { get; set; } 
 
     public virtual AccesModuleDTO IdAccesModuleNavigation { get; set; } = null!;
 
