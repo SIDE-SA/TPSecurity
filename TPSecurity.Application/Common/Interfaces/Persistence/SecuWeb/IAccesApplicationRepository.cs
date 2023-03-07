@@ -8,14 +8,16 @@ namespace TPSecurity.Application.Common.Interfaces.Persistence.SecuWeb
 
         AccesApplication? GetById(int id);
 
+        AccesApplication? GetByUnicite(int idAccesGroupe, int idRefApplication);
+
         AccesApplication? GetByIdWithReferences(int id);
 
         PagedList<AccesApplication> GetAccesApplications(AccesApplicationParameters queryParameters);
 
-        IBaseClass Create(AccesApplication accesGroupe);
+        IBaseClass Create(AccesApplication accesApplication);
 
-        IBaseClass Update(AccesApplication accesGroupe);
+        IBaseClass Update(AccesApplication accesApplication);
 
-        bool Delete(AccesApplication accesGroupe);
+        bool Delete(AccesApplication accesApplication);
     }
 }

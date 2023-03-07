@@ -24,6 +24,12 @@ namespace TPSecurity.Infrastructure.Persistence.Repositories.SecuWeb
                     .Where(x => x.Id == id).Select(x => FromDTO(x)).SingleOrDefault();            
         }
 
+        public AccesApplication? GetByUnicite(int idAccesGroupe, int idRefApplication)
+        {
+            return _context.AccesApplication
+                    .Where(x => x.IdAccesGroupe == idAccesGroupe && x.IdRefApplication == idRefApplication).Select(x => FromDTO(x)).SingleOrDefault();
+        }
+
         public AccesApplication? GetByIdWithReferences(int id)
         {
             return _context.AccesApplication 
@@ -40,6 +46,8 @@ namespace TPSecurity.Infrastructure.Persistence.Repositories.SecuWeb
                     .AsQueryable();
 
             SearchByEstActif(ref accesApplicationDTOs, queryParameters.EstActif);
+            SearchByIdAccesGroupe(ref accesApplicationDTOs, queryParameters.IdAccesGroupe);
+            SearchByIdRefApplication(ref accesApplicationDTOs, queryParameters.IdRefApplication);
             SortHelper.ApplySort(ref accesApplicationDTOs, queryParameters.orderBy, queryParameters.orderOrientation);
             PagedList<AccesApplicationDTO>.ApplyPagination(ref accesApplicationDTOs, queryParameters.offSet, queryParameters.limit, out int totalCount);
             var accesApplications = FromDTO(accesApplicationDTOs);
@@ -50,6 +58,18 @@ namespace TPSecurity.Infrastructure.Persistence.Repositories.SecuWeb
         {
             if (!estActif.HasValue) return;
             accesApplications = accesApplications.Where(x => x.EstActif == estActif);
+        }
+
+        private void SearchByIdAccesGroupe(ref IQueryable<AccesApplicationDTO> accesApplications, int? idAccesGroupe)
+        {
+            if (idAccesGroupe is null) return;
+            accesApplications = accesApplications.Where(x => x.IdAccesGroupe == idAccesGroupe);
+        }
+
+        private void SearchByIdRefApplication(ref IQueryable<AccesApplicationDTO> accesApplications, int? idRefApplication)
+        {
+            if (idRefApplication is null) return;
+            accesApplications = accesApplications.Where(x => x.IdRefApplication == idRefApplication);
         }
 
         public IBaseClass Create(AccesApplication accesApplication)

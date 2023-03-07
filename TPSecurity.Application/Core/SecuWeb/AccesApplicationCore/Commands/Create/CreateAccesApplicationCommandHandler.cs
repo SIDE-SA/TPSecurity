@@ -14,7 +14,7 @@ public class CreateAccesApplicationCommandHandler : IRequestHandler<CreateAccesA
     private readonly IUnitOfWorkGTP _uow;
     private readonly IMapper _mapper;
 
-    public CreateAccesApplicationCommandHandler(IUnitOfWorkGTP uow, IMapper mapper, IGeneralConceptService generalConceptService)
+    public CreateAccesApplicationCommandHandler(IUnitOfWorkGTP uow, IMapper mapper)
     {
         _uow = uow;
         _mapper = mapper;
@@ -23,6 +23,23 @@ public class CreateAccesApplicationCommandHandler : IRequestHandler<CreateAccesA
     public async Task<ErrorOr<AccesApplicationResult>> Handle(CreateAccesApplicationCommand command, CancellationToken cancellationToken)
     {
         await Task.CompletedTask;
+
+        AccesGroupe accesGroupe = _uow.AccesGroupe.GetById(command.IdAccesGroupe);
+        if (accesGroupe is null)
+        {
+            return Errors.AccesApplication.AccesGroupeNotFound;
+        }
+
+        RefApplication refApp = _uow.RefApplication.GetById(command.IdRefApplication);
+        if (refApp is null)
+        {
+            return Errors.AccesApplication.RefApplicationNotFound;
+        }
+
+        if (_uow.AccesApplication.GetByUnicite(command.IdAccesGroupe, command.IdRefApplication) is not null)
+        {
+            return Errors.AccesApplication.AccesApplicationAlreadyExist;
+        }
 
         ErrorOr<AccesApplication> accesApplication = AccesApplication.Create(command.EstActif, command.IdAccesGroupe, command.IdRefApplication);
 
