@@ -38,7 +38,7 @@ namespace TPSecurity.Infrastructure.Persistence
             AccesGroupe = new AccesGroupeRepository(context);
 			
             AccesApplication = new AccesApplicationRepository(context);
-
+			
             AccesModule = new AccesModuleRepository(context);
         }
 
