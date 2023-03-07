@@ -8,6 +8,8 @@ namespace TPSecurity.Application.Common.Interfaces.Persistence
         
         IRefApplicationRepository RefApplication { get; }
 
+        IRefFonctionnaliteRepository RefFonctionnalite { get; }
+
         IRefModuleRepository RefModule { get; }
 
         IAccesGroupeRepository AccesGroupe { get; }
