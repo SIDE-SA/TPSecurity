@@ -12,6 +12,8 @@ namespace TPSecurity.Application.Common.Interfaces.Persistence
 
         IRefModuleRepository RefModule { get; }
 
+        IAccesGroupeRepository AccesGroupe { get; }
+
         Task SaveChangesAsync();
 
         ErrorOr<int> SaveChanges();

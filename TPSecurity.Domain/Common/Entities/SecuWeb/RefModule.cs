@@ -22,6 +22,7 @@ namespace TPSecurity.Domain.Common.Entities.SecuWeb
         public string Libelle { get; private set; }
 
         public bool EstActif { get; private set; }
+
         public int IdRefApplication { get; private set; }
 
         public static ErrorOr<RefModule> Create(string libelle,
