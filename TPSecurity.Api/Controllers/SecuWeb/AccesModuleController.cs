@@ -55,7 +55,7 @@ namespace TPSecurity.Api.Controllers.SecuWeb
         [ProducesResponseType(200, Type = typeof(AccesModuleResponse))]
         public async Task<IActionResult> Create(CreateAccesModuleRequest request)
         {
-            var command = new CreateAccesModuleCommand(request.EstActif, request.IdAccesGroupe, request.IdRefApplication);
+            var command = new CreateAccesModuleCommand(request.EstActif, request.IdAccesApplication, request.IdRefModule);
             var result = await _mediator.Send(command);
 
             return result.Match(
