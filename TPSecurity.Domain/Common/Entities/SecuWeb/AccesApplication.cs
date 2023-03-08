@@ -9,12 +9,14 @@ namespace TPSecurity.Domain.Common.Entities.SecuWeb
         private AccesApplication(int id,
                                bool estActif,
                                int idAccesGroupe,
-                               int idRefApplication)
+                               int idRefApplication,
+                               IEnumerable<AccesModule>? listAccesModule = null)
         {
             Id = id;
             EstActif = estActif;
             IdAccesGroupe = idAccesGroupe;
             IdRefApplication = idRefApplication;
+            ListAccesModule = listAccesModule;
         }
 
         public int Id { get; init; }
@@ -24,6 +26,8 @@ namespace TPSecurity.Domain.Common.Entities.SecuWeb
         public int IdAccesGroupe { get; private set; }
 
         public int IdRefApplication { get; private set; }
+
+        public IEnumerable<AccesModule>? ListAccesModule { get; private set; }
 
         public static ErrorOr<AccesApplication> Create(bool estActif,
                                                        int idAccesGroupe,
@@ -39,9 +43,9 @@ namespace TPSecurity.Domain.Common.Entities.SecuWeb
             return accesApplication;
         }
 
-        public static AccesApplication Init(int id, bool estActif, int idAccesGroupe, int idRefApplication)
+        public static AccesApplication Init(int id, bool estActif, int idAccesGroupe, int idRefApplication, IEnumerable<AccesModule>? listAccesModule = null)
         {
-            AccesApplication accesApplication = new AccesApplication(id, estActif, idAccesGroupe, idRefApplication);
+            AccesApplication accesApplication = new AccesApplication(id, estActif, idAccesGroupe, idRefApplication, listAccesModule);
             return accesApplication;
         }
 

@@ -107,7 +107,10 @@ namespace TPSecurity.Infrastructure.Persistence.Repositories.SecuWeb
 
         public static AccesApplication FromDTO(AccesApplicationDTO dto)
         {
-            AccesApplication accesApplication = AccesApplication.Init(dto.Id, dto.EstActif, dto.IdAccesGroupe, dto.IdRefApplication);
+            AccesApplication accesApplication = AccesApplication.Init(dto.Id, dto.EstActif, dto.IdAccesGroupe, dto.IdRefApplication,
+                                                                          dto.AccesModules != null ?
+                                                                          AccesModuleRepository.FromDTO(dto.AccesModules.AsQueryable())
+                                                                          : null);
             return accesApplication;
         }
 

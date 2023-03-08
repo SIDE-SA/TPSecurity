@@ -41,6 +41,19 @@ namespace TPSecurity.Infrastructure.Persistence.Repositories.SecuWeb
                     .Where(x => x.Libelle.ToLower() == libelle.Trim().ToLower()).Select(x => FromDTO(x)).SingleOrDefault();
         }
 
+        public IEnumerable<AccesGroupe>? GetByIdUtilisateur(int idUtilisateur)
+        {
+            foreach (var item in _context.AccesGroupe
+                .Include(a => a.AccesApplications.Where(a => a.EstActif))
+                .ThenInclude(a => a.AccesModules.Where(a => a.EstActif))
+                .ThenInclude(a => a.AccesFonctionnalites.Where(a => a.EstActif))
+                .ThenInclude(a => a.IdRefFonctionnaliteNavigation)
+                .Where(a => a.EstActif && a.AccesUtilisateurs.Any(b => b.IdUtilisateur == idUtilisateur && b.EstActif)))
+            {
+                yield return FromDTO(item);
+            }
+        }
+
         public PagedList<AccesGroupe> GetAccesGroupes(AccesGroupeParameters queryParameters)
         {
             var accesGroupeDTOs = _context.AccesGroupe
@@ -118,7 +131,10 @@ namespace TPSecurity.Infrastructure.Persistence.Repositories.SecuWeb
 
         public static AccesGroupe FromDTO(AccesGroupeDTO dto)
         {
-            AccesGroupe accesGroupe = AccesGroupe.Init(dto.Id, dto.Libelle, dto.EstActif, dto.EstGroupeSpecial, dto.IdSociete);
+            AccesGroupe accesGroupe = AccesGroupe.Init(dto.Id, dto.Libelle, dto.EstActif, dto.EstGroupeSpecial, dto.IdSociete,
+                                                        dto.AccesApplications != null ?
+                                                          AccesApplicationRepository.FromDTO(dto.AccesApplications.AsQueryable())
+                                                          : null);
             return accesGroupe;
         }
 

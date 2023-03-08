@@ -10,6 +10,8 @@ namespace TPSecurity.Application.Common.Interfaces.Persistence.SecuWeb
 
         AccesGroupe? GetByIdWithReferences(int id);
 
+        IEnumerable<AccesGroupe>? GetByIdUtilisateur(int idUtilisateur);
+
         AccesGroupe? GetByLibelle(string libelle);
 
         PagedList<AccesGroupe> GetAccesGroupes(AccesGroupeParameters queryParameters);

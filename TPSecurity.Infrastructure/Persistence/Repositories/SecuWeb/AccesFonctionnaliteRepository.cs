@@ -106,6 +106,14 @@ namespace TPSecurity.Infrastructure.Persistence.Repositories.SecuWeb
             }
         }
 
+        public static IEnumerable<RefFonctionnalite> GetRefFonctionnaliteFromAccesModule(IQueryable<AccesFonctionnaliteDTO> dto)
+        {
+            foreach (AccesFonctionnaliteDTO item in dto)
+            {
+                yield return RefFonctionnaliteRepository.FromDTO(item.IdRefFonctionnaliteNavigation);
+            }
+        }
+
         public static void ApplyChanges(AccesFonctionnaliteDTO dest, AccesFonctionnalite source)
         {
             if (dest is null || source is null) return;

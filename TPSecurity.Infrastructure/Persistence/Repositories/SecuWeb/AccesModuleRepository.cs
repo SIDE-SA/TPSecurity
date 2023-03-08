@@ -107,7 +107,10 @@ namespace TPSecurity.Infrastructure.Persistence.Repositories.SecuWeb
 
         public static AccesModule FromDTO(AccesModuleDTO dto)
         {
-            AccesModule accesApplication = AccesModule.Init(dto.Id, dto.EstActif, dto.IdAccesApplication, dto.IdRefModule);
+            AccesModule accesApplication = AccesModule.Init(dto.Id, dto.EstActif, dto.IdAccesApplication, dto.IdRefModule,
+                                                          dto.AccesFonctionnalites != null ?
+                                                          AccesFonctionnaliteRepository.GetRefFonctionnaliteFromAccesModule(dto.AccesFonctionnalites.AsQueryable())
+                                                          : null);
             return accesApplication;
         }
 

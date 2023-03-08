@@ -1,23 +1,24 @@
 ﻿using ErrorOr;
 using TPSecurity.Domain.Common.Validation;
 using TPSecurity.Domain.Common.Validation.SecuWeb;
-using static TPSecurity.Domain.Common.Errors.Errors;
 
 namespace TPSecurity.Domain.Common.Entities.SecuWeb
 {
     public sealed class AccesGroupe : BaseClass
     {
         private AccesGroupe(int id,
-                               string libelle,
-                               bool estActif,
-                               bool estGroupeSpecial,
-                               Guid idSociete)
+                       string libelle,
+                       bool estActif,
+                       bool estGroupeSpecial,
+                       Guid idSociete,
+                       IEnumerable<AccesApplication>? listAccesApplication = null)
         {
             Id = id;
             Libelle = libelle;
             EstActif = estActif;
             EstGroupeSpecial = estGroupeSpecial;
             IdSociete = idSociete;
+            ListAccesApplication = listAccesApplication;
         }
 
         public int Id { get; init; }
@@ -29,6 +30,8 @@ namespace TPSecurity.Domain.Common.Entities.SecuWeb
         public bool EstGroupeSpecial { get; private set; }
 
         public Guid IdSociete { get; private set; }
+
+        public IEnumerable<AccesApplication>? ListAccesApplication { get; private set; }
 
         public static ErrorOr<AccesGroupe> Create(string libelle,
                                                    bool estActif,
@@ -45,9 +48,9 @@ namespace TPSecurity.Domain.Common.Entities.SecuWeb
             return accesGroupe;
         }
 
-        public static AccesGroupe Init(int id, string libelle, bool estActif, bool estGroupeSpecial, Guid idSociete)
+        public static AccesGroupe Init(int id, string libelle, bool estActif, bool estGroupeSpecial, Guid idSociete, IEnumerable<AccesApplication>? listAccesApplication = null)
         {
-            AccesGroupe accesGroupe = new AccesGroupe(id, libelle, estActif, estGroupeSpecial, idSociete);
+            AccesGroupe accesGroupe = new AccesGroupe(id, libelle, estActif, estGroupeSpecial, idSociete, listAccesApplication);
             return accesGroupe;
         }
 
