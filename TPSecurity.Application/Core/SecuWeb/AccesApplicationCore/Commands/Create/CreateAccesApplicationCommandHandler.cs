@@ -23,14 +23,12 @@ public class CreateAccesApplicationCommandHandler : IRequestHandler<CreateAccesA
     {
         await Task.CompletedTask;
 
-        AccesGroupe accesGroupe = _uow.AccesGroupe.GetById(command.IdAccesGroupe);
-        if (accesGroupe is null)
+        if (_uow.AccesGroupe.GetById(command.IdAccesGroupe) is null)
         {
             return Errors.AccesApplication.AccesGroupeNotFound;
         }
 
-        RefApplication refApp = _uow.RefApplication.GetById(command.IdRefApplication);
-        if (refApp is null)
+        if (_uow.RefApplication.GetById(command.IdRefApplication) is null)
         {
             return Errors.AccesApplication.RefApplicationNotFound;
         }
