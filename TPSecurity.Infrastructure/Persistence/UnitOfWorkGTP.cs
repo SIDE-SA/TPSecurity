@@ -26,6 +26,8 @@ namespace TPSecurity.Infrastructure.Persistence
 
         public IAccesFonctionnaliteRepository AccesFonctionnalite { get; private set; }
 
+        public IAccesUtilisateurRepository AccesUtilisateur { get; private set; }
+
         public IUtilisateurRepository Utilisateur { get; private set; }
 
         public UnitOfWorkGTP(ApplicationContextGTP context,
@@ -46,6 +48,8 @@ namespace TPSecurity.Infrastructure.Persistence
             AccesModule = new AccesModuleRepository(context);
 
             AccesFonctionnalite = new AccesFonctionnaliteRepository(context);
+
+            AccesUtilisateur = new AccesUtilisateurRepository(context);
 
             Utilisateur = new UtilisateurRepository(context);
         }

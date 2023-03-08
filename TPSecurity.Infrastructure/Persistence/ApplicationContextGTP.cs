@@ -37,6 +37,8 @@ namespace TPSecurity.Infrastructure.Persistence
 
         public virtual DbSet<AccesGroupeDTO> AccesGroupe { get; set; }
 
+        public virtual DbSet<AccesUtilisateurDTO> AccesUtilisateur { get; set; }
+
         public virtual DbSet<RefFonctionnaliteDTO> RefFonctionnalite { get; set; }
 
         public virtual DbSet<RefModuleDTO> RefModule { get; set; }

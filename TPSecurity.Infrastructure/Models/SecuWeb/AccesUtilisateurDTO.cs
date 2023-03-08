@@ -2,6 +2,17 @@
 
 public partial class AccesUtilisateurDTO : BaseClass
 {
+    public AccesUtilisateurDTO(int id,
+                       bool estActif,
+                       int idAccesGroupe,
+                       int idUtilisateur)
+    {
+        Id = id;
+        EstActif = estActif;
+        IdAccesGroupe = idAccesGroupe;
+        IdUtilisateur = idUtilisateur;
+    }
+
     public int IdUtilisateur { get; set; }
 
     public int IdAccesGroupe { get; set; }
