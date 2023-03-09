@@ -5,6 +5,7 @@ using TPSecurity.Application.Common.Interfaces.Persistence;
 using TPSecurity.Application.Core.SecuWeb.UtilisateurAccesCore.Common;
 using TPSecurity.Domain.Common.Entities.SecuWeb;
 using TPSecurity.Domain.Common.Errors;
+using static Microsoft.EntityFrameworkCore.DbLoggerCategory.Database;
 
 namespace TPSecurity.Application.Core.SecuWeb.UtilisateurAccesCore.Queries.GetAllAccesByIdUtilisateur
 {
@@ -23,11 +24,10 @@ namespace TPSecurity.Application.Core.SecuWeb.UtilisateurAccesCore.Queries.GetAl
         {
             await Task.CompletedTask;
 
-            IEnumerable<AccesGroupe>? listAccesGroupe = _uow.AccesGroupe.GetByIdUtilisateur(request.Id);
-            if (listAccesGroupe is null)
-            {
+            if (_uow.Utilisateur.GetById(request.Id) is null)
                 return Errors.NotFound;
-            }
+
+            IEnumerable<AccesGroupe>? listAccesGroupe = _uow.AccesGroupe.GetByIdUtilisateur(request.Id);
 
             return _mapper.Map<List<UtilisateurAccesResult>>(listAccesGroupe);
         }
