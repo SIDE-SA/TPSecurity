@@ -1,5 +1,4 @@
-﻿using Microsoft.EntityFrameworkCore;
-using TPSecurity.Application.Common;
+﻿using TPSecurity.Application.Common;
 using TPSecurity.Application.Common.Interfaces.Persistence;
 using TPSecurity.Application.Common.Interfaces.Persistence.SecuWeb;
 using TPSecurity.Application.Core.SecuWeb.AccesUtilisateurCore.Queries.GetAllAccesUtilisateur;
@@ -32,70 +31,70 @@ namespace TPSecurity.Infrastructure.Persistence.Repositories.SecuWeb
 
         public PagedList<AccesUtilisateur> GetAccesUtilisateurs(AccesUtilisateurParameters queryParameters)
         {
-            var accesApplicationDTOs = _context.AccesUtilisateur
+            var accesUtilisateurDTOs = _context.AccesUtilisateur
                     .AsQueryable();
 
-            SearchByEstActif(ref accesApplicationDTOs, queryParameters.EstActif);
-            SearchByIdAccesGroupe(ref accesApplicationDTOs, queryParameters.IdAccesGroupe);
-            SearchByIdUtilisateur(ref accesApplicationDTOs, queryParameters.IdUtilisateur);
-            SortHelper.ApplySort(ref accesApplicationDTOs, queryParameters.orderBy, queryParameters.orderOrientation);
-            PagedList<AccesUtilisateurDTO>.ApplyPagination(ref accesApplicationDTOs, queryParameters.offSet, queryParameters.limit, out int totalCount);
-            var accesApplications = FromDTO(accesApplicationDTOs);
-            return PagedList<AccesUtilisateur>.ToPagedList(accesApplications, totalCount);
+            SearchByEstActif(ref accesUtilisateurDTOs, queryParameters.EstActif);
+            SearchByIdAccesGroupe(ref accesUtilisateurDTOs, queryParameters.IdAccesGroupe);
+            SearchByIdUtilisateur(ref accesUtilisateurDTOs, queryParameters.IdUtilisateur);
+            SortHelper.ApplySort(ref accesUtilisateurDTOs, queryParameters.orderBy, queryParameters.orderOrientation);
+            PagedList<AccesUtilisateurDTO>.ApplyPagination(ref accesUtilisateurDTOs, queryParameters.offSet, queryParameters.limit, out int totalCount);
+            var accesUtilisateurs = FromDTO(accesUtilisateurDTOs);
+            return PagedList<AccesUtilisateur>.ToPagedList(accesUtilisateurs, totalCount);
         }
 
-        private void SearchByEstActif(ref IQueryable<AccesUtilisateurDTO> accesApplications, bool? estActif)
+        private void SearchByEstActif(ref IQueryable<AccesUtilisateurDTO> accesUtilisateurs, bool? estActif)
         {
             if (!estActif.HasValue) return;
-            accesApplications = accesApplications.Where(x => x.EstActif == estActif);
+            accesUtilisateurs = accesUtilisateurs.Where(x => x.EstActif == estActif);
         }
 
-        private void SearchByIdAccesGroupe(ref IQueryable<AccesUtilisateurDTO> accesApplications, int? idAccesGroupe)
+        private void SearchByIdAccesGroupe(ref IQueryable<AccesUtilisateurDTO> accesUtilisateurs, int? idAccesGroupe)
         {
             if (idAccesGroupe is null) return;
-            accesApplications = accesApplications.Where(x => x.IdAccesGroupe == idAccesGroupe);
+            accesUtilisateurs = accesUtilisateurs.Where(x => x.IdAccesGroupe == idAccesGroupe);
         }
 
-        private void SearchByIdUtilisateur(ref IQueryable<AccesUtilisateurDTO> accesApplications, int? idUtilisateur)
+        private void SearchByIdUtilisateur(ref IQueryable<AccesUtilisateurDTO> accesUtilisateurs, int? idUtilisateur)
         {
             if (idUtilisateur is null) return;
-            accesApplications = accesApplications.Where(x => x.IdUtilisateur == idUtilisateur);
+            accesUtilisateurs = accesUtilisateurs.Where(x => x.IdUtilisateur == idUtilisateur);
         }
 
-        public IBaseClass Create(AccesUtilisateur accesApplication)
+        public IBaseClass Create(AccesUtilisateur accesUtilisateur)
         {
-            AccesUtilisateurDTO accesApplicationDTO = ToDTO(accesApplication);
-            _context.AccesUtilisateur.Add(accesApplicationDTO);
-            return accesApplicationDTO;
+            AccesUtilisateurDTO accesUtilisateurDTO = ToDTO(accesUtilisateur);
+            _context.AccesUtilisateur.Add(accesUtilisateurDTO);
+            return accesUtilisateurDTO;
         }
 
-        public IBaseClass Update(AccesUtilisateur accesApplication)
+        public IBaseClass Update(AccesUtilisateur accesUtilisateur)
         {
-            AccesUtilisateurDTO accesApplicationDTO = _context.AccesUtilisateur.Find(accesApplication.Id);
-            ApplyChanges(accesApplicationDTO, accesApplication);
-            _context.AccesUtilisateur.Update(accesApplicationDTO);
-            return accesApplicationDTO;
+            AccesUtilisateurDTO accesUtilisateurDTO = _context.AccesUtilisateur.Find(accesUtilisateur.Id);
+            ApplyChanges(accesUtilisateurDTO, accesUtilisateur);
+            _context.AccesUtilisateur.Update(accesUtilisateurDTO);
+            return accesUtilisateurDTO;
         }
 
-        public bool Delete(AccesUtilisateur accesApplication)
+        public bool Delete(AccesUtilisateur accesUtilisateur)
         {
-            AccesUtilisateurDTO accesApplicationDTO = _context.AccesUtilisateur.Find(accesApplication.Id);
+            AccesUtilisateurDTO accesUtilisateurDTO = _context.AccesUtilisateur.Find(accesUtilisateur.Id);
 
-            _context.AccesUtilisateur.Remove(accesApplicationDTO);
+            _context.AccesUtilisateur.Remove(accesUtilisateurDTO);
 
             return true;
         }
 
-        public AccesUtilisateurDTO ToDTO(AccesUtilisateur accesApplication)
+        public AccesUtilisateurDTO ToDTO(AccesUtilisateur accesUtilisateur)
         {
-            AccesUtilisateurDTO dto = new AccesUtilisateurDTO(accesApplication.Id, accesApplication.EstActif, accesApplication.IdAccesGroupe, accesApplication.IdUtilisateur);
+            AccesUtilisateurDTO dto = new AccesUtilisateurDTO(accesUtilisateur.Id, accesUtilisateur.EstActif, accesUtilisateur.IdAccesGroupe, accesUtilisateur.IdUtilisateur);
             return dto;
         }
 
         public static AccesUtilisateur FromDTO(AccesUtilisateurDTO dto)
         {
-            AccesUtilisateur accesApplication = AccesUtilisateur.Init(dto.Id, dto.EstActif, dto.IdAccesGroupe, dto.IdUtilisateur);
-            return accesApplication;
+            AccesUtilisateur accesUtilisateur = AccesUtilisateur.Init(dto.Id, dto.EstActif, dto.IdAccesGroupe, dto.IdUtilisateur);
+            return accesUtilisateur;
         }
 
         public static IEnumerable<AccesUtilisateur> FromDTO(IQueryable<AccesUtilisateurDTO> dto)

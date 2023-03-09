@@ -29,8 +29,6 @@ namespace TPSecurity.Domain.Common.Entities.SecuWeb
 
         public bool EstActif { get; private set; }
 
-        public int IdRefApplication { get; private set; }
-
         public static ErrorOr<Utilisateur> Create(string nom,
                                                    string prenom,
                                                    string email,

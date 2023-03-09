@@ -10,7 +10,7 @@ namespace TPSecurity.Api.Tests.SecuWeb
     {
         public AccesUtilisateurMappingTest()
         {
-            TypeAdapterConfig.GlobalSettings.Scan(typeof(Api.AssemblyReference).Assembly);
+            TypeAdapterConfig.GlobalSettings.Scan(typeof(AssemblyReference).Assembly);
         }
 
         [Fact]

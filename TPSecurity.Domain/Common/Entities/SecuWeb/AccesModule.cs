@@ -7,14 +7,16 @@ namespace TPSecurity.Domain.Common.Entities.SecuWeb
     public sealed class AccesModule : BaseClass
     {
         private AccesModule(int id,
-                               bool estActif,
-                               int idAccesApplication,
-                               int idRefModule)
+                       bool estActif,
+                       int idAccesApplication,
+                       int idRefModule,
+                       IEnumerable<RefFonctionnalite>? listRefFonctionnalite = null)
         {
             Id = id;
             EstActif = estActif;
             IdAccesApplication = idAccesApplication;
             IdRefModule = idRefModule;
+            ListRefFonctionnalite = listRefFonctionnalite;
         }
 
         public int Id { get; init; }
@@ -24,6 +26,8 @@ namespace TPSecurity.Domain.Common.Entities.SecuWeb
         public int IdAccesApplication { get; private set; }
 
         public int IdRefModule { get; private set; }
+
+        public IEnumerable<RefFonctionnalite>? ListRefFonctionnalite { get; private set; }
 
         public static ErrorOr<AccesModule> Create(bool estActif,
                                                        int idAccesApplication,
@@ -39,9 +43,9 @@ namespace TPSecurity.Domain.Common.Entities.SecuWeb
             return accesModule;
         }
 
-        public static AccesModule Init(int id, bool estActif, int idAccesApplication, int idRefModule)
+        public static AccesModule Init(int id, bool estActif, int idAccesApplication, int idRefModule, IEnumerable<RefFonctionnalite>? listRefFonctionnalite = null)
         {
-            AccesModule accesModule = new AccesModule(id, estActif, idAccesApplication, idRefModule);
+            AccesModule accesModule = new AccesModule(id, estActif, idAccesApplication, idRefModule, listRefFonctionnalite);
             return accesModule;
         }
 

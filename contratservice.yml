@@ -1,7 +1,7 @@
 openapi: 3.0.1
 info:
-  title: TPSecurity
-  description : Api de gestion de la securité
+  title: ??
+  description : Secu web
   version: '1.0'
 paths:
   /reference-application:
@@ -13,6 +13,7 @@ paths:
        - $ref: '#/components/parameters/limitParam'
        - $ref: '#/components/parameters/orderByParam'
        - $ref: '#/components/parameters/orderOrientationParam'
+       - $ref: '#/components/parameters/userParam'
        - name: libelle
          in: query
          schema:
@@ -48,6 +49,9 @@ paths:
       responses:
         '200':
           description: Success
+          headers: 
+            'hashCode':
+              $ref: '#/components/headers/hashCodeHeader'
           content: 
             application/json:
               schema:
@@ -66,9 +70,13 @@ paths:
         - Référence Application
       parameters:
         - $ref: '#/components/parameters/idParam'  
+        - $ref: '#/components/parameters/userParam'
       responses:
         '200':
           description: Success
+          headers: 
+            'hashCode':
+              $ref: '#/components/headers/hashCodeHeader'
           content: 
             application/json:
               schema:
@@ -86,7 +94,8 @@ paths:
         - Référence Application
       parameters:
         - $ref: '#/components/parameters/idParam'
-        - $ref: '#/components/parameters/userParam'
+        - $ref: '#/components/parameters/userParam' 
+        - $ref: '#/components/parameters/ifMatchParam'
       requestBody:
         content:
           application/json:
@@ -95,6 +104,9 @@ paths:
       responses:
         '200':
           description: Success
+          headers: 
+            'hashCode':
+              $ref: '#/components/headers/hashCodeHeader'
           content: 
             application/json:
               schema:
@@ -113,7 +125,8 @@ paths:
       tags:
         - Référence Application
       parameters:
-        - $ref: '#/components/parameters/idParam' 
+        - $ref: '#/components/parameters/idParam'   
+        - $ref: '#/components/parameters/userParam'
       responses:
         '204':
           $ref:  '#/components/responses/204NoContent'
@@ -135,7 +148,8 @@ paths:
         - $ref: '#/components/parameters/offSetParam'
         - $ref: '#/components/parameters/limitParam'
         - $ref: '#/components/parameters/orderByParam'
-        - $ref: '#/components/parameters/orderOrientationParam'
+        - $ref: '#/components/parameters/orderOrientationParam'  
+        - $ref: '#/components/parameters/userParam'
         - name: libelle
           in: query
           schema:
@@ -175,6 +189,9 @@ paths:
       responses:
         '200':
           description: Success
+          headers: 
+            'hashCode':
+              $ref: '#/components/headers/hashCodeHeader'
           content: 
             application/json:
               schema:
@@ -192,10 +209,14 @@ paths:
       tags:
         - Référence Module
       parameters:
-        - $ref: '#/components/parameters/idParam'  
+        - $ref: '#/components/parameters/idParam'    
+        - $ref: '#/components/parameters/userParam'
       responses:
         '200':
           description: Success
+          headers: 
+            'hashCode':
+              $ref: '#/components/headers/hashCodeHeader'
           content: 
             application/json:
               schema:
@@ -213,7 +234,8 @@ paths:
         - Référence Module
       parameters:
         - $ref: '#/components/parameters/idParam'
-        - $ref: '#/components/parameters/userParam'
+        - $ref: '#/components/parameters/userParam' 
+        - $ref: '#/components/parameters/ifMatchParam'
       requestBody:
         content:
           application/json:
@@ -222,6 +244,9 @@ paths:
       responses:
         '200':
           description: Success
+          headers: 
+            'hashCode':
+              $ref: '#/components/headers/hashCodeHeader'
           content: 
             application/json:
               schema:
@@ -240,7 +265,8 @@ paths:
       tags:
         - Référence Module
       parameters:
-        - $ref: '#/components/parameters/idParam' 
+        - $ref: '#/components/parameters/idParam'   
+        - $ref: '#/components/parameters/userParam'
       responses:
         '204':
           $ref:  '#/components/responses/204NoContent'
@@ -262,7 +288,21 @@ paths:
        - $ref: '#/components/parameters/offSetParam'
        - $ref: '#/components/parameters/limitParam'
        - $ref: '#/components/parameters/orderByParam'
-       - $ref: '#/components/parameters/orderOrientationParam'
+       - $ref: '#/components/parameters/orderOrientationParam'  
+       - $ref: '#/components/parameters/userParam' 
+       - name: libelle
+         in: query
+         schema:
+            type: string
+         required: false
+       - name: estActif
+         in: query
+         schema: 
+            type: boolean
+       - name: idRefModule
+         in: query
+         schema:
+            type: integer
       responses:
         '200':
           description: Success
@@ -289,6 +329,9 @@ paths:
       responses:
         '200':
           description: Success
+          headers: 
+            'hashCode':
+              $ref: '#/components/headers/hashCodeHeader'
           content: 
             application/json:
               schema:
@@ -307,9 +350,13 @@ paths:
         - Référence Fonctionnalite
       parameters:
         - $ref: '#/components/parameters/idParam'  
+        - $ref: '#/components/parameters/userParam' 
       responses:
         '200':
           description: Success
+          headers: 
+            'hashCode':
+              $ref: '#/components/headers/hashCodeHeader'
           content: 
             application/json:
               schema:
@@ -327,7 +374,8 @@ paths:
         - Référence Fonctionnalite
       parameters:
         - $ref: '#/components/parameters/idParam'
-        - $ref: '#/components/parameters/userParam'
+        - $ref: '#/components/parameters/userParam' 
+        - $ref: '#/components/parameters/ifMatchParam'
       requestBody:
         content:
           application/json:
@@ -336,6 +384,9 @@ paths:
       responses:
         '200':
           description: Success
+          headers: 
+            'hashCode':
+              $ref: '#/components/headers/hashCodeHeader'
           content: 
             application/json:
               schema:
@@ -354,7 +405,8 @@ paths:
       tags:
         - Référence Fonctionnalite
       parameters:
-        - $ref: '#/components/parameters/idParam' 
+        - $ref: '#/components/parameters/idParam'
+        - $ref: '#/components/parameters/userParam' 
       responses:
         '204':
           $ref:  '#/components/responses/204NoContent'
@@ -377,6 +429,20 @@ paths:
        - $ref: '#/components/parameters/limitParam'
        - $ref: '#/components/parameters/orderByParam'
        - $ref: '#/components/parameters/orderOrientationParam'
+       - $ref: '#/components/parameters/userParam'
+       - name: estActif
+         in: query
+         schema: 
+          type: boolean
+       - name: idAccesGroupe
+         in: query
+         schema:
+          type: integer
+         required: false
+       - name: idRefApplication
+         in: query
+         schema:
+          type: integer
       responses:
         '200':
           description: Success
@@ -403,6 +469,9 @@ paths:
       responses:
         '200':
           description: Success
+          headers: 
+            'hashCode':
+              $ref: '#/components/headers/hashCodeHeader'
           content: 
             application/json:
               schema:
@@ -420,10 +489,14 @@ paths:
       tags:
         - Acces Application
       parameters:
-        - $ref: '#/components/parameters/idParam'  
+        - $ref: '#/components/parameters/idParam' 
+        - $ref: '#/components/parameters/userParam' 
       responses:
         '200':
           description: Success
+          headers: 
+            'hashCode':
+              $ref: '#/components/headers/hashCodeHeader'
           content: 
             application/json:
               schema:
@@ -441,7 +514,8 @@ paths:
         - Acces Application
       parameters:
         - $ref: '#/components/parameters/idParam'
-        - $ref: '#/components/parameters/userParam'
+        - $ref: '#/components/parameters/userParam' 
+        - $ref: '#/components/parameters/ifMatchParam'
       requestBody:
         content:
           application/json:
@@ -450,6 +524,9 @@ paths:
       responses:
         '200':
           description: Success
+          headers: 
+            'hashCode':
+              $ref: '#/components/headers/hashCodeHeader'
           content: 
             application/json:
               schema:
@@ -469,6 +546,7 @@ paths:
         - Acces Application
       parameters:
         - $ref: '#/components/parameters/idParam' 
+        - $ref: '#/components/parameters/userParam'
       responses:
         '204':
           $ref:  '#/components/responses/204NoContent'
@@ -491,6 +569,20 @@ paths:
        - $ref: '#/components/parameters/limitParam'
        - $ref: '#/components/parameters/orderByParam'
        - $ref: '#/components/parameters/orderOrientationParam'
+       - $ref: '#/components/parameters/userParam'
+       - name: estActif
+         in: query
+         schema: 
+          type: boolean
+       - name: idRefModule
+         in: query
+         schema:
+          type: integer
+         required: false
+       - name: idAccesApplication
+         in: query
+         schema:
+          type: integer
       responses:
         '200':
           description: Success
@@ -517,6 +609,9 @@ paths:
       responses:
         '200':
           description: Success
+          headers: 
+            'hashCode':
+              $ref: '#/components/headers/hashCodeHeader'
           content: 
             application/json:
               schema:
@@ -535,9 +630,13 @@ paths:
         - Acces Module
       parameters:
         - $ref: '#/components/parameters/idParam'  
+        - $ref: '#/components/parameters/userParam'
       responses:
         '200':
           description: Success
+          headers: 
+            'hashCode':
+              $ref: '#/components/headers/hashCodeHeader'
           content: 
             application/json:
               schema:
@@ -555,7 +654,8 @@ paths:
         - Acces Module
       parameters:
         - $ref: '#/components/parameters/idParam'
-        - $ref: '#/components/parameters/userParam'
+        - $ref: '#/components/parameters/userParam' 
+        - $ref: '#/components/parameters/ifMatchParam'
       requestBody:
         content:
           application/json:
@@ -564,6 +664,9 @@ paths:
       responses:
         '200':
           description: Success
+          headers: 
+            'hashCode':
+              $ref: '#/components/headers/hashCodeHeader'
           content: 
             application/json:
               schema:
@@ -582,7 +685,8 @@ paths:
       tags:
         - Acces Module
       parameters:
-        - $ref: '#/components/parameters/idParam' 
+        - $ref: '#/components/parameters/idParam'
+        - $ref: '#/components/parameters/userParam' 
       responses:
         '204':
           $ref:  '#/components/responses/204NoContent'
@@ -605,9 +709,26 @@ paths:
        - $ref: '#/components/parameters/limitParam'
        - $ref: '#/components/parameters/orderByParam'
        - $ref: '#/components/parameters/orderOrientationParam'
+       - $ref: '#/components/parameters/userParam'
+       - name: estActif
+         in: query
+         schema: 
+          type: boolean
+       - name: idAccesModule
+         in: query
+         schema:
+          type: integer
+         required: false
+       - name: idRefFonctionnalite
+         in: query
+         schema:
+          type: integer
       responses:
         '200':
           description: Success
+          headers: 
+            'hashCode':
+              $ref: '#/components/headers/hashCodeHeader'
           content: 
             application/json:
               schema:
@@ -631,6 +752,9 @@ paths:
       responses:
         '200':
           description: Success
+          headers: 
+            'hashCode':
+              $ref: '#/components/headers/hashCodeHeader'
           content: 
             application/json:
               schema:
@@ -648,10 +772,14 @@ paths:
       tags:
         - Acces Fonctionnalite
       parameters:
-        - $ref: '#/components/parameters/idParam'  
+        - $ref: '#/components/parameters/idParam'
+        - $ref: '#/components/parameters/userParam'  
       responses:
         '200':
           description: Success
+          headers: 
+            'hashCode':
+              $ref: '#/components/headers/hashCodeHeader'
           content: 
             application/json:
               schema:
@@ -669,7 +797,8 @@ paths:
         - Acces Fonctionnalite
       parameters:
         - $ref: '#/components/parameters/idParam'
-        - $ref: '#/components/parameters/userParam'
+        - $ref: '#/components/parameters/userParam' 
+        - $ref: '#/components/parameters/ifMatchParam'
       requestBody:
         content:
           application/json:
@@ -697,6 +826,7 @@ paths:
         - Acces Fonctionnalite
       parameters:
         - $ref: '#/components/parameters/idParam' 
+        - $ref: '#/components/parameters/userParam'  
       responses:
         '204':
           $ref:  '#/components/responses/204NoContent'
@@ -719,6 +849,26 @@ paths:
        - $ref: '#/components/parameters/limitParam'
        - $ref: '#/components/parameters/orderByParam'
        - $ref: '#/components/parameters/orderOrientationParam'
+       - $ref: '#/components/parameters/userParam'
+       - name: libelle
+         in: query
+         schema:
+          type: string
+         required: false
+       - name: estActif
+         in: query
+         schema: 
+          type: boolean
+       - name: EstGroupeSpecial
+         in: query
+         schema:
+          type: boolean
+         required: false
+       - name: idSociete
+         in: query
+         schema:
+          type: string
+          format: uuid
       responses:
         '200':
           description: Success
@@ -745,6 +895,9 @@ paths:
       responses:
         '200':
           description: Success
+          headers: 
+            'hashCode':
+              $ref: '#/components/headers/hashCodeHeader'
           content: 
             application/json:
               schema:
@@ -763,9 +916,13 @@ paths:
         - Acces Groupe
       parameters:
         - $ref: '#/components/parameters/idParam'  
+        - $ref: '#/components/parameters/userParam'
       responses:
         '200':
           description: Success
+          headers: 
+            'hashCode':
+              $ref: '#/components/headers/hashCodeHeader'
           content: 
             application/json:
               schema:
@@ -783,7 +940,8 @@ paths:
         - Acces Groupe
       parameters:
         - $ref: '#/components/parameters/idParam'
-        - $ref: '#/components/parameters/userParam'
+        - $ref: '#/components/parameters/userParam' 
+        - $ref: '#/components/parameters/ifMatchParam'
       requestBody:
         content:
           application/json:
@@ -792,6 +950,9 @@ paths:
       responses:
         '200':
           description: Success
+          headers: 
+            'hashCode':
+              $ref: '#/components/headers/hashCodeHeader'
           content: 
             application/json:
               schema:
@@ -811,6 +972,7 @@ paths:
         - Acces Groupe
       parameters:
         - $ref: '#/components/parameters/idParam' 
+        - $ref: '#/components/parameters/userParam'
       responses:
         '204':
           $ref:  '#/components/responses/204NoContent'
@@ -833,6 +995,22 @@ paths:
        - $ref: '#/components/parameters/limitParam'
        - $ref: '#/components/parameters/orderByParam'
        - $ref: '#/components/parameters/orderOrientationParam'
+       - $ref: '#/components/parameters/userParam'
+       - name: estActif
+         in: query
+         schema: 
+          type: boolean
+         required: false
+       - name: idAccesGroupe
+         in: query
+         schema:
+          type: integer
+         required: false
+       - name: idUtilisateur
+         in: query
+         schema:
+          type: integer
+         required: false
       responses:
         '200':
           description: Success
@@ -859,6 +1037,9 @@ paths:
       responses:
         '200':
           description: Success
+          headers: 
+            'hashCode':
+              $ref: '#/components/headers/hashCodeHeader'
           content: 
             application/json:
               schema:
@@ -877,9 +1058,13 @@ paths:
         - Acces Utilisateur
       parameters:
         - $ref: '#/components/parameters/idParam'  
+        - $ref: '#/components/parameters/userParam'
       responses:
         '200':
           description: Success
+          headers: 
+            'hashCode':
+              $ref: '#/components/headers/hashCodeHeader'
           content: 
             application/json:
               schema:
@@ -897,7 +1082,8 @@ paths:
         - Acces Utilisateur
       parameters:
         - $ref: '#/components/parameters/idParam'
-        - $ref: '#/components/parameters/userParam'
+        - $ref: '#/components/parameters/userParam' 
+        - $ref: '#/components/parameters/ifMatchParam'
       requestBody:
         content:
           application/json:
@@ -906,6 +1092,9 @@ paths:
       responses:
         '200':
           description: Success
+          headers: 
+            'hashCode':
+              $ref: '#/components/headers/hashCodeHeader'
           content: 
             application/json:
               schema:
@@ -925,6 +1114,154 @@ paths:
         - Acces Utilisateur
       parameters:
         - $ref: '#/components/parameters/idParam' 
+        - $ref: '#/components/parameters/userParam'
+      responses:
+        '204':
+          $ref:  '#/components/responses/204NoContent'
+        '400':
+           $ref: '#/components/responses/400BadRequest'
+        '401':
+           $ref: '#/components/responses/401Unauthorized'
+        '404':
+          $ref: '#/components/responses/404NotFound'
+        '409':
+          $ref: '#/components/responses/409Conflict'
+        '500':
+           $ref: '#/components/responses/500ServerError'
+  /utilisateur:
+    get:
+      tags: 
+        - Utilisateur
+      parameters:
+       - $ref: '#/components/parameters/offSetParam'
+       - $ref: '#/components/parameters/limitParam'
+       - $ref: '#/components/parameters/orderByParam'
+       - $ref: '#/components/parameters/orderOrientationParam'
+       - $ref: '#/components/parameters/userParam'
+       - name: nom
+         in: query
+         schema:
+          type: string
+         required: false
+       - name: prenom
+         in: query
+         schema:
+          type: string
+         required: false
+       - name: email
+         in: query
+         schema:
+          type: string
+         required: false
+       - name: estActif
+         in: query
+         schema: 
+          type: boolean
+         required: false
+      responses:
+        '200':
+          description: Success
+          content: 
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UtilisateurResponse'
+        '400':
+           $ref: '#/components/responses/400BadRequest'
+        '401':
+           $ref: '#/components/responses/401Unauthorized'
+        '500':
+           $ref: '#/components/responses/500ServerError'
+    post:
+      tags:
+        - Utilisateur
+      parameters:
+          - $ref: '#/components/parameters/userParam'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateUtilisateurRequest'
+      responses:
+        '200':
+          description: Success
+          headers: 
+            'hashCode':
+              $ref: '#/components/headers/hashCodeHeader'
+          content: 
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UtilisateurResponse'
+        '400':
+           $ref: '#/components/responses/400BadRequest'
+        '401':
+           $ref: '#/components/responses/401Unauthorized'
+        '409':
+          $ref: '#/components/responses/409Conflict'
+        '500':
+           $ref: '#/components/responses/500ServerError'
+  /utilisateur/{id}:
+    get:
+      tags:
+        - Utilisateur
+      parameters:
+        - $ref: '#/components/parameters/idParam'  
+        - $ref: '#/components/parameters/userParam'
+      responses:
+        '200':
+          description: Success
+          headers: 
+            'hashCode':
+              $ref: '#/components/headers/hashCodeHeader'
+          content: 
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UtilisateurResponse'
+        '400':
+           $ref: '#/components/responses/400BadRequest'
+        '401':
+           $ref: '#/components/responses/401Unauthorized'
+        '404':
+          $ref: '#/components/responses/404NotFound'
+        '500':
+           $ref: '#/components/responses/500ServerError'   
+    put:
+      tags:
+        - Utilisateur
+      parameters:
+        - $ref: '#/components/parameters/idParam'
+        - $ref: '#/components/parameters/userParam' 
+        - $ref: '#/components/parameters/ifMatchParam'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateUtilisateurRequest'
+      responses:
+        '200':
+          description: Success
+          headers: 
+            'hashCode':
+              $ref: '#/components/headers/hashCodeHeader'
+          content: 
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UtilisateurResponse'
+        '400':
+           $ref: '#/components/responses/400BadRequest'
+        '401':
+           $ref: '#/components/responses/401Unauthorized'
+        '404':
+          $ref: '#/components/responses/404NotFound'
+        '409':
+          $ref: '#/components/responses/409Conflict'
+        '500':
+           $ref: '#/components/responses/500ServerError' 
+    delete:
+      tags:
+        - Utilisateur
+      parameters:
+        - $ref: '#/components/parameters/idParam' 
+        - $ref: '#/components/parameters/userParam'
       responses:
         '204':
           $ref:  '#/components/responses/204NoContent'
@@ -944,6 +1281,7 @@ paths:
         - Utilisateur
       parameters:
         - $ref: '#/components/parameters/idParam'  
+        - $ref: '#/components/parameters/userParam'
       responses:
         '200':
           description: Success
@@ -989,6 +1327,12 @@ components:
       required: false
       schema:
         type: string
+    ifMatchParam:
+      name: If-Match
+      in: header
+      required: true
+      schema:
+        type: string
     userParam:
       name: x-User
       in: header
@@ -1001,6 +1345,10 @@ components:
       schema:
         type: integer
       required: true
+  headers:
+    hashCodeHeader: 
+      schema:
+        type: string
   responses:
     204NoContent:
       description : NoContent
@@ -1096,8 +1444,8 @@ components:
           type: string
         estDefault:
           type: boolean
-        autorise:
-          type: boolean
+        permission: 
+            $ref: '#/components/schemas/Permission'
         estActif:
           type: boolean
     CreateReferenceFonctionnaliteRequest:
@@ -1109,8 +1457,8 @@ components:
           type: string
         estDefault:
           type: boolean
-        autorise:
-          type: boolean
+        permission: 
+            $ref: '#/components/schemas/Permission'
         estActif:
           type: boolean
     UpdateReferenceFonctionnaliteRequest:
@@ -1243,6 +1591,19 @@ components:
           type: integer
         estActif:
           type: boolean
+    UtilisateurResponse:
+      type: object
+      properties:
+        identifiant:
+          type: integer
+        nom:
+          type: string
+        prenom:
+          type: string
+        email:
+          type: string
+        estActif:
+          type: boolean
     CreateAccesUtilisateurRequest:
       type: object
       properties:
@@ -1257,6 +1618,28 @@ components:
       properties:
         estActif:
           type: boolean
+    CreateUtilisateurRequest:
+      type: object
+      properties:
+        nom:
+          type: string
+        prenom:
+          type: string
+        email:
+          type: string
+        estActif:
+          type: boolean
+    UpdateUtilisateurRequest:
+      type: object
+      properties:
+        nom:
+          type: string
+        prenom:
+          type: string
+        email:
+          type: string
+        estActif:
+          type: boolean    
     Permission:
       type: string
       enum:
@@ -1293,7 +1676,7 @@ components:
                           properties:
                             libelle:
                               type: string
-                            type:
+                            permission:
                                 $ref: '#/components/schemas/Permission'
     ValidationProblemDetails:
       type: object

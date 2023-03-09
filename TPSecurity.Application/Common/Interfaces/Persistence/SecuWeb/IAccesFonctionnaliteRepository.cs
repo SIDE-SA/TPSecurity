@@ -5,7 +5,6 @@ namespace TPSecurity.Application.Common.Interfaces.Persistence.SecuWeb
 {
     public interface IAccesFonctionnaliteRepository
     {
-
         AccesFonctionnalite? GetById(int id);
 
         AccesFonctionnalite? GetByUnicite(int idAccesApplication, int idRefFonctionnalite);

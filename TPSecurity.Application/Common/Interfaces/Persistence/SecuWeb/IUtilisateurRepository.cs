@@ -5,7 +5,6 @@ namespace TPSecurity.Application.Common.Interfaces.Persistence.SecuWeb
 {
     public interface IUtilisateurRepository
     {
-
         Utilisateur? GetById(int id);
 
         Utilisateur? GetByIdWithReferences(int id);

@@ -42,73 +42,76 @@ namespace TPSecurity.Infrastructure.Persistence.Repositories.SecuWeb
 
         public PagedList<AccesModule> GetAccesModules(AccesModuleParameters queryParameters)
         {
-            var accesApplicationDTOs = _context.AccesModule
+            var accesModuleDTOs = _context.AccesModule
                     .AsQueryable();
 
-            SearchByEstActif(ref accesApplicationDTOs, queryParameters.EstActif);
-            SearchByIdAccesApplication(ref accesApplicationDTOs, queryParameters.IdAccesApplication);
-            SearchByIdRefModule(ref accesApplicationDTOs, queryParameters.IdRefModule);
-            SortHelper.ApplySort(ref accesApplicationDTOs, queryParameters.orderBy, queryParameters.orderOrientation);
-            PagedList<AccesModuleDTO>.ApplyPagination(ref accesApplicationDTOs, queryParameters.offSet, queryParameters.limit, out int totalCount);
-            var accesApplications = FromDTO(accesApplicationDTOs);
-            return PagedList<AccesModule>.ToPagedList(accesApplications, totalCount);
+            SearchByEstActif(ref accesModuleDTOs, queryParameters.EstActif);
+            SearchByIdAccesApplication(ref accesModuleDTOs, queryParameters.IdAccesApplication);
+            SearchByIdRefModule(ref accesModuleDTOs, queryParameters.IdRefModule);
+            SortHelper.ApplySort(ref accesModuleDTOs, queryParameters.orderBy, queryParameters.orderOrientation);
+            PagedList<AccesModuleDTO>.ApplyPagination(ref accesModuleDTOs, queryParameters.offSet, queryParameters.limit, out int totalCount);
+            var accesModules = FromDTO(accesModuleDTOs);
+            return PagedList<AccesModule>.ToPagedList(accesModules, totalCount);
         }
 
-        private void SearchByEstActif(ref IQueryable<AccesModuleDTO> accesApplications, bool? estActif)
+        private void SearchByEstActif(ref IQueryable<AccesModuleDTO> accesModules, bool? estActif)
         {
             if (!estActif.HasValue) return;
-            accesApplications = accesApplications.Where(x => x.EstActif == estActif);
+            accesModules = accesModules.Where(x => x.EstActif == estActif);
         }
 
-        private void SearchByIdAccesApplication(ref IQueryable<AccesModuleDTO> accesApplications, int? idAccesApplication)
+        private void SearchByIdAccesApplication(ref IQueryable<AccesModuleDTO> accesModules, int? idAccesApplication)
         {
             if (idAccesApplication is null) return;
-            accesApplications = accesApplications.Where(x => x.IdAccesApplication == idAccesApplication);
+            accesModules = accesModules.Where(x => x.IdAccesApplication == idAccesApplication);
         }
 
-        private void SearchByIdRefModule(ref IQueryable<AccesModuleDTO> accesApplications, int? idRefModule)
+        private void SearchByIdRefModule(ref IQueryable<AccesModuleDTO> accesModules, int? idRefModule)
         {
             if (idRefModule is null) return;
-            accesApplications = accesApplications.Where(x => x.IdRefModule == idRefModule);
+            accesModules = accesModules.Where(x => x.IdRefModule == idRefModule);
         }
 
-        public IBaseClass Create(AccesModule accesApplication)
+        public IBaseClass Create(AccesModule accesModule)
         {
-            AccesModuleDTO accesApplicationDTO = ToDTO(accesApplication);
-            _context.AccesModule.Add(accesApplicationDTO);
-            return accesApplicationDTO;
+            AccesModuleDTO accesModuleDTO = ToDTO(accesModule);
+            _context.AccesModule.Add(accesModuleDTO);
+            return accesModuleDTO;
         }
 
-        public IBaseClass Update(AccesModule accesApplication)
+        public IBaseClass Update(AccesModule accesModule)
         {
-            AccesModuleDTO accesApplicationDTO = _context.AccesModule.Find(accesApplication.Id);
-            ApplyChanges(accesApplicationDTO, accesApplication);
-            _context.AccesModule.Update(accesApplicationDTO);
-            return accesApplicationDTO;
+            AccesModuleDTO accesModuleDTO = _context.AccesModule.Find(accesModule.Id);
+            ApplyChanges(accesModuleDTO, accesModule);
+            _context.AccesModule.Update(accesModuleDTO);
+            return accesModuleDTO;
         }
 
-        public bool Delete(AccesModule accesApplication)
+        public bool Delete(AccesModule accesModule)
         {
-            AccesModuleDTO accesApplicationDTO = _context.AccesModule.Find(accesApplication.Id);
+            AccesModuleDTO accesModuleDTO = _context.AccesModule.Find(accesModule.Id);
 
-            if (accesApplicationDTO.AccesFonctionnalites.Any())
+            if (accesModuleDTO.AccesFonctionnalites.Any())
                 return false;
 
-            _context.AccesModule.Remove(accesApplicationDTO);
+            _context.AccesModule.Remove(accesModuleDTO);
 
             return true;
         }
 
-        public AccesModuleDTO ToDTO(AccesModule accesApplication)
+        public AccesModuleDTO ToDTO(AccesModule accesModule)
         {
-            AccesModuleDTO dto = new AccesModuleDTO(accesApplication.Id, accesApplication.EstActif, accesApplication.IdAccesApplication, accesApplication.IdRefModule);
+            AccesModuleDTO dto = new AccesModuleDTO(accesModule.Id, accesModule.EstActif, accesModule.IdAccesApplication, accesModule.IdRefModule);
             return dto;
         }
 
         public static AccesModule FromDTO(AccesModuleDTO dto)
         {
-            AccesModule accesApplication = AccesModule.Init(dto.Id, dto.EstActif, dto.IdAccesApplication, dto.IdRefModule);
-            return accesApplication;
+            AccesModule accesModule = AccesModule.Init(dto.Id, dto.EstActif, dto.IdAccesApplication, dto.IdRefModule,
+                                                          dto.AccesFonctionnalites != null ?
+                                                          AccesFonctionnaliteRepository.GetRefFonctionnaliteFromAccesModule(dto.AccesFonctionnalites.AsQueryable())
+                                                          : null);
+            return accesModule;
         }
 
         public static IEnumerable<AccesModule> FromDTO(IQueryable<AccesModuleDTO> dto)

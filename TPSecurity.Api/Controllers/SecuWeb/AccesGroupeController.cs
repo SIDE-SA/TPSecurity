@@ -15,7 +15,6 @@ namespace TPSecurity.Api.Controllers.SecuWeb
     [Authorize]
     public class AccesGroupeController : ApiController
     {
-
         private readonly ISender _mediator;
         private readonly IMapper _mapper;
 

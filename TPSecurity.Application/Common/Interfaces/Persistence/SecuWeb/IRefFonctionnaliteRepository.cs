@@ -5,7 +5,6 @@ namespace TPSecurity.Application.Common.Interfaces.Persistence.SecuWeb
 {
     public interface IRefFonctionnaliteRepository
     {
-
         RefFonctionnalite? GetById(int id);
 
         RefFonctionnalite? GetByIdWithReferences(int id);
