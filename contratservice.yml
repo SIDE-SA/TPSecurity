@@ -1,4 +1,13 @@
 openapi: 3.0.1
+servers:
+  - url: https://security-tst.thomas-piron.eu:53104
+    description: Test
+  - url: https://security-acc.thomas-piron.eu:54114
+    description: Acceptance
+  - url: https://security-preprd.thomas-piron.eu:55124
+    description: Preproduction
+  - url: https://security-prod.thomas-piron.eu:56134
+    description: Production
 info:
   title: ??
   description : Secu web
