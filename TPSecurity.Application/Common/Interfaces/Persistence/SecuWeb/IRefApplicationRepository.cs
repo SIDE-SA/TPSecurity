@@ -5,7 +5,6 @@ namespace TPSecurity.Application.Common.Interfaces.Persistence.SecuWeb
 {
     public interface IRefApplicationRepository
     {
-
         RefApplication? GetById(int id);
 
         RefApplication? GetByIdWithReferences(int id);

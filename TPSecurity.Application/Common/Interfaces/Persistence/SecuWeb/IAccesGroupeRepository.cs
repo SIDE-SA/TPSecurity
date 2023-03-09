@@ -5,7 +5,6 @@ namespace TPSecurity.Application.Common.Interfaces.Persistence.SecuWeb
 {
     public interface IAccesGroupeRepository
     {
-
         AccesGroupe? GetById(int id);
 
         AccesGroupe? GetByIdWithReferences(int id);

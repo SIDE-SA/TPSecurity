@@ -1,5 +1,4 @@
-﻿using Microsoft.EntityFrameworkCore;
-using TPSecurity.Application.Common;
+﻿using TPSecurity.Application.Common;
 using TPSecurity.Application.Common.Interfaces.Persistence;
 using TPSecurity.Application.Common.Interfaces.Persistence.SecuWeb;
 using TPSecurity.Application.Core.SecuWeb.AccesFonctionnaliteCore.Queries.GetAllAccesFonctionnalite;
@@ -32,70 +31,70 @@ namespace TPSecurity.Infrastructure.Persistence.Repositories.SecuWeb
 
         public PagedList<AccesFonctionnalite> GetAccesFonctionnalites(AccesFonctionnaliteParameters queryParameters)
         {
-            var accesApplicationDTOs = _context.AccesFonctionnalite
+            var accesFonctionnaliteDTOs = _context.AccesFonctionnalite
                     .AsQueryable();
 
-            SearchByEstActif(ref accesApplicationDTOs, queryParameters.EstActif);
-            SearchByIdAccesModule(ref accesApplicationDTOs, queryParameters.IdAccesModule);
-            SearchByIdRefFonctionnalite(ref accesApplicationDTOs, queryParameters.IdRefFonctionnalite);
-            SortHelper.ApplySort(ref accesApplicationDTOs, queryParameters.orderBy, queryParameters.orderOrientation);
-            PagedList<AccesFonctionnaliteDTO>.ApplyPagination(ref accesApplicationDTOs, queryParameters.offSet, queryParameters.limit, out int totalCount);
-            var accesApplications = FromDTO(accesApplicationDTOs);
-            return PagedList<AccesFonctionnalite>.ToPagedList(accesApplications, totalCount);
+            SearchByEstActif(ref accesFonctionnaliteDTOs, queryParameters.EstActif);
+            SearchByIdAccesModule(ref accesFonctionnaliteDTOs, queryParameters.IdAccesModule);
+            SearchByIdRefFonctionnalite(ref accesFonctionnaliteDTOs, queryParameters.IdRefFonctionnalite);
+            SortHelper.ApplySort(ref accesFonctionnaliteDTOs, queryParameters.orderBy, queryParameters.orderOrientation);
+            PagedList<AccesFonctionnaliteDTO>.ApplyPagination(ref accesFonctionnaliteDTOs, queryParameters.offSet, queryParameters.limit, out int totalCount);
+            var accesFonctionnalites = FromDTO(accesFonctionnaliteDTOs);
+            return PagedList<AccesFonctionnalite>.ToPagedList(accesFonctionnalites, totalCount);
         }
 
-        private void SearchByEstActif(ref IQueryable<AccesFonctionnaliteDTO> accesApplications, bool? estActif)
+        private void SearchByEstActif(ref IQueryable<AccesFonctionnaliteDTO> accesFonctionnalites, bool? estActif)
         {
             if (!estActif.HasValue) return;
-            accesApplications = accesApplications.Where(x => x.EstActif == estActif);
+            accesFonctionnalites = accesFonctionnalites.Where(x => x.EstActif == estActif);
         }
 
-        private void SearchByIdAccesModule(ref IQueryable<AccesFonctionnaliteDTO> accesApplications, int? idAccesModule)
+        private void SearchByIdAccesModule(ref IQueryable<AccesFonctionnaliteDTO> accesFonctionnalites, int? idAccesModule)
         {
             if (idAccesModule is null) return;
-            accesApplications = accesApplications.Where(x => x.IdAccesModule == idAccesModule);
+            accesFonctionnalites = accesFonctionnalites.Where(x => x.IdAccesModule == idAccesModule);
         }
 
-        private void SearchByIdRefFonctionnalite(ref IQueryable<AccesFonctionnaliteDTO> accesApplications, int? idRefFonctionnalite)
+        private void SearchByIdRefFonctionnalite(ref IQueryable<AccesFonctionnaliteDTO> accesFonctionnalites, int? idRefFonctionnalite)
         {
             if (idRefFonctionnalite is null) return;
-            accesApplications = accesApplications.Where(x => x.IdRefFonctionnalite == idRefFonctionnalite);
+            accesFonctionnalites = accesFonctionnalites.Where(x => x.IdRefFonctionnalite == idRefFonctionnalite);
         }
 
-        public IBaseClass Create(AccesFonctionnalite accesApplication)
+        public IBaseClass Create(AccesFonctionnalite accesFonctionnalite)
         {
-            AccesFonctionnaliteDTO accesApplicationDTO = ToDTO(accesApplication);
-            _context.AccesFonctionnalite.Add(accesApplicationDTO);
-            return accesApplicationDTO;
+            AccesFonctionnaliteDTO accesFonctionnaliteDTO = ToDTO(accesFonctionnalite);
+            _context.AccesFonctionnalite.Add(accesFonctionnaliteDTO);
+            return accesFonctionnaliteDTO;
         }
 
-        public IBaseClass Update(AccesFonctionnalite accesApplication)
+        public IBaseClass Update(AccesFonctionnalite accesFonctionnalite)
         {
-            AccesFonctionnaliteDTO accesApplicationDTO = _context.AccesFonctionnalite.Find(accesApplication.Id);
-            ApplyChanges(accesApplicationDTO, accesApplication);
-            _context.AccesFonctionnalite.Update(accesApplicationDTO);
-            return accesApplicationDTO;
+            AccesFonctionnaliteDTO accesFonctionnaliteDTO = _context.AccesFonctionnalite.Find(accesFonctionnalite.Id);
+            ApplyChanges(accesFonctionnaliteDTO, accesFonctionnalite);
+            _context.AccesFonctionnalite.Update(accesFonctionnaliteDTO);
+            return accesFonctionnaliteDTO;
         }
 
-        public bool Delete(AccesFonctionnalite accesApplication)
+        public bool Delete(AccesFonctionnalite accesFonctionnalite)
         {
-            AccesFonctionnaliteDTO accesApplicationDTO = _context.AccesFonctionnalite.Find(accesApplication.Id);
+            AccesFonctionnaliteDTO accesFonctionnaliteDTO = _context.AccesFonctionnalite.Find(accesFonctionnalite.Id);
 
-            _context.AccesFonctionnalite.Remove(accesApplicationDTO);
+            _context.AccesFonctionnalite.Remove(accesFonctionnaliteDTO);
 
             return true;
         }
 
-        public AccesFonctionnaliteDTO ToDTO(AccesFonctionnalite accesApplication)
+        public AccesFonctionnaliteDTO ToDTO(AccesFonctionnalite accesFonctionnalite)
         {
-            AccesFonctionnaliteDTO dto = new AccesFonctionnaliteDTO(accesApplication.Id, accesApplication.EstActif, accesApplication.IdAccesModule, accesApplication.IdRefFonctionnalite);
+            AccesFonctionnaliteDTO dto = new AccesFonctionnaliteDTO(accesFonctionnalite.Id, accesFonctionnalite.EstActif, accesFonctionnalite.IdAccesModule, accesFonctionnalite.IdRefFonctionnalite);
             return dto;
         }
 
         public static AccesFonctionnalite FromDTO(AccesFonctionnaliteDTO dto)
         {
-            AccesFonctionnalite accesApplication = AccesFonctionnalite.Init(dto.Id, dto.EstActif, dto.IdAccesModule, dto.IdRefFonctionnalite);
-            return accesApplication;
+            AccesFonctionnalite accesFonctionnalite = AccesFonctionnalite.Init(dto.Id, dto.EstActif, dto.IdAccesModule, dto.IdRefFonctionnalite);
+            return accesFonctionnalite;
         }
 
         public static IEnumerable<AccesFonctionnalite> FromDTO(IQueryable<AccesFonctionnaliteDTO> dto)

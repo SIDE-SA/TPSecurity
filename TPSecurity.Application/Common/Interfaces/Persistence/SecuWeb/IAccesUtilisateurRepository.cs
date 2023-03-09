@@ -5,7 +5,6 @@ namespace TPSecurity.Application.Common.Interfaces.Persistence.SecuWeb
 {
     public interface IAccesUtilisateurRepository
     {
-
         AccesUtilisateur? GetById(int id);
 
         AccesUtilisateur? GetByUnicite(int idAccesGroupe, int idUtilisateur);

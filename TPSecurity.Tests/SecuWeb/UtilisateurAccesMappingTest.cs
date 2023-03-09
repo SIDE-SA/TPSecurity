@@ -1,7 +1,6 @@
 ﻿using FluentAssertions;
 using Mapster;
 using TPSecurity.Application.Core.SecuWeb.UtilisateurAccesCore.Common;
-using TPSecurity.Application.Core.SecuWeb.UtilisateurCore.Common;
 using TPSecurity.Contracts.SecuWeb.UtilisateurAcces;
 using Xunit;
 
@@ -11,7 +10,7 @@ namespace TPSecurity.Api.Tests.SecuWeb
     {
         public UtilisateurAccesMappingTest()
         {
-            TypeAdapterConfig.GlobalSettings.Scan(typeof(Api.AssemblyReference).Assembly);
+            TypeAdapterConfig.GlobalSettings.Scan(typeof(AssemblyReference).Assembly);
         }
 
         [Fact]

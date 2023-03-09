@@ -5,7 +5,6 @@ namespace TPSecurity.Application.Common.Interfaces.Persistence.SecuWeb
 {
     public interface IAccesApplicationRepository
     {
-
         AccesApplication? GetById(int id);
 
         AccesApplication? GetByUnicite(int idAccesGroupe, int idRefApplication);

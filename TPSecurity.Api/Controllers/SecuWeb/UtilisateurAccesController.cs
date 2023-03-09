@@ -1,5 +1,4 @@
-﻿using Azure.Core;
-using MapsterMapper;
+﻿using MapsterMapper;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using TPAuth.Services.Common.Authorization;
@@ -12,7 +11,6 @@ namespace TPSecurity.Api.Controllers.SecuWeb
     [Authorize]
     public class UtilisateurAccesController : ApiController
     {
-
         private readonly ISender _mediator;
         private readonly IMapper _mapper;
 

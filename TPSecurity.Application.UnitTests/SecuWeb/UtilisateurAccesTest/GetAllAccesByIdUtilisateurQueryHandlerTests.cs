@@ -3,7 +3,6 @@ using MapsterMapper;
 using Moq;
 using TPSecurity.Application.Common.Interfaces.Persistence;
 using TPSecurity.Application.Core.SecuWeb.UtilisateurAccesCore.Queries.GetAllAccesByIdUtilisateur;
-using TPSecurity.Application.Core.SecuWeb.UtilisateurCore.Queries.GetByIdUtilisateur;
 using TPSecurity.Domain.Common.Entities.SecuWeb;
 using TPSecurity.Domain.Common.Errors;
 using Xunit;
