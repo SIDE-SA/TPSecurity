@@ -20,6 +20,8 @@ namespace TPSecurity.Application.Common.Interfaces.Persistence
 
         IAccesFonctionnaliteRepository AccesFonctionnalite { get; }
 
+        IAccesUtilisateurRepository AccesUtilisateur { get; }
+
         IUtilisateurRepository Utilisateur { get; }
 
         Task SaveChangesAsync();
