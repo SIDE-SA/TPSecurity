@@ -1,0 +1,5598 @@
+{
+  "openapi" : "3.0.1",
+  "info" : {
+    "title" : "tpSecurity",
+    "description" : "API securité\r\n",
+    "version" : "v1"
+  },
+  "servers" : [ {
+    "url" : "http://AZ-SAGDEV-APIM:5555/gateway/tpSecurity/v1"
+  }, {
+    "url" : "https://AZ-SAGDEV-APIM:5543/gateway/tpSecurity/v1"
+  }, {
+    "url" : "https://AZ-SAGDEV-APIM:5556/gateway/tpSecurity/v1"
+  } ],
+  "security" : [ {
+    "apiKey" : [ ]
+  } ],
+  "tags" : [ {
+    "name" : "Acces Application",
+    "description" : ""
+  }, {
+    "name" : "Acces Fonctionnalite",
+    "description" : ""
+  }, {
+    "name" : "Acces Groupe",
+    "description" : ""
+  }, {
+    "name" : "Acces Module",
+    "description" : ""
+  }, {
+    "name" : "Acces Utilisateur",
+    "description" : ""
+  }, {
+    "name" : "Référence Application",
+    "description" : ""
+  }, {
+    "name" : "Référence Fonctionnalite",
+    "description" : ""
+  }, {
+    "name" : "Référence Module",
+    "description" : ""
+  }, {
+    "name" : "Utilisateur",
+    "description" : ""
+  } ],
+  "paths" : {
+    "/acces-application" : {
+      "summary" : "/acces-application",
+      "get" : {
+        "tags" : [ "Acces Application" ],
+        "parameters" : [ {
+          "name" : "offSet",
+          "in" : "query",
+          "required" : false,
+          "allowEmptyValue" : false,
+          "style" : "form",
+          "explode" : true,
+          "schema" : {
+            "type" : "integer",
+            "format" : "int64"
+          }
+        }, {
+          "name" : "limit",
+          "in" : "query",
+          "required" : false,
+          "allowEmptyValue" : false,
+          "style" : "form",
+          "explode" : true,
+          "schema" : {
+            "type" : "integer",
+            "format" : "int64"
+          }
+        }, {
+          "name" : "orderBy",
+          "in" : "query",
+          "required" : false,
+          "allowEmptyValue" : false,
+          "style" : "form",
+          "explode" : true,
+          "schema" : {
+            "type" : "string"
+          }
+        }, {
+          "name" : "orderOrientation",
+          "in" : "query",
+          "required" : false,
+          "allowEmptyValue" : false,
+          "style" : "form",
+          "explode" : true,
+          "schema" : {
+            "type" : "string"
+          }
+        }, {
+          "name" : "x-User",
+          "in" : "header",
+          "required" : true,
+          "allowEmptyValue" : false,
+          "style" : "simple",
+          "explode" : false,
+          "schema" : {
+            "type" : "string"
+          }
+        }, {
+          "name" : "estActif",
+          "in" : "query",
+          "required" : false,
+          "allowEmptyValue" : false,
+          "style" : "form",
+          "explode" : true,
+          "schema" : {
+            "type" : "boolean"
+          }
+        }, {
+          "name" : "idAccesGroupe",
+          "in" : "query",
+          "required" : false,
+          "allowEmptyValue" : false,
+          "style" : "form",
+          "explode" : true,
+          "schema" : {
+            "type" : "integer",
+            "format" : "int64"
+          }
+        }, {
+          "name" : "idRefApplication",
+          "in" : "query",
+          "required" : false,
+          "allowEmptyValue" : false,
+          "style" : "form",
+          "explode" : true,
+          "schema" : {
+            "type" : "integer",
+            "format" : "int64"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Success",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/AccesApplicationResponse"
+                },
+                "examples" : { }
+              }
+            },
+            "links" : { }
+          },
+          "400" : {
+            "description" : "Bad Request",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ValidationProblemDetails"
+                },
+                "examples" : { }
+              }
+            },
+            "links" : { }
+          },
+          "401" : {
+            "description" : "Unauthorized",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ValidationProblemDetails"
+                },
+                "examples" : { }
+              }
+            },
+            "links" : { }
+          },
+          "500" : {
+            "description" : "Server Error",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ValidationProblemDetails"
+                },
+                "examples" : { }
+              }
+            },
+            "links" : { }
+          }
+        }
+      },
+      "post" : {
+        "tags" : [ "Acces Application" ],
+        "parameters" : [ {
+          "name" : "x-User",
+          "in" : "header",
+          "required" : true,
+          "allowEmptyValue" : false,
+          "style" : "simple",
+          "explode" : false,
+          "schema" : {
+            "type" : "string"
+          }
+        } ],
+        "requestBody" : {
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/CreateAccesApplicationRequest"
+              },
+              "examples" : { }
+            }
+          }
+        },
+        "responses" : {
+          "200" : {
+            "description" : "Success",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/AccesApplicationResponse"
+                },
+                "examples" : { }
+              }
+            },
+            "links" : { }
+          },
+          "400" : {
+            "description" : "Bad Request",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ValidationProblemDetails"
+                },
+                "examples" : { }
+              }
+            },
+            "links" : { }
+          },
+          "401" : {
+            "description" : "Unauthorized",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ValidationProblemDetails"
+                },
+                "examples" : { }
+              }
+            },
+            "links" : { }
+          },
+          "500" : {
+            "description" : "Server Error",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ValidationProblemDetails"
+                },
+                "examples" : { }
+              }
+            },
+            "links" : { }
+          },
+          "409" : {
+            "description" : "Conflict",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ValidationProblemDetails"
+                },
+                "examples" : { }
+              }
+            },
+            "links" : { }
+          }
+        }
+      },
+      "parameters" : [ ]
+    },
+    "/acces-groupe" : {
+      "summary" : "/acces-groupe",
+      "get" : {
+        "tags" : [ "Acces Groupe" ],
+        "parameters" : [ {
+          "name" : "offSet",
+          "in" : "query",
+          "required" : false,
+          "allowEmptyValue" : false,
+          "style" : "form",
+          "explode" : true,
+          "schema" : {
+            "type" : "integer",
+            "format" : "int64"
+          }
+        }, {
+          "name" : "limit",
+          "in" : "query",
+          "required" : false,
+          "allowEmptyValue" : false,
+          "style" : "form",
+          "explode" : true,
+          "schema" : {
+            "type" : "integer",
+            "format" : "int64"
+          }
+        }, {
+          "name" : "orderBy",
+          "in" : "query",
+          "required" : false,
+          "allowEmptyValue" : false,
+          "style" : "form",
+          "explode" : true,
+          "schema" : {
+            "type" : "string"
+          }
+        }, {
+          "name" : "orderOrientation",
+          "in" : "query",
+          "required" : false,
+          "allowEmptyValue" : false,
+          "style" : "form",
+          "explode" : true,
+          "schema" : {
+            "type" : "string"
+          }
+        }, {
+          "name" : "x-User",
+          "in" : "header",
+          "required" : true,
+          "allowEmptyValue" : false,
+          "style" : "simple",
+          "explode" : false,
+          "schema" : {
+            "type" : "string"
+          }
+        }, {
+          "name" : "libelle",
+          "in" : "query",
+          "required" : false,
+          "allowEmptyValue" : false,
+          "style" : "form",
+          "explode" : true,
+          "schema" : {
+            "type" : "string"
+          }
+        }, {
+          "name" : "estActif",
+          "in" : "query",
+          "required" : false,
+          "allowEmptyValue" : false,
+          "style" : "form",
+          "explode" : true,
+          "schema" : {
+            "type" : "boolean"
+          }
+        }, {
+          "name" : "EstGroupeSpecial",
+          "in" : "query",
+          "required" : false,
+          "allowEmptyValue" : false,
+          "style" : "form",
+          "explode" : true,
+          "schema" : {
+            "type" : "boolean"
+          }
+        }, {
+          "name" : "idSociete",
+          "in" : "query",
+          "required" : false,
+          "allowEmptyValue" : false,
+          "style" : "form",
+          "explode" : true,
+          "schema" : { }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Success",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/AccesGroupeResponse"
+                },
+                "examples" : { }
+              }
+            },
+            "links" : { }
+          },
+          "400" : {
+            "description" : "Bad Request",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ValidationProblemDetails"
+                },
+                "examples" : { }
+              }
+            },
+            "links" : { }
+          },
+          "401" : {
+            "description" : "Unauthorized",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ValidationProblemDetails"
+                },
+                "examples" : { }
+              }
+            },
+            "links" : { }
+          },
+          "500" : {
+            "description" : "Server Error",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ValidationProblemDetails"
+                },
+                "examples" : { }
+              }
+            },
+            "links" : { }
+          }
+        }
+      },
+      "post" : {
+        "tags" : [ "Acces Groupe" ],
+        "parameters" : [ {
+          "name" : "x-User",
+          "in" : "header",
+          "required" : true,
+          "allowEmptyValue" : false,
+          "style" : "simple",
+          "explode" : false,
+          "schema" : {
+            "type" : "string"
+          }
+        } ],
+        "requestBody" : {
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/CreateAccesGroupeRequest"
+              },
+              "examples" : { }
+            }
+          }
+        },
+        "responses" : {
+          "200" : {
+            "description" : "Success",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/AccesGroupeResponse"
+                },
+                "examples" : { }
+              }
+            },
+            "links" : { }
+          },
+          "400" : {
+            "description" : "Bad Request",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ValidationProblemDetails"
+                },
+                "examples" : { }
+              }
+            },
+            "links" : { }
+          },
+          "401" : {
+            "description" : "Unauthorized",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ValidationProblemDetails"
+                },
+                "examples" : { }
+              }
+            },
+            "links" : { }
+          },
+          "500" : {
+            "description" : "Server Error",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ValidationProblemDetails"
+                },
+                "examples" : { }
+              }
+            },
+            "links" : { }
+          },
+          "409" : {
+            "description" : "Conflict",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ValidationProblemDetails"
+                },
+                "examples" : { }
+              }
+            },
+            "links" : { }
+          }
+        }
+      },
+      "parameters" : [ ]
+    },
+    "/reference-fonctionnalite" : {
+      "summary" : "/reference-fonctionnalite",
+      "get" : {
+        "tags" : [ "Référence Fonctionnalite" ],
+        "parameters" : [ {
+          "name" : "offSet",
+          "in" : "query",
+          "required" : false,
+          "allowEmptyValue" : false,
+          "style" : "form",
+          "explode" : true,
+          "schema" : {
+            "type" : "integer",
+            "format" : "int64"
+          }
+        }, {
+          "name" : "limit",
+          "in" : "query",
+          "required" : false,
+          "allowEmptyValue" : false,
+          "style" : "form",
+          "explode" : true,
+          "schema" : {
+            "type" : "integer",
+            "format" : "int64"
+          }
+        }, {
+          "name" : "orderBy",
+          "in" : "query",
+          "required" : false,
+          "allowEmptyValue" : false,
+          "style" : "form",
+          "explode" : true,
+          "schema" : {
+            "type" : "string"
+          }
+        }, {
+          "name" : "orderOrientation",
+          "in" : "query",
+          "required" : false,
+          "allowEmptyValue" : false,
+          "style" : "form",
+          "explode" : true,
+          "schema" : {
+            "type" : "string"
+          }
+        }, {
+          "name" : "x-User",
+          "in" : "header",
+          "required" : true,
+          "allowEmptyValue" : false,
+          "style" : "simple",
+          "explode" : false,
+          "schema" : {
+            "type" : "string"
+          }
+        }, {
+          "name" : "libelle",
+          "in" : "query",
+          "required" : false,
+          "allowEmptyValue" : false,
+          "style" : "form",
+          "explode" : true,
+          "schema" : {
+            "type" : "string"
+          }
+        }, {
+          "name" : "estActif",
+          "in" : "query",
+          "required" : false,
+          "allowEmptyValue" : false,
+          "style" : "form",
+          "explode" : true,
+          "schema" : {
+            "type" : "boolean"
+          }
+        }, {
+          "name" : "idRefModule",
+          "in" : "query",
+          "required" : false,
+          "allowEmptyValue" : false,
+          "style" : "form",
+          "explode" : true,
+          "schema" : {
+            "type" : "integer",
+            "format" : "int64"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Success",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ReferenceFonctionnaliteResponse"
+                },
+                "examples" : { }
+              }
+            },
+            "links" : { }
+          },
+          "400" : {
+            "description" : "Bad Request",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ValidationProblemDetails"
+                },
+                "examples" : { }
+              }
+            },
+            "links" : { }
+          },
+          "401" : {
+            "description" : "Unauthorized",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ValidationProblemDetails"
+                },
+                "examples" : { }
+              }
+            },
+            "links" : { }
+          },
+          "500" : {
+            "description" : "Server Error",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ValidationProblemDetails"
+                },
+                "examples" : { }
+              }
+            },
+            "links" : { }
+          }
+        }
+      },
+      "post" : {
+        "tags" : [ "Référence Fonctionnalite" ],
+        "parameters" : [ {
+          "name" : "x-User",
+          "in" : "header",
+          "required" : true,
+          "allowEmptyValue" : false,
+          "style" : "simple",
+          "explode" : false,
+          "schema" : {
+            "type" : "string"
+          }
+        } ],
+        "requestBody" : {
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/CreateReferenceFonctionnaliteRequest"
+              },
+              "examples" : { }
+            }
+          }
+        },
+        "responses" : {
+          "200" : {
+            "description" : "Success",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ReferenceFonctionnaliteResponse"
+                },
+                "examples" : { }
+              }
+            },
+            "links" : { }
+          },
+          "400" : {
+            "description" : "Bad Request",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ValidationProblemDetails"
+                },
+                "examples" : { }
+              }
+            },
+            "links" : { }
+          },
+          "401" : {
+            "description" : "Unauthorized",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ValidationProblemDetails"
+                },
+                "examples" : { }
+              }
+            },
+            "links" : { }
+          },
+          "500" : {
+            "description" : "Server Error",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ValidationProblemDetails"
+                },
+                "examples" : { }
+              }
+            },
+            "links" : { }
+          },
+          "409" : {
+            "description" : "Conflict",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ValidationProblemDetails"
+                },
+                "examples" : { }
+              }
+            },
+            "links" : { }
+          }
+        }
+      },
+      "parameters" : [ ]
+    },
+    "/acces-utilisateur" : {
+      "summary" : "/acces-utilisateur",
+      "get" : {
+        "tags" : [ "Acces Utilisateur" ],
+        "parameters" : [ {
+          "name" : "offSet",
+          "in" : "query",
+          "required" : false,
+          "allowEmptyValue" : false,
+          "style" : "form",
+          "explode" : true,
+          "schema" : {
+            "type" : "integer",
+            "format" : "int64"
+          }
+        }, {
+          "name" : "limit",
+          "in" : "query",
+          "required" : false,
+          "allowEmptyValue" : false,
+          "style" : "form",
+          "explode" : true,
+          "schema" : {
+            "type" : "integer",
+            "format" : "int64"
+          }
+        }, {
+          "name" : "orderBy",
+          "in" : "query",
+          "required" : false,
+          "allowEmptyValue" : false,
+          "style" : "form",
+          "explode" : true,
+          "schema" : {
+            "type" : "string"
+          }
+        }, {
+          "name" : "orderOrientation",
+          "in" : "query",
+          "required" : false,
+          "allowEmptyValue" : false,
+          "style" : "form",
+          "explode" : true,
+          "schema" : {
+            "type" : "string"
+          }
+        }, {
+          "name" : "x-User",
+          "in" : "header",
+          "required" : true,
+          "allowEmptyValue" : false,
+          "style" : "simple",
+          "explode" : false,
+          "schema" : {
+            "type" : "string"
+          }
+        }, {
+          "name" : "estActif",
+          "in" : "query",
+          "required" : false,
+          "allowEmptyValue" : false,
+          "style" : "form",
+          "explode" : true,
+          "schema" : {
+            "type" : "boolean"
+          }
+        }, {
+          "name" : "idAccesGroupe",
+          "in" : "query",
+          "required" : false,
+          "allowEmptyValue" : false,
+          "style" : "form",
+          "explode" : true,
+          "schema" : {
+            "type" : "integer",
+            "format" : "int64"
+          }
+        }, {
+          "name" : "idUtilisateur",
+          "in" : "query",
+          "required" : false,
+          "allowEmptyValue" : false,
+          "style" : "form",
+          "explode" : true,
+          "schema" : {
+            "type" : "integer",
+            "format" : "int64"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Success",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/AccesUtilisateurResponse"
+                },
+                "examples" : { }
+              }
+            },
+            "links" : { }
+          },
+          "400" : {
+            "description" : "Bad Request",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ValidationProblemDetails"
+                },
+                "examples" : { }
+              }
+            },
+            "links" : { }
+          },
+          "401" : {
+            "description" : "Unauthorized",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ValidationProblemDetails"
+                },
+                "examples" : { }
+              }
+            },
+            "links" : { }
+          },
+          "500" : {
+            "description" : "Server Error",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ValidationProblemDetails"
+                },
+                "examples" : { }
+              }
+            },
+            "links" : { }
+          }
+        }
+      },
+      "post" : {
+        "tags" : [ "Acces Utilisateur" ],
+        "parameters" : [ {
+          "name" : "x-User",
+          "in" : "header",
+          "required" : true,
+          "allowEmptyValue" : false,
+          "style" : "simple",
+          "explode" : false,
+          "schema" : {
+            "type" : "string"
+          }
+        } ],
+        "requestBody" : {
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/CreateAccesUtilisateurRequest"
+              },
+              "examples" : { }
+            }
+          }
+        },
+        "responses" : {
+          "200" : {
+            "description" : "Success",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/AccesUtilisateurResponse"
+                },
+                "examples" : { }
+              }
+            },
+            "links" : { }
+          },
+          "400" : {
+            "description" : "Bad Request",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ValidationProblemDetails"
+                },
+                "examples" : { }
+              }
+            },
+            "links" : { }
+          },
+          "401" : {
+            "description" : "Unauthorized",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ValidationProblemDetails"
+                },
+                "examples" : { }
+              }
+            },
+            "links" : { }
+          },
+          "500" : {
+            "description" : "Server Error",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ValidationProblemDetails"
+                },
+                "examples" : { }
+              }
+            },
+            "links" : { }
+          },
+          "409" : {
+            "description" : "Conflict",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ValidationProblemDetails"
+                },
+                "examples" : { }
+              }
+            },
+            "links" : { }
+          }
+        }
+      },
+      "parameters" : [ ]
+    },
+    "/reference-module" : {
+      "summary" : "/reference-module",
+      "get" : {
+        "tags" : [ "Référence Module" ],
+        "parameters" : [ {
+          "name" : "offSet",
+          "in" : "query",
+          "required" : false,
+          "allowEmptyValue" : false,
+          "style" : "form",
+          "explode" : true,
+          "schema" : {
+            "type" : "integer",
+            "format" : "int64"
+          }
+        }, {
+          "name" : "limit",
+          "in" : "query",
+          "required" : false,
+          "allowEmptyValue" : false,
+          "style" : "form",
+          "explode" : true,
+          "schema" : {
+            "type" : "integer",
+            "format" : "int64"
+          }
+        }, {
+          "name" : "orderBy",
+          "in" : "query",
+          "required" : false,
+          "allowEmptyValue" : false,
+          "style" : "form",
+          "explode" : true,
+          "schema" : {
+            "type" : "string"
+          }
+        }, {
+          "name" : "orderOrientation",
+          "in" : "query",
+          "required" : false,
+          "allowEmptyValue" : false,
+          "style" : "form",
+          "explode" : true,
+          "schema" : {
+            "type" : "string"
+          }
+        }, {
+          "name" : "x-User",
+          "in" : "header",
+          "required" : true,
+          "allowEmptyValue" : false,
+          "style" : "simple",
+          "explode" : false,
+          "schema" : {
+            "type" : "string"
+          }
+        }, {
+          "name" : "libelle",
+          "in" : "query",
+          "required" : false,
+          "allowEmptyValue" : false,
+          "style" : "form",
+          "explode" : true,
+          "schema" : {
+            "type" : "string"
+          }
+        }, {
+          "name" : "estActif",
+          "in" : "query",
+          "required" : false,
+          "allowEmptyValue" : false,
+          "style" : "form",
+          "explode" : true,
+          "schema" : {
+            "type" : "boolean"
+          }
+        }, {
+          "name" : "idRefApplication",
+          "in" : "query",
+          "required" : false,
+          "allowEmptyValue" : false,
+          "style" : "form",
+          "explode" : true,
+          "schema" : {
+            "type" : "integer",
+            "format" : "int64"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Success",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ReferenceModuleResponse"
+                },
+                "examples" : { }
+              }
+            },
+            "links" : { }
+          },
+          "400" : {
+            "description" : "Bad Request",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ValidationProblemDetails"
+                },
+                "examples" : { }
+              }
+            },
+            "links" : { }
+          },
+          "401" : {
+            "description" : "Unauthorized",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ValidationProblemDetails"
+                },
+                "examples" : { }
+              }
+            },
+            "links" : { }
+          },
+          "500" : {
+            "description" : "Server Error",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ValidationProblemDetails"
+                },
+                "examples" : { }
+              }
+            },
+            "links" : { }
+          }
+        }
+      },
+      "post" : {
+        "tags" : [ "Référence Module" ],
+        "parameters" : [ {
+          "name" : "x-User",
+          "in" : "header",
+          "required" : true,
+          "allowEmptyValue" : false,
+          "style" : "simple",
+          "explode" : false,
+          "schema" : {
+            "type" : "string"
+          }
+        } ],
+        "requestBody" : {
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/CreateReferenceModuleRequest"
+              },
+              "examples" : { }
+            }
+          }
+        },
+        "responses" : {
+          "200" : {
+            "description" : "Success",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ReferenceModuleResponse"
+                },
+                "examples" : { }
+              }
+            },
+            "links" : { }
+          },
+          "400" : {
+            "description" : "Bad Request",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ValidationProblemDetails"
+                },
+                "examples" : { }
+              }
+            },
+            "links" : { }
+          },
+          "401" : {
+            "description" : "Unauthorized",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ValidationProblemDetails"
+                },
+                "examples" : { }
+              }
+            },
+            "links" : { }
+          },
+          "500" : {
+            "description" : "Server Error",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ValidationProblemDetails"
+                },
+                "examples" : { }
+              }
+            },
+            "links" : { }
+          },
+          "409" : {
+            "description" : "Conflict",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ValidationProblemDetails"
+                },
+                "examples" : { }
+              }
+            },
+            "links" : { }
+          }
+        }
+      },
+      "parameters" : [ ]
+    },
+    "/reference-application/{id}" : {
+      "summary" : "/reference-application/{id}",
+      "get" : {
+        "tags" : [ "Référence Application" ],
+        "parameters" : [ {
+          "name" : "id",
+          "in" : "path",
+          "required" : true,
+          "allowEmptyValue" : false,
+          "style" : "simple",
+          "explode" : false,
+          "schema" : {
+            "type" : "integer",
+            "format" : "int64"
+          }
+        }, {
+          "name" : "x-User",
+          "in" : "header",
+          "required" : true,
+          "allowEmptyValue" : false,
+          "style" : "simple",
+          "explode" : false,
+          "schema" : {
+            "type" : "string"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Success",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ReferenceApplicationResponse"
+                },
+                "examples" : { }
+              }
+            },
+            "links" : { }
+          },
+          "400" : {
+            "description" : "Bad Request",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ValidationProblemDetails"
+                },
+                "examples" : { }
+              }
+            },
+            "links" : { }
+          },
+          "401" : {
+            "description" : "Unauthorized",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ValidationProblemDetails"
+                },
+                "examples" : { }
+              }
+            },
+            "links" : { }
+          },
+          "500" : {
+            "description" : "Server Error",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ValidationProblemDetails"
+                },
+                "examples" : { }
+              }
+            },
+            "links" : { }
+          },
+          "404" : {
+            "description" : "NotFound",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ValidationProblemDetails"
+                },
+                "examples" : { }
+              }
+            },
+            "links" : { }
+          }
+        }
+      },
+      "put" : {
+        "tags" : [ "Référence Application" ],
+        "parameters" : [ {
+          "name" : "id",
+          "in" : "path",
+          "required" : true,
+          "allowEmptyValue" : false,
+          "style" : "simple",
+          "explode" : false,
+          "schema" : {
+            "type" : "integer",
+            "format" : "int64"
+          }
+        }, {
+          "name" : "x-User",
+          "in" : "header",
+          "required" : true,
+          "allowEmptyValue" : false,
+          "style" : "simple",
+          "explode" : false,
+          "schema" : {
+            "type" : "string"
+          }
+        }, {
+          "name" : "If-Match",
+          "in" : "header",
+          "required" : true,
+          "allowEmptyValue" : false,
+          "style" : "simple",
+          "explode" : false,
+          "schema" : {
+            "type" : "string"
+          }
+        } ],
+        "requestBody" : {
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/UpdateReferenceApplicationRequest"
+              },
+              "examples" : { }
+            }
+          }
+        },
+        "responses" : {
+          "200" : {
+            "description" : "Success",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ReferenceApplicationResponse"
+                },
+                "examples" : { }
+              }
+            },
+            "links" : { }
+          },
+          "400" : {
+            "description" : "Bad Request",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ValidationProblemDetails"
+                },
+                "examples" : { }
+              }
+            },
+            "links" : { }
+          },
+          "401" : {
+            "description" : "Unauthorized",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ValidationProblemDetails"
+                },
+                "examples" : { }
+              }
+            },
+            "links" : { }
+          },
+          "500" : {
+            "description" : "Server Error",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ValidationProblemDetails"
+                },
+                "examples" : { }
+              }
+            },
+            "links" : { }
+          },
+          "404" : {
+            "description" : "NotFound",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ValidationProblemDetails"
+                },
+                "examples" : { }
+              }
+            },
+            "links" : { }
+          },
+          "409" : {
+            "description" : "Conflict",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ValidationProblemDetails"
+                },
+                "examples" : { }
+              }
+            },
+            "links" : { }
+          }
+        }
+      },
+      "delete" : {
+        "tags" : [ "Référence Application" ],
+        "parameters" : [ {
+          "name" : "id",
+          "in" : "path",
+          "required" : true,
+          "allowEmptyValue" : false,
+          "style" : "simple",
+          "explode" : false,
+          "schema" : {
+            "type" : "integer",
+            "format" : "int64"
+          }
+        }, {
+          "name" : "x-User",
+          "in" : "header",
+          "required" : true,
+          "allowEmptyValue" : false,
+          "style" : "simple",
+          "explode" : false,
+          "schema" : {
+            "type" : "string"
+          }
+        } ],
+        "responses" : {
+          "400" : {
+            "description" : "Bad Request",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ValidationProblemDetails"
+                },
+                "examples" : { }
+              }
+            },
+            "links" : { }
+          },
+          "401" : {
+            "description" : "Unauthorized",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ValidationProblemDetails"
+                },
+                "examples" : { }
+              }
+            },
+            "links" : { }
+          },
+          "500" : {
+            "description" : "Server Error",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ValidationProblemDetails"
+                },
+                "examples" : { }
+              }
+            },
+            "links" : { }
+          },
+          "204" : {
+            "description" : "NoContent",
+            "content" : { },
+            "links" : { }
+          },
+          "404" : {
+            "description" : "NotFound",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ValidationProblemDetails"
+                },
+                "examples" : { }
+              }
+            },
+            "links" : { }
+          },
+          "409" : {
+            "description" : "Conflict",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ValidationProblemDetails"
+                },
+                "examples" : { }
+              }
+            },
+            "links" : { }
+          }
+        }
+      },
+      "parameters" : [ ]
+    },
+    "/utilisateur" : {
+      "summary" : "/utilisateur",
+      "get" : {
+        "tags" : [ "Utilisateur" ],
+        "parameters" : [ {
+          "name" : "offSet",
+          "in" : "query",
+          "required" : false,
+          "allowEmptyValue" : false,
+          "style" : "form",
+          "explode" : true,
+          "schema" : {
+            "type" : "integer",
+            "format" : "int64"
+          }
+        }, {
+          "name" : "limit",
+          "in" : "query",
+          "required" : false,
+          "allowEmptyValue" : false,
+          "style" : "form",
+          "explode" : true,
+          "schema" : {
+            "type" : "integer",
+            "format" : "int64"
+          }
+        }, {
+          "name" : "orderBy",
+          "in" : "query",
+          "required" : false,
+          "allowEmptyValue" : false,
+          "style" : "form",
+          "explode" : true,
+          "schema" : {
+            "type" : "string"
+          }
+        }, {
+          "name" : "orderOrientation",
+          "in" : "query",
+          "required" : false,
+          "allowEmptyValue" : false,
+          "style" : "form",
+          "explode" : true,
+          "schema" : {
+            "type" : "string"
+          }
+        }, {
+          "name" : "x-User",
+          "in" : "header",
+          "required" : true,
+          "allowEmptyValue" : false,
+          "style" : "simple",
+          "explode" : false,
+          "schema" : {
+            "type" : "string"
+          }
+        }, {
+          "name" : "nom",
+          "in" : "query",
+          "required" : false,
+          "allowEmptyValue" : false,
+          "style" : "form",
+          "explode" : true,
+          "schema" : {
+            "type" : "string"
+          }
+        }, {
+          "name" : "prenom",
+          "in" : "query",
+          "required" : false,
+          "allowEmptyValue" : false,
+          "style" : "form",
+          "explode" : true,
+          "schema" : {
+            "type" : "string"
+          }
+        }, {
+          "name" : "email",
+          "in" : "query",
+          "required" : false,
+          "allowEmptyValue" : false,
+          "style" : "form",
+          "explode" : true,
+          "schema" : {
+            "type" : "string"
+          }
+        }, {
+          "name" : "estActif",
+          "in" : "query",
+          "required" : false,
+          "allowEmptyValue" : false,
+          "style" : "form",
+          "explode" : true,
+          "schema" : {
+            "type" : "boolean"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Success",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/UtilisateurResponse"
+                },
+                "examples" : { }
+              }
+            },
+            "links" : { }
+          },
+          "400" : {
+            "description" : "Bad Request",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ValidationProblemDetails"
+                },
+                "examples" : { }
+              }
+            },
+            "links" : { }
+          },
+          "401" : {
+            "description" : "Unauthorized",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ValidationProblemDetails"
+                },
+                "examples" : { }
+              }
+            },
+            "links" : { }
+          },
+          "500" : {
+            "description" : "Server Error",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ValidationProblemDetails"
+                },
+                "examples" : { }
+              }
+            },
+            "links" : { }
+          }
+        }
+      },
+      "post" : {
+        "tags" : [ "Utilisateur" ],
+        "parameters" : [ {
+          "name" : "x-User",
+          "in" : "header",
+          "required" : true,
+          "allowEmptyValue" : false,
+          "style" : "simple",
+          "explode" : false,
+          "schema" : {
+            "type" : "string"
+          }
+        } ],
+        "requestBody" : {
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/CreateUtilisateurRequest"
+              },
+              "examples" : { }
+            }
+          }
+        },
+        "responses" : {
+          "200" : {
+            "description" : "Success",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/UtilisateurResponse"
+                },
+                "examples" : { }
+              }
+            },
+            "links" : { }
+          },
+          "400" : {
+            "description" : "Bad Request",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ValidationProblemDetails"
+                },
+                "examples" : { }
+              }
+            },
+            "links" : { }
+          },
+          "401" : {
+            "description" : "Unauthorized",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ValidationProblemDetails"
+                },
+                "examples" : { }
+              }
+            },
+            "links" : { }
+          },
+          "500" : {
+            "description" : "Server Error",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ValidationProblemDetails"
+                },
+                "examples" : { }
+              }
+            },
+            "links" : { }
+          },
+          "409" : {
+            "description" : "Conflict",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ValidationProblemDetails"
+                },
+                "examples" : { }
+              }
+            },
+            "links" : { }
+          }
+        }
+      },
+      "parameters" : [ ]
+    },
+    "/acces-utilisateur/{id}" : {
+      "summary" : "/acces-utilisateur/{id}",
+      "get" : {
+        "tags" : [ "Acces Utilisateur" ],
+        "parameters" : [ {
+          "name" : "id",
+          "in" : "path",
+          "required" : true,
+          "allowEmptyValue" : false,
+          "style" : "simple",
+          "explode" : false,
+          "schema" : {
+            "type" : "integer",
+            "format" : "int64"
+          }
+        }, {
+          "name" : "x-User",
+          "in" : "header",
+          "required" : true,
+          "allowEmptyValue" : false,
+          "style" : "simple",
+          "explode" : false,
+          "schema" : {
+            "type" : "string"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Success",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/AccesUtilisateurResponse"
+                },
+                "examples" : { }
+              }
+            },
+            "links" : { }
+          },
+          "400" : {
+            "description" : "Bad Request",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ValidationProblemDetails"
+                },
+                "examples" : { }
+              }
+            },
+            "links" : { }
+          },
+          "401" : {
+            "description" : "Unauthorized",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ValidationProblemDetails"
+                },
+                "examples" : { }
+              }
+            },
+            "links" : { }
+          },
+          "500" : {
+            "description" : "Server Error",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ValidationProblemDetails"
+                },
+                "examples" : { }
+              }
+            },
+            "links" : { }
+          },
+          "404" : {
+            "description" : "NotFound",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ValidationProblemDetails"
+                },
+                "examples" : { }
+              }
+            },
+            "links" : { }
+          }
+        }
+      },
+      "put" : {
+        "tags" : [ "Acces Utilisateur" ],
+        "parameters" : [ {
+          "name" : "id",
+          "in" : "path",
+          "required" : true,
+          "allowEmptyValue" : false,
+          "style" : "simple",
+          "explode" : false,
+          "schema" : {
+            "type" : "integer",
+            "format" : "int64"
+          }
+        }, {
+          "name" : "x-User",
+          "in" : "header",
+          "required" : true,
+          "allowEmptyValue" : false,
+          "style" : "simple",
+          "explode" : false,
+          "schema" : {
+            "type" : "string"
+          }
+        }, {
+          "name" : "If-Match",
+          "in" : "header",
+          "required" : true,
+          "allowEmptyValue" : false,
+          "style" : "simple",
+          "explode" : false,
+          "schema" : {
+            "type" : "string"
+          }
+        } ],
+        "requestBody" : {
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/UpdateAccesUtilisateurRequest"
+              },
+              "examples" : { }
+            }
+          }
+        },
+        "responses" : {
+          "200" : {
+            "description" : "Success",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/AccesUtilisateurResponse"
+                },
+                "examples" : { }
+              }
+            },
+            "links" : { }
+          },
+          "400" : {
+            "description" : "Bad Request",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ValidationProblemDetails"
+                },
+                "examples" : { }
+              }
+            },
+            "links" : { }
+          },
+          "401" : {
+            "description" : "Unauthorized",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ValidationProblemDetails"
+                },
+                "examples" : { }
+              }
+            },
+            "links" : { }
+          },
+          "500" : {
+            "description" : "Server Error",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ValidationProblemDetails"
+                },
+                "examples" : { }
+              }
+            },
+            "links" : { }
+          },
+          "404" : {
+            "description" : "NotFound",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ValidationProblemDetails"
+                },
+                "examples" : { }
+              }
+            },
+            "links" : { }
+          },
+          "409" : {
+            "description" : "Conflict",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ValidationProblemDetails"
+                },
+                "examples" : { }
+              }
+            },
+            "links" : { }
+          }
+        }
+      },
+      "delete" : {
+        "tags" : [ "Acces Utilisateur" ],
+        "parameters" : [ {
+          "name" : "id",
+          "in" : "path",
+          "required" : true,
+          "allowEmptyValue" : false,
+          "style" : "simple",
+          "explode" : false,
+          "schema" : {
+            "type" : "integer",
+            "format" : "int64"
+          }
+        }, {
+          "name" : "x-User",
+          "in" : "header",
+          "required" : true,
+          "allowEmptyValue" : false,
+          "style" : "simple",
+          "explode" : false,
+          "schema" : {
+            "type" : "string"
+          }
+        } ],
+        "responses" : {
+          "400" : {
+            "description" : "Bad Request",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ValidationProblemDetails"
+                },
+                "examples" : { }
+              }
+            },
+            "links" : { }
+          },
+          "401" : {
+            "description" : "Unauthorized",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ValidationProblemDetails"
+                },
+                "examples" : { }
+              }
+            },
+            "links" : { }
+          },
+          "500" : {
+            "description" : "Server Error",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ValidationProblemDetails"
+                },
+                "examples" : { }
+              }
+            },
+            "links" : { }
+          },
+          "204" : {
+            "description" : "NoContent",
+            "content" : { },
+            "links" : { }
+          },
+          "404" : {
+            "description" : "NotFound",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ValidationProblemDetails"
+                },
+                "examples" : { }
+              }
+            },
+            "links" : { }
+          },
+          "409" : {
+            "description" : "Conflict",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ValidationProblemDetails"
+                },
+                "examples" : { }
+              }
+            },
+            "links" : { }
+          }
+        }
+      },
+      "parameters" : [ ]
+    },
+    "/acces-fonctionnalite" : {
+      "summary" : "/acces-fonctionnalite",
+      "get" : {
+        "tags" : [ "Acces Fonctionnalite" ],
+        "parameters" : [ {
+          "name" : "offSet",
+          "in" : "query",
+          "required" : false,
+          "allowEmptyValue" : false,
+          "style" : "form",
+          "explode" : true,
+          "schema" : {
+            "type" : "integer",
+            "format" : "int64"
+          }
+        }, {
+          "name" : "limit",
+          "in" : "query",
+          "required" : false,
+          "allowEmptyValue" : false,
+          "style" : "form",
+          "explode" : true,
+          "schema" : {
+            "type" : "integer",
+            "format" : "int64"
+          }
+        }, {
+          "name" : "orderBy",
+          "in" : "query",
+          "required" : false,
+          "allowEmptyValue" : false,
+          "style" : "form",
+          "explode" : true,
+          "schema" : {
+            "type" : "string"
+          }
+        }, {
+          "name" : "orderOrientation",
+          "in" : "query",
+          "required" : false,
+          "allowEmptyValue" : false,
+          "style" : "form",
+          "explode" : true,
+          "schema" : {
+            "type" : "string"
+          }
+        }, {
+          "name" : "x-User",
+          "in" : "header",
+          "required" : true,
+          "allowEmptyValue" : false,
+          "style" : "simple",
+          "explode" : false,
+          "schema" : {
+            "type" : "string"
+          }
+        }, {
+          "name" : "estActif",
+          "in" : "query",
+          "required" : false,
+          "allowEmptyValue" : false,
+          "style" : "form",
+          "explode" : true,
+          "schema" : {
+            "type" : "boolean"
+          }
+        }, {
+          "name" : "idAccesModule",
+          "in" : "query",
+          "required" : false,
+          "allowEmptyValue" : false,
+          "style" : "form",
+          "explode" : true,
+          "schema" : {
+            "type" : "integer",
+            "format" : "int64"
+          }
+        }, {
+          "name" : "idRefFonctionnalite",
+          "in" : "query",
+          "required" : false,
+          "allowEmptyValue" : false,
+          "style" : "form",
+          "explode" : true,
+          "schema" : {
+            "type" : "integer",
+            "format" : "int64"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Success",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/AccesFonctionnaliteResponse"
+                },
+                "examples" : { }
+              }
+            },
+            "links" : { }
+          },
+          "400" : {
+            "description" : "Bad Request",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ValidationProblemDetails"
+                },
+                "examples" : { }
+              }
+            },
+            "links" : { }
+          },
+          "401" : {
+            "description" : "Unauthorized",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ValidationProblemDetails"
+                },
+                "examples" : { }
+              }
+            },
+            "links" : { }
+          },
+          "500" : {
+            "description" : "Server Error",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ValidationProblemDetails"
+                },
+                "examples" : { }
+              }
+            },
+            "links" : { }
+          }
+        }
+      },
+      "post" : {
+        "tags" : [ "Acces Fonctionnalite" ],
+        "parameters" : [ {
+          "name" : "x-User",
+          "in" : "header",
+          "required" : true,
+          "allowEmptyValue" : false,
+          "style" : "simple",
+          "explode" : false,
+          "schema" : {
+            "type" : "string"
+          }
+        } ],
+        "requestBody" : {
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/CreateAccesFonctionnaliteRequest"
+              },
+              "examples" : { }
+            }
+          }
+        },
+        "responses" : {
+          "200" : {
+            "description" : "Success",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/AccesFonctionnaliteResponse"
+                },
+                "examples" : { }
+              }
+            },
+            "links" : { }
+          },
+          "400" : {
+            "description" : "Bad Request",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ValidationProblemDetails"
+                },
+                "examples" : { }
+              }
+            },
+            "links" : { }
+          },
+          "401" : {
+            "description" : "Unauthorized",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ValidationProblemDetails"
+                },
+                "examples" : { }
+              }
+            },
+            "links" : { }
+          },
+          "500" : {
+            "description" : "Server Error",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ValidationProblemDetails"
+                },
+                "examples" : { }
+              }
+            },
+            "links" : { }
+          },
+          "409" : {
+            "description" : "Conflict",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ValidationProblemDetails"
+                },
+                "examples" : { }
+              }
+            },
+            "links" : { }
+          }
+        }
+      },
+      "parameters" : [ ]
+    },
+    "/reference-fonctionnalite/{id}" : {
+      "summary" : "/reference-fonctionnalite/{id}",
+      "get" : {
+        "tags" : [ "Référence Fonctionnalite" ],
+        "parameters" : [ {
+          "name" : "id",
+          "in" : "path",
+          "required" : true,
+          "allowEmptyValue" : false,
+          "style" : "simple",
+          "explode" : false,
+          "schema" : {
+            "type" : "integer",
+            "format" : "int64"
+          }
+        }, {
+          "name" : "x-User",
+          "in" : "header",
+          "required" : true,
+          "allowEmptyValue" : false,
+          "style" : "simple",
+          "explode" : false,
+          "schema" : {
+            "type" : "string"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Success",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ReferenceFonctionnaliteResponse"
+                },
+                "examples" : { }
+              }
+            },
+            "links" : { }
+          },
+          "400" : {
+            "description" : "Bad Request",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ValidationProblemDetails"
+                },
+                "examples" : { }
+              }
+            },
+            "links" : { }
+          },
+          "401" : {
+            "description" : "Unauthorized",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ValidationProblemDetails"
+                },
+                "examples" : { }
+              }
+            },
+            "links" : { }
+          },
+          "500" : {
+            "description" : "Server Error",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ValidationProblemDetails"
+                },
+                "examples" : { }
+              }
+            },
+            "links" : { }
+          },
+          "404" : {
+            "description" : "NotFound",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ValidationProblemDetails"
+                },
+                "examples" : { }
+              }
+            },
+            "links" : { }
+          }
+        }
+      },
+      "put" : {
+        "tags" : [ "Référence Fonctionnalite" ],
+        "parameters" : [ {
+          "name" : "id",
+          "in" : "path",
+          "required" : true,
+          "allowEmptyValue" : false,
+          "style" : "simple",
+          "explode" : false,
+          "schema" : {
+            "type" : "integer",
+            "format" : "int64"
+          }
+        }, {
+          "name" : "x-User",
+          "in" : "header",
+          "required" : true,
+          "allowEmptyValue" : false,
+          "style" : "simple",
+          "explode" : false,
+          "schema" : {
+            "type" : "string"
+          }
+        }, {
+          "name" : "If-Match",
+          "in" : "header",
+          "required" : true,
+          "allowEmptyValue" : false,
+          "style" : "simple",
+          "explode" : false,
+          "schema" : {
+            "type" : "string"
+          }
+        } ],
+        "requestBody" : {
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/UpdateReferenceFonctionnaliteRequest"
+              },
+              "examples" : { }
+            }
+          }
+        },
+        "responses" : {
+          "200" : {
+            "description" : "Success",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ReferenceFonctionnaliteResponse"
+                },
+                "examples" : { }
+              }
+            },
+            "links" : { }
+          },
+          "400" : {
+            "description" : "Bad Request",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ValidationProblemDetails"
+                },
+                "examples" : { }
+              }
+            },
+            "links" : { }
+          },
+          "401" : {
+            "description" : "Unauthorized",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ValidationProblemDetails"
+                },
+                "examples" : { }
+              }
+            },
+            "links" : { }
+          },
+          "500" : {
+            "description" : "Server Error",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ValidationProblemDetails"
+                },
+                "examples" : { }
+              }
+            },
+            "links" : { }
+          },
+          "404" : {
+            "description" : "NotFound",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ValidationProblemDetails"
+                },
+                "examples" : { }
+              }
+            },
+            "links" : { }
+          },
+          "409" : {
+            "description" : "Conflict",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ValidationProblemDetails"
+                },
+                "examples" : { }
+              }
+            },
+            "links" : { }
+          }
+        }
+      },
+      "delete" : {
+        "tags" : [ "Référence Fonctionnalite" ],
+        "parameters" : [ {
+          "name" : "id",
+          "in" : "path",
+          "required" : true,
+          "allowEmptyValue" : false,
+          "style" : "simple",
+          "explode" : false,
+          "schema" : {
+            "type" : "integer",
+            "format" : "int64"
+          }
+        }, {
+          "name" : "x-User",
+          "in" : "header",
+          "required" : true,
+          "allowEmptyValue" : false,
+          "style" : "simple",
+          "explode" : false,
+          "schema" : {
+            "type" : "string"
+          }
+        } ],
+        "responses" : {
+          "400" : {
+            "description" : "Bad Request",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ValidationProblemDetails"
+                },
+                "examples" : { }
+              }
+            },
+            "links" : { }
+          },
+          "401" : {
+            "description" : "Unauthorized",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ValidationProblemDetails"
+                },
+                "examples" : { }
+              }
+            },
+            "links" : { }
+          },
+          "500" : {
+            "description" : "Server Error",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ValidationProblemDetails"
+                },
+                "examples" : { }
+              }
+            },
+            "links" : { }
+          },
+          "204" : {
+            "description" : "NoContent",
+            "content" : { },
+            "links" : { }
+          },
+          "404" : {
+            "description" : "NotFound",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ValidationProblemDetails"
+                },
+                "examples" : { }
+              }
+            },
+            "links" : { }
+          },
+          "409" : {
+            "description" : "Conflict",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ValidationProblemDetails"
+                },
+                "examples" : { }
+              }
+            },
+            "links" : { }
+          }
+        }
+      },
+      "parameters" : [ ]
+    },
+    "/utilisateur/{id}/acces" : {
+      "summary" : "/utilisateur/{id}/acces",
+      "get" : {
+        "tags" : [ "Utilisateur" ],
+        "parameters" : [ {
+          "name" : "id",
+          "in" : "path",
+          "required" : true,
+          "allowEmptyValue" : false,
+          "style" : "simple",
+          "explode" : false,
+          "schema" : {
+            "type" : "integer",
+            "format" : "int64"
+          }
+        }, {
+          "name" : "x-User",
+          "in" : "header",
+          "required" : true,
+          "allowEmptyValue" : false,
+          "style" : "simple",
+          "explode" : false,
+          "schema" : {
+            "type" : "string"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Success",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/AccesByUtilisateurResponse"
+                },
+                "examples" : { }
+              }
+            },
+            "links" : { }
+          },
+          "400" : {
+            "description" : "Bad Request",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ValidationProblemDetails"
+                },
+                "examples" : { }
+              }
+            },
+            "links" : { }
+          },
+          "401" : {
+            "description" : "Unauthorized",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ValidationProblemDetails"
+                },
+                "examples" : { }
+              }
+            },
+            "links" : { }
+          },
+          "500" : {
+            "description" : "Server Error",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ValidationProblemDetails"
+                },
+                "examples" : { }
+              }
+            },
+            "links" : { }
+          },
+          "404" : {
+            "description" : "NotFound",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ValidationProblemDetails"
+                },
+                "examples" : { }
+              }
+            },
+            "links" : { }
+          }
+        }
+      },
+      "parameters" : [ ]
+    },
+    "/acces-groupe/{id}" : {
+      "summary" : "/acces-groupe/{id}",
+      "get" : {
+        "tags" : [ "Acces Groupe" ],
+        "parameters" : [ {
+          "name" : "id",
+          "in" : "path",
+          "required" : true,
+          "allowEmptyValue" : false,
+          "style" : "simple",
+          "explode" : false,
+          "schema" : {
+            "type" : "integer",
+            "format" : "int64"
+          }
+        }, {
+          "name" : "x-User",
+          "in" : "header",
+          "required" : true,
+          "allowEmptyValue" : false,
+          "style" : "simple",
+          "explode" : false,
+          "schema" : {
+            "type" : "string"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Success",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/AccesGroupeResponse"
+                },
+                "examples" : { }
+              }
+            },
+            "links" : { }
+          },
+          "400" : {
+            "description" : "Bad Request",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ValidationProblemDetails"
+                },
+                "examples" : { }
+              }
+            },
+            "links" : { }
+          },
+          "401" : {
+            "description" : "Unauthorized",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ValidationProblemDetails"
+                },
+                "examples" : { }
+              }
+            },
+            "links" : { }
+          },
+          "500" : {
+            "description" : "Server Error",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ValidationProblemDetails"
+                },
+                "examples" : { }
+              }
+            },
+            "links" : { }
+          },
+          "404" : {
+            "description" : "NotFound",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ValidationProblemDetails"
+                },
+                "examples" : { }
+              }
+            },
+            "links" : { }
+          }
+        }
+      },
+      "put" : {
+        "tags" : [ "Acces Groupe" ],
+        "parameters" : [ {
+          "name" : "id",
+          "in" : "path",
+          "required" : true,
+          "allowEmptyValue" : false,
+          "style" : "simple",
+          "explode" : false,
+          "schema" : {
+            "type" : "integer",
+            "format" : "int64"
+          }
+        }, {
+          "name" : "x-User",
+          "in" : "header",
+          "required" : true,
+          "allowEmptyValue" : false,
+          "style" : "simple",
+          "explode" : false,
+          "schema" : {
+            "type" : "string"
+          }
+        }, {
+          "name" : "If-Match",
+          "in" : "header",
+          "required" : true,
+          "allowEmptyValue" : false,
+          "style" : "simple",
+          "explode" : false,
+          "schema" : {
+            "type" : "string"
+          }
+        } ],
+        "requestBody" : {
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/UpdateAccesGroupeRequest"
+              },
+              "examples" : { }
+            }
+          }
+        },
+        "responses" : {
+          "200" : {
+            "description" : "Success",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/AccesGroupeResponse"
+                },
+                "examples" : { }
+              }
+            },
+            "links" : { }
+          },
+          "400" : {
+            "description" : "Bad Request",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ValidationProblemDetails"
+                },
+                "examples" : { }
+              }
+            },
+            "links" : { }
+          },
+          "401" : {
+            "description" : "Unauthorized",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ValidationProblemDetails"
+                },
+                "examples" : { }
+              }
+            },
+            "links" : { }
+          },
+          "500" : {
+            "description" : "Server Error",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ValidationProblemDetails"
+                },
+                "examples" : { }
+              }
+            },
+            "links" : { }
+          },
+          "404" : {
+            "description" : "NotFound",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ValidationProblemDetails"
+                },
+                "examples" : { }
+              }
+            },
+            "links" : { }
+          },
+          "409" : {
+            "description" : "Conflict",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ValidationProblemDetails"
+                },
+                "examples" : { }
+              }
+            },
+            "links" : { }
+          }
+        }
+      },
+      "delete" : {
+        "tags" : [ "Acces Groupe" ],
+        "parameters" : [ {
+          "name" : "id",
+          "in" : "path",
+          "required" : true,
+          "allowEmptyValue" : false,
+          "style" : "simple",
+          "explode" : false,
+          "schema" : {
+            "type" : "integer",
+            "format" : "int64"
+          }
+        }, {
+          "name" : "x-User",
+          "in" : "header",
+          "required" : true,
+          "allowEmptyValue" : false,
+          "style" : "simple",
+          "explode" : false,
+          "schema" : {
+            "type" : "string"
+          }
+        } ],
+        "responses" : {
+          "400" : {
+            "description" : "Bad Request",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ValidationProblemDetails"
+                },
+                "examples" : { }
+              }
+            },
+            "links" : { }
+          },
+          "401" : {
+            "description" : "Unauthorized",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ValidationProblemDetails"
+                },
+                "examples" : { }
+              }
+            },
+            "links" : { }
+          },
+          "500" : {
+            "description" : "Server Error",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ValidationProblemDetails"
+                },
+                "examples" : { }
+              }
+            },
+            "links" : { }
+          },
+          "204" : {
+            "description" : "NoContent",
+            "content" : { },
+            "links" : { }
+          },
+          "404" : {
+            "description" : "NotFound",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ValidationProblemDetails"
+                },
+                "examples" : { }
+              }
+            },
+            "links" : { }
+          },
+          "409" : {
+            "description" : "Conflict",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ValidationProblemDetails"
+                },
+                "examples" : { }
+              }
+            },
+            "links" : { }
+          }
+        }
+      },
+      "parameters" : [ ]
+    },
+    "/acces-application/{id}" : {
+      "summary" : "/acces-application/{id}",
+      "get" : {
+        "tags" : [ "Acces Application" ],
+        "parameters" : [ {
+          "name" : "id",
+          "in" : "path",
+          "required" : true,
+          "allowEmptyValue" : false,
+          "style" : "simple",
+          "explode" : false,
+          "schema" : {
+            "type" : "integer",
+            "format" : "int64"
+          }
+        }, {
+          "name" : "x-User",
+          "in" : "header",
+          "required" : true,
+          "allowEmptyValue" : false,
+          "style" : "simple",
+          "explode" : false,
+          "schema" : {
+            "type" : "string"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Success",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/AccesApplicationResponse"
+                },
+                "examples" : { }
+              }
+            },
+            "links" : { }
+          },
+          "400" : {
+            "description" : "Bad Request",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ValidationProblemDetails"
+                },
+                "examples" : { }
+              }
+            },
+            "links" : { }
+          },
+          "401" : {
+            "description" : "Unauthorized",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ValidationProblemDetails"
+                },
+                "examples" : { }
+              }
+            },
+            "links" : { }
+          },
+          "500" : {
+            "description" : "Server Error",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ValidationProblemDetails"
+                },
+                "examples" : { }
+              }
+            },
+            "links" : { }
+          },
+          "404" : {
+            "description" : "NotFound",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ValidationProblemDetails"
+                },
+                "examples" : { }
+              }
+            },
+            "links" : { }
+          }
+        }
+      },
+      "put" : {
+        "tags" : [ "Acces Application" ],
+        "parameters" : [ {
+          "name" : "id",
+          "in" : "path",
+          "required" : true,
+          "allowEmptyValue" : false,
+          "style" : "simple",
+          "explode" : false,
+          "schema" : {
+            "type" : "integer",
+            "format" : "int64"
+          }
+        }, {
+          "name" : "x-User",
+          "in" : "header",
+          "required" : true,
+          "allowEmptyValue" : false,
+          "style" : "simple",
+          "explode" : false,
+          "schema" : {
+            "type" : "string"
+          }
+        }, {
+          "name" : "If-Match",
+          "in" : "header",
+          "required" : true,
+          "allowEmptyValue" : false,
+          "style" : "simple",
+          "explode" : false,
+          "schema" : {
+            "type" : "string"
+          }
+        } ],
+        "requestBody" : {
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/UpdateAccesApplicationRequest"
+              },
+              "examples" : { }
+            }
+          }
+        },
+        "responses" : {
+          "200" : {
+            "description" : "Success",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/AccesApplicationResponse"
+                },
+                "examples" : { }
+              }
+            },
+            "links" : { }
+          },
+          "400" : {
+            "description" : "Bad Request",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ValidationProblemDetails"
+                },
+                "examples" : { }
+              }
+            },
+            "links" : { }
+          },
+          "401" : {
+            "description" : "Unauthorized",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ValidationProblemDetails"
+                },
+                "examples" : { }
+              }
+            },
+            "links" : { }
+          },
+          "500" : {
+            "description" : "Server Error",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ValidationProblemDetails"
+                },
+                "examples" : { }
+              }
+            },
+            "links" : { }
+          },
+          "404" : {
+            "description" : "NotFound",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ValidationProblemDetails"
+                },
+                "examples" : { }
+              }
+            },
+            "links" : { }
+          },
+          "409" : {
+            "description" : "Conflict",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ValidationProblemDetails"
+                },
+                "examples" : { }
+              }
+            },
+            "links" : { }
+          }
+        }
+      },
+      "delete" : {
+        "tags" : [ "Acces Application" ],
+        "parameters" : [ {
+          "name" : "id",
+          "in" : "path",
+          "required" : true,
+          "allowEmptyValue" : false,
+          "style" : "simple",
+          "explode" : false,
+          "schema" : {
+            "type" : "integer",
+            "format" : "int64"
+          }
+        }, {
+          "name" : "x-User",
+          "in" : "header",
+          "required" : true,
+          "allowEmptyValue" : false,
+          "style" : "simple",
+          "explode" : false,
+          "schema" : {
+            "type" : "string"
+          }
+        } ],
+        "responses" : {
+          "400" : {
+            "description" : "Bad Request",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ValidationProblemDetails"
+                },
+                "examples" : { }
+              }
+            },
+            "links" : { }
+          },
+          "401" : {
+            "description" : "Unauthorized",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ValidationProblemDetails"
+                },
+                "examples" : { }
+              }
+            },
+            "links" : { }
+          },
+          "500" : {
+            "description" : "Server Error",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ValidationProblemDetails"
+                },
+                "examples" : { }
+              }
+            },
+            "links" : { }
+          },
+          "204" : {
+            "description" : "NoContent",
+            "content" : { },
+            "links" : { }
+          },
+          "404" : {
+            "description" : "NotFound",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ValidationProblemDetails"
+                },
+                "examples" : { }
+              }
+            },
+            "links" : { }
+          },
+          "409" : {
+            "description" : "Conflict",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ValidationProblemDetails"
+                },
+                "examples" : { }
+              }
+            },
+            "links" : { }
+          }
+        }
+      },
+      "parameters" : [ ]
+    },
+    "/acces-module" : {
+      "summary" : "/acces-module",
+      "get" : {
+        "tags" : [ "Acces Module" ],
+        "parameters" : [ {
+          "name" : "offSet",
+          "in" : "query",
+          "required" : false,
+          "allowEmptyValue" : false,
+          "style" : "form",
+          "explode" : true,
+          "schema" : {
+            "type" : "integer",
+            "format" : "int64"
+          }
+        }, {
+          "name" : "limit",
+          "in" : "query",
+          "required" : false,
+          "allowEmptyValue" : false,
+          "style" : "form",
+          "explode" : true,
+          "schema" : {
+            "type" : "integer",
+            "format" : "int64"
+          }
+        }, {
+          "name" : "orderBy",
+          "in" : "query",
+          "required" : false,
+          "allowEmptyValue" : false,
+          "style" : "form",
+          "explode" : true,
+          "schema" : {
+            "type" : "string"
+          }
+        }, {
+          "name" : "orderOrientation",
+          "in" : "query",
+          "required" : false,
+          "allowEmptyValue" : false,
+          "style" : "form",
+          "explode" : true,
+          "schema" : {
+            "type" : "string"
+          }
+        }, {
+          "name" : "x-User",
+          "in" : "header",
+          "required" : true,
+          "allowEmptyValue" : false,
+          "style" : "simple",
+          "explode" : false,
+          "schema" : {
+            "type" : "string"
+          }
+        }, {
+          "name" : "estActif",
+          "in" : "query",
+          "required" : false,
+          "allowEmptyValue" : false,
+          "style" : "form",
+          "explode" : true,
+          "schema" : {
+            "type" : "boolean"
+          }
+        }, {
+          "name" : "idRefModule",
+          "in" : "query",
+          "required" : false,
+          "allowEmptyValue" : false,
+          "style" : "form",
+          "explode" : true,
+          "schema" : {
+            "type" : "integer",
+            "format" : "int64"
+          }
+        }, {
+          "name" : "idAccesApplication",
+          "in" : "query",
+          "required" : false,
+          "allowEmptyValue" : false,
+          "style" : "form",
+          "explode" : true,
+          "schema" : {
+            "type" : "integer",
+            "format" : "int64"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Success",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/AccesModuleResponse"
+                },
+                "examples" : { }
+              }
+            },
+            "links" : { }
+          },
+          "400" : {
+            "description" : "Bad Request",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ValidationProblemDetails"
+                },
+                "examples" : { }
+              }
+            },
+            "links" : { }
+          },
+          "401" : {
+            "description" : "Unauthorized",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ValidationProblemDetails"
+                },
+                "examples" : { }
+              }
+            },
+            "links" : { }
+          },
+          "500" : {
+            "description" : "Server Error",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ValidationProblemDetails"
+                },
+                "examples" : { }
+              }
+            },
+            "links" : { }
+          }
+        }
+      },
+      "post" : {
+        "tags" : [ "Acces Module" ],
+        "parameters" : [ {
+          "name" : "x-User",
+          "in" : "header",
+          "required" : true,
+          "allowEmptyValue" : false,
+          "style" : "simple",
+          "explode" : false,
+          "schema" : {
+            "type" : "string"
+          }
+        } ],
+        "requestBody" : {
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/CreateAccesModuleRequest"
+              },
+              "examples" : { }
+            }
+          }
+        },
+        "responses" : {
+          "200" : {
+            "description" : "Success",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/AccesModuleResponse"
+                },
+                "examples" : { }
+              }
+            },
+            "links" : { }
+          },
+          "400" : {
+            "description" : "Bad Request",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ValidationProblemDetails"
+                },
+                "examples" : { }
+              }
+            },
+            "links" : { }
+          },
+          "401" : {
+            "description" : "Unauthorized",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ValidationProblemDetails"
+                },
+                "examples" : { }
+              }
+            },
+            "links" : { }
+          },
+          "500" : {
+            "description" : "Server Error",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ValidationProblemDetails"
+                },
+                "examples" : { }
+              }
+            },
+            "links" : { }
+          },
+          "409" : {
+            "description" : "Conflict",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ValidationProblemDetails"
+                },
+                "examples" : { }
+              }
+            },
+            "links" : { }
+          }
+        }
+      },
+      "parameters" : [ ]
+    },
+    "/acces-module/{id}" : {
+      "summary" : "/acces-module/{id}",
+      "get" : {
+        "tags" : [ "Acces Module" ],
+        "parameters" : [ {
+          "name" : "id",
+          "in" : "path",
+          "required" : true,
+          "allowEmptyValue" : false,
+          "style" : "simple",
+          "explode" : false,
+          "schema" : {
+            "type" : "integer",
+            "format" : "int64"
+          }
+        }, {
+          "name" : "x-User",
+          "in" : "header",
+          "required" : true,
+          "allowEmptyValue" : false,
+          "style" : "simple",
+          "explode" : false,
+          "schema" : {
+            "type" : "string"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Success",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/AccesModuleResponse"
+                },
+                "examples" : { }
+              }
+            },
+            "links" : { }
+          },
+          "400" : {
+            "description" : "Bad Request",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ValidationProblemDetails"
+                },
+                "examples" : { }
+              }
+            },
+            "links" : { }
+          },
+          "401" : {
+            "description" : "Unauthorized",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ValidationProblemDetails"
+                },
+                "examples" : { }
+              }
+            },
+            "links" : { }
+          },
+          "500" : {
+            "description" : "Server Error",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ValidationProblemDetails"
+                },
+                "examples" : { }
+              }
+            },
+            "links" : { }
+          },
+          "404" : {
+            "description" : "NotFound",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ValidationProblemDetails"
+                },
+                "examples" : { }
+              }
+            },
+            "links" : { }
+          }
+        }
+      },
+      "put" : {
+        "tags" : [ "Acces Module" ],
+        "parameters" : [ {
+          "name" : "id",
+          "in" : "path",
+          "required" : true,
+          "allowEmptyValue" : false,
+          "style" : "simple",
+          "explode" : false,
+          "schema" : {
+            "type" : "integer",
+            "format" : "int64"
+          }
+        }, {
+          "name" : "x-User",
+          "in" : "header",
+          "required" : true,
+          "allowEmptyValue" : false,
+          "style" : "simple",
+          "explode" : false,
+          "schema" : {
+            "type" : "string"
+          }
+        }, {
+          "name" : "If-Match",
+          "in" : "header",
+          "required" : true,
+          "allowEmptyValue" : false,
+          "style" : "simple",
+          "explode" : false,
+          "schema" : {
+            "type" : "string"
+          }
+        } ],
+        "requestBody" : {
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/UpdateAccesModuleRequest"
+              },
+              "examples" : { }
+            }
+          }
+        },
+        "responses" : {
+          "200" : {
+            "description" : "Success",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/AccesModuleResponse"
+                },
+                "examples" : { }
+              }
+            },
+            "links" : { }
+          },
+          "400" : {
+            "description" : "Bad Request",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ValidationProblemDetails"
+                },
+                "examples" : { }
+              }
+            },
+            "links" : { }
+          },
+          "401" : {
+            "description" : "Unauthorized",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ValidationProblemDetails"
+                },
+                "examples" : { }
+              }
+            },
+            "links" : { }
+          },
+          "500" : {
+            "description" : "Server Error",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ValidationProblemDetails"
+                },
+                "examples" : { }
+              }
+            },
+            "links" : { }
+          },
+          "404" : {
+            "description" : "NotFound",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ValidationProblemDetails"
+                },
+                "examples" : { }
+              }
+            },
+            "links" : { }
+          },
+          "409" : {
+            "description" : "Conflict",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ValidationProblemDetails"
+                },
+                "examples" : { }
+              }
+            },
+            "links" : { }
+          }
+        }
+      },
+      "delete" : {
+        "tags" : [ "Acces Module" ],
+        "parameters" : [ {
+          "name" : "id",
+          "in" : "path",
+          "required" : true,
+          "allowEmptyValue" : false,
+          "style" : "simple",
+          "explode" : false,
+          "schema" : {
+            "type" : "integer",
+            "format" : "int64"
+          }
+        }, {
+          "name" : "x-User",
+          "in" : "header",
+          "required" : true,
+          "allowEmptyValue" : false,
+          "style" : "simple",
+          "explode" : false,
+          "schema" : {
+            "type" : "string"
+          }
+        } ],
+        "responses" : {
+          "400" : {
+            "description" : "Bad Request",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ValidationProblemDetails"
+                },
+                "examples" : { }
+              }
+            },
+            "links" : { }
+          },
+          "401" : {
+            "description" : "Unauthorized",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ValidationProblemDetails"
+                },
+                "examples" : { }
+              }
+            },
+            "links" : { }
+          },
+          "500" : {
+            "description" : "Server Error",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ValidationProblemDetails"
+                },
+                "examples" : { }
+              }
+            },
+            "links" : { }
+          },
+          "204" : {
+            "description" : "NoContent",
+            "content" : { },
+            "links" : { }
+          },
+          "404" : {
+            "description" : "NotFound",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ValidationProblemDetails"
+                },
+                "examples" : { }
+              }
+            },
+            "links" : { }
+          },
+          "409" : {
+            "description" : "Conflict",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ValidationProblemDetails"
+                },
+                "examples" : { }
+              }
+            },
+            "links" : { }
+          }
+        }
+      },
+      "parameters" : [ ]
+    },
+    "/reference-application" : {
+      "summary" : "/reference-application",
+      "get" : {
+        "tags" : [ "Référence Application" ],
+        "parameters" : [ {
+          "name" : "offSet",
+          "in" : "query",
+          "required" : false,
+          "allowEmptyValue" : false,
+          "style" : "form",
+          "explode" : true,
+          "schema" : {
+            "type" : "integer",
+            "format" : "int64"
+          }
+        }, {
+          "name" : "limit",
+          "in" : "query",
+          "required" : false,
+          "allowEmptyValue" : false,
+          "style" : "form",
+          "explode" : true,
+          "schema" : {
+            "type" : "integer",
+            "format" : "int64"
+          }
+        }, {
+          "name" : "orderBy",
+          "in" : "query",
+          "required" : false,
+          "allowEmptyValue" : false,
+          "style" : "form",
+          "explode" : true,
+          "schema" : {
+            "type" : "string"
+          }
+        }, {
+          "name" : "orderOrientation",
+          "in" : "query",
+          "required" : false,
+          "allowEmptyValue" : false,
+          "style" : "form",
+          "explode" : true,
+          "schema" : {
+            "type" : "string"
+          }
+        }, {
+          "name" : "x-User",
+          "in" : "header",
+          "required" : true,
+          "allowEmptyValue" : false,
+          "style" : "simple",
+          "explode" : false,
+          "schema" : {
+            "type" : "string"
+          }
+        }, {
+          "name" : "libelle",
+          "in" : "query",
+          "required" : false,
+          "allowEmptyValue" : false,
+          "style" : "form",
+          "explode" : true,
+          "schema" : {
+            "type" : "string"
+          }
+        }, {
+          "name" : "estActif",
+          "in" : "query",
+          "required" : false,
+          "allowEmptyValue" : false,
+          "style" : "form",
+          "explode" : true,
+          "schema" : {
+            "type" : "boolean"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Success",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ReferenceApplicationResponse"
+                },
+                "examples" : { }
+              }
+            },
+            "links" : { }
+          },
+          "400" : {
+            "description" : "Bad Request",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ValidationProblemDetails"
+                },
+                "examples" : { }
+              }
+            },
+            "links" : { }
+          },
+          "401" : {
+            "description" : "Unauthorized",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ValidationProblemDetails"
+                },
+                "examples" : { }
+              }
+            },
+            "links" : { }
+          },
+          "500" : {
+            "description" : "Server Error",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ValidationProblemDetails"
+                },
+                "examples" : { }
+              }
+            },
+            "links" : { }
+          }
+        }
+      },
+      "post" : {
+        "tags" : [ "Référence Application" ],
+        "parameters" : [ {
+          "name" : "x-User",
+          "in" : "header",
+          "required" : true,
+          "allowEmptyValue" : false,
+          "style" : "simple",
+          "explode" : false,
+          "schema" : {
+            "type" : "string"
+          }
+        } ],
+        "requestBody" : {
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/CreateReferenceApplicationRequest"
+              },
+              "examples" : { }
+            }
+          }
+        },
+        "responses" : {
+          "200" : {
+            "description" : "Success",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ReferenceApplicationResponse"
+                },
+                "examples" : { }
+              }
+            },
+            "links" : { }
+          },
+          "400" : {
+            "description" : "Bad Request",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ValidationProblemDetails"
+                },
+                "examples" : { }
+              }
+            },
+            "links" : { }
+          },
+          "401" : {
+            "description" : "Unauthorized",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ValidationProblemDetails"
+                },
+                "examples" : { }
+              }
+            },
+            "links" : { }
+          },
+          "500" : {
+            "description" : "Server Error",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ValidationProblemDetails"
+                },
+                "examples" : { }
+              }
+            },
+            "links" : { }
+          },
+          "409" : {
+            "description" : "Conflict",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ValidationProblemDetails"
+                },
+                "examples" : { }
+              }
+            },
+            "links" : { }
+          }
+        }
+      },
+      "parameters" : [ ]
+    },
+    "/utilisateur/{id}" : {
+      "summary" : "/utilisateur/{id}",
+      "get" : {
+        "tags" : [ "Utilisateur" ],
+        "parameters" : [ {
+          "name" : "id",
+          "in" : "path",
+          "required" : true,
+          "allowEmptyValue" : false,
+          "style" : "simple",
+          "explode" : false,
+          "schema" : {
+            "type" : "integer",
+            "format" : "int64"
+          }
+        }, {
+          "name" : "x-User",
+          "in" : "header",
+          "required" : true,
+          "allowEmptyValue" : false,
+          "style" : "simple",
+          "explode" : false,
+          "schema" : {
+            "type" : "string"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Success",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/UtilisateurResponse"
+                },
+                "examples" : { }
+              }
+            },
+            "links" : { }
+          },
+          "400" : {
+            "description" : "Bad Request",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ValidationProblemDetails"
+                },
+                "examples" : { }
+              }
+            },
+            "links" : { }
+          },
+          "401" : {
+            "description" : "Unauthorized",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ValidationProblemDetails"
+                },
+                "examples" : { }
+              }
+            },
+            "links" : { }
+          },
+          "500" : {
+            "description" : "Server Error",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ValidationProblemDetails"
+                },
+                "examples" : { }
+              }
+            },
+            "links" : { }
+          },
+          "404" : {
+            "description" : "NotFound",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ValidationProblemDetails"
+                },
+                "examples" : { }
+              }
+            },
+            "links" : { }
+          }
+        }
+      },
+      "put" : {
+        "tags" : [ "Utilisateur" ],
+        "parameters" : [ {
+          "name" : "id",
+          "in" : "path",
+          "required" : true,
+          "allowEmptyValue" : false,
+          "style" : "simple",
+          "explode" : false,
+          "schema" : {
+            "type" : "integer",
+            "format" : "int64"
+          }
+        }, {
+          "name" : "x-User",
+          "in" : "header",
+          "required" : true,
+          "allowEmptyValue" : false,
+          "style" : "simple",
+          "explode" : false,
+          "schema" : {
+            "type" : "string"
+          }
+        }, {
+          "name" : "If-Match",
+          "in" : "header",
+          "required" : true,
+          "allowEmptyValue" : false,
+          "style" : "simple",
+          "explode" : false,
+          "schema" : {
+            "type" : "string"
+          }
+        } ],
+        "requestBody" : {
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/UpdateUtilisateurRequest"
+              },
+              "examples" : { }
+            }
+          }
+        },
+        "responses" : {
+          "200" : {
+            "description" : "Success",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/UtilisateurResponse"
+                },
+                "examples" : { }
+              }
+            },
+            "links" : { }
+          },
+          "400" : {
+            "description" : "Bad Request",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ValidationProblemDetails"
+                },
+                "examples" : { }
+              }
+            },
+            "links" : { }
+          },
+          "401" : {
+            "description" : "Unauthorized",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ValidationProblemDetails"
+                },
+                "examples" : { }
+              }
+            },
+            "links" : { }
+          },
+          "500" : {
+            "description" : "Server Error",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ValidationProblemDetails"
+                },
+                "examples" : { }
+              }
+            },
+            "links" : { }
+          },
+          "404" : {
+            "description" : "NotFound",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ValidationProblemDetails"
+                },
+                "examples" : { }
+              }
+            },
+            "links" : { }
+          },
+          "409" : {
+            "description" : "Conflict",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ValidationProblemDetails"
+                },
+                "examples" : { }
+              }
+            },
+            "links" : { }
+          }
+        }
+      },
+      "delete" : {
+        "tags" : [ "Utilisateur" ],
+        "parameters" : [ {
+          "name" : "id",
+          "in" : "path",
+          "required" : true,
+          "allowEmptyValue" : false,
+          "style" : "simple",
+          "explode" : false,
+          "schema" : {
+            "type" : "integer",
+            "format" : "int64"
+          }
+        }, {
+          "name" : "x-User",
+          "in" : "header",
+          "required" : true,
+          "allowEmptyValue" : false,
+          "style" : "simple",
+          "explode" : false,
+          "schema" : {
+            "type" : "string"
+          }
+        } ],
+        "responses" : {
+          "400" : {
+            "description" : "Bad Request",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ValidationProblemDetails"
+                },
+                "examples" : { }
+              }
+            },
+            "links" : { }
+          },
+          "401" : {
+            "description" : "Unauthorized",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ValidationProblemDetails"
+                },
+                "examples" : { }
+              }
+            },
+            "links" : { }
+          },
+          "500" : {
+            "description" : "Server Error",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ValidationProblemDetails"
+                },
+                "examples" : { }
+              }
+            },
+            "links" : { }
+          },
+          "204" : {
+            "description" : "NoContent",
+            "content" : { },
+            "links" : { }
+          },
+          "404" : {
+            "description" : "NotFound",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ValidationProblemDetails"
+                },
+                "examples" : { }
+              }
+            },
+            "links" : { }
+          },
+          "409" : {
+            "description" : "Conflict",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ValidationProblemDetails"
+                },
+                "examples" : { }
+              }
+            },
+            "links" : { }
+          }
+        }
+      },
+      "parameters" : [ ]
+    },
+    "/acces-fonctionnalite/{id}" : {
+      "summary" : "/acces-fonctionnalite/{id}",
+      "get" : {
+        "tags" : [ "Acces Fonctionnalite" ],
+        "parameters" : [ {
+          "name" : "id",
+          "in" : "path",
+          "required" : true,
+          "allowEmptyValue" : false,
+          "style" : "simple",
+          "explode" : false,
+          "schema" : {
+            "type" : "integer",
+            "format" : "int64"
+          }
+        }, {
+          "name" : "x-User",
+          "in" : "header",
+          "required" : true,
+          "allowEmptyValue" : false,
+          "style" : "simple",
+          "explode" : false,
+          "schema" : {
+            "type" : "string"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Success",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/AccesFonctionnaliteResponse"
+                },
+                "examples" : { }
+              }
+            },
+            "links" : { }
+          },
+          "400" : {
+            "description" : "Bad Request",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ValidationProblemDetails"
+                },
+                "examples" : { }
+              }
+            },
+            "links" : { }
+          },
+          "401" : {
+            "description" : "Unauthorized",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ValidationProblemDetails"
+                },
+                "examples" : { }
+              }
+            },
+            "links" : { }
+          },
+          "500" : {
+            "description" : "Server Error",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ValidationProblemDetails"
+                },
+                "examples" : { }
+              }
+            },
+            "links" : { }
+          },
+          "404" : {
+            "description" : "NotFound",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ValidationProblemDetails"
+                },
+                "examples" : { }
+              }
+            },
+            "links" : { }
+          }
+        }
+      },
+      "put" : {
+        "tags" : [ "Acces Fonctionnalite" ],
+        "parameters" : [ {
+          "name" : "id",
+          "in" : "path",
+          "required" : true,
+          "allowEmptyValue" : false,
+          "style" : "simple",
+          "explode" : false,
+          "schema" : {
+            "type" : "integer",
+            "format" : "int64"
+          }
+        }, {
+          "name" : "x-User",
+          "in" : "header",
+          "required" : true,
+          "allowEmptyValue" : false,
+          "style" : "simple",
+          "explode" : false,
+          "schema" : {
+            "type" : "string"
+          }
+        }, {
+          "name" : "If-Match",
+          "in" : "header",
+          "required" : true,
+          "allowEmptyValue" : false,
+          "style" : "simple",
+          "explode" : false,
+          "schema" : {
+            "type" : "string"
+          }
+        } ],
+        "requestBody" : {
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/UpdateAccesFonctionnaliteRequest"
+              },
+              "examples" : { }
+            }
+          }
+        },
+        "responses" : {
+          "200" : {
+            "description" : "Success",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/AccesFonctionnaliteResponse"
+                },
+                "examples" : { }
+              }
+            },
+            "links" : { }
+          },
+          "400" : {
+            "description" : "Bad Request",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ValidationProblemDetails"
+                },
+                "examples" : { }
+              }
+            },
+            "links" : { }
+          },
+          "401" : {
+            "description" : "Unauthorized",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ValidationProblemDetails"
+                },
+                "examples" : { }
+              }
+            },
+            "links" : { }
+          },
+          "500" : {
+            "description" : "Server Error",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ValidationProblemDetails"
+                },
+                "examples" : { }
+              }
+            },
+            "links" : { }
+          },
+          "404" : {
+            "description" : "NotFound",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ValidationProblemDetails"
+                },
+                "examples" : { }
+              }
+            },
+            "links" : { }
+          },
+          "409" : {
+            "description" : "Conflict",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ValidationProblemDetails"
+                },
+                "examples" : { }
+              }
+            },
+            "links" : { }
+          }
+        }
+      },
+      "delete" : {
+        "tags" : [ "Acces Fonctionnalite" ],
+        "parameters" : [ {
+          "name" : "id",
+          "in" : "path",
+          "required" : true,
+          "allowEmptyValue" : false,
+          "style" : "simple",
+          "explode" : false,
+          "schema" : {
+            "type" : "integer",
+            "format" : "int64"
+          }
+        }, {
+          "name" : "x-User",
+          "in" : "header",
+          "required" : true,
+          "allowEmptyValue" : false,
+          "style" : "simple",
+          "explode" : false,
+          "schema" : {
+            "type" : "string"
+          }
+        } ],
+        "responses" : {
+          "400" : {
+            "description" : "Bad Request",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ValidationProblemDetails"
+                },
+                "examples" : { }
+              }
+            },
+            "links" : { }
+          },
+          "401" : {
+            "description" : "Unauthorized",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ValidationProblemDetails"
+                },
+                "examples" : { }
+              }
+            },
+            "links" : { }
+          },
+          "500" : {
+            "description" : "Server Error",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ValidationProblemDetails"
+                },
+                "examples" : { }
+              }
+            },
+            "links" : { }
+          },
+          "204" : {
+            "description" : "NoContent",
+            "content" : { },
+            "links" : { }
+          },
+          "404" : {
+            "description" : "NotFound",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ValidationProblemDetails"
+                },
+                "examples" : { }
+              }
+            },
+            "links" : { }
+          },
+          "409" : {
+            "description" : "Conflict",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ValidationProblemDetails"
+                },
+                "examples" : { }
+              }
+            },
+            "links" : { }
+          }
+        }
+      },
+      "parameters" : [ ]
+    },
+    "/reference-module/{id}" : {
+      "summary" : "/reference-module/{id}",
+      "get" : {
+        "tags" : [ "Référence Module" ],
+        "parameters" : [ {
+          "name" : "id",
+          "in" : "path",
+          "required" : true,
+          "allowEmptyValue" : false,
+          "style" : "simple",
+          "explode" : false,
+          "schema" : {
+            "type" : "integer",
+            "format" : "int64"
+          }
+        }, {
+          "name" : "x-User",
+          "in" : "header",
+          "required" : true,
+          "allowEmptyValue" : false,
+          "style" : "simple",
+          "explode" : false,
+          "schema" : {
+            "type" : "string"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Success",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ReferenceModuleResponse"
+                },
+                "examples" : { }
+              }
+            },
+            "links" : { }
+          },
+          "400" : {
+            "description" : "Bad Request",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ValidationProblemDetails"
+                },
+                "examples" : { }
+              }
+            },
+            "links" : { }
+          },
+          "401" : {
+            "description" : "Unauthorized",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ValidationProblemDetails"
+                },
+                "examples" : { }
+              }
+            },
+            "links" : { }
+          },
+          "500" : {
+            "description" : "Server Error",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ValidationProblemDetails"
+                },
+                "examples" : { }
+              }
+            },
+            "links" : { }
+          },
+          "404" : {
+            "description" : "NotFound",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ValidationProblemDetails"
+                },
+                "examples" : { }
+              }
+            },
+            "links" : { }
+          }
+        }
+      },
+      "put" : {
+        "tags" : [ "Référence Module" ],
+        "parameters" : [ {
+          "name" : "id",
+          "in" : "path",
+          "required" : true,
+          "allowEmptyValue" : false,
+          "style" : "simple",
+          "explode" : false,
+          "schema" : {
+            "type" : "integer",
+            "format" : "int64"
+          }
+        }, {
+          "name" : "x-User",
+          "in" : "header",
+          "required" : true,
+          "allowEmptyValue" : false,
+          "style" : "simple",
+          "explode" : false,
+          "schema" : {
+            "type" : "string"
+          }
+        }, {
+          "name" : "If-Match",
+          "in" : "header",
+          "required" : true,
+          "allowEmptyValue" : false,
+          "style" : "simple",
+          "explode" : false,
+          "schema" : {
+            "type" : "string"
+          }
+        } ],
+        "requestBody" : {
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/UpdateReferenceModuleRequest"
+              },
+              "examples" : { }
+            }
+          }
+        },
+        "responses" : {
+          "200" : {
+            "description" : "Success",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ReferenceModuleResponse"
+                },
+                "examples" : { }
+              }
+            },
+            "links" : { }
+          },
+          "400" : {
+            "description" : "Bad Request",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ValidationProblemDetails"
+                },
+                "examples" : { }
+              }
+            },
+            "links" : { }
+          },
+          "401" : {
+            "description" : "Unauthorized",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ValidationProblemDetails"
+                },
+                "examples" : { }
+              }
+            },
+            "links" : { }
+          },
+          "500" : {
+            "description" : "Server Error",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ValidationProblemDetails"
+                },
+                "examples" : { }
+              }
+            },
+            "links" : { }
+          },
+          "404" : {
+            "description" : "NotFound",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ValidationProblemDetails"
+                },
+                "examples" : { }
+              }
+            },
+            "links" : { }
+          },
+          "409" : {
+            "description" : "Conflict",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ValidationProblemDetails"
+                },
+                "examples" : { }
+              }
+            },
+            "links" : { }
+          }
+        }
+      },
+      "delete" : {
+        "tags" : [ "Référence Module" ],
+        "parameters" : [ {
+          "name" : "id",
+          "in" : "path",
+          "required" : true,
+          "allowEmptyValue" : false,
+          "style" : "simple",
+          "explode" : false,
+          "schema" : {
+            "type" : "integer",
+            "format" : "int64"
+          }
+        }, {
+          "name" : "x-User",
+          "in" : "header",
+          "required" : true,
+          "allowEmptyValue" : false,
+          "style" : "simple",
+          "explode" : false,
+          "schema" : {
+            "type" : "string"
+          }
+        } ],
+        "responses" : {
+          "400" : {
+            "description" : "Bad Request",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ValidationProblemDetails"
+                },
+                "examples" : { }
+              }
+            },
+            "links" : { }
+          },
+          "401" : {
+            "description" : "Unauthorized",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ValidationProblemDetails"
+                },
+                "examples" : { }
+              }
+            },
+            "links" : { }
+          },
+          "500" : {
+            "description" : "Server Error",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ValidationProblemDetails"
+                },
+                "examples" : { }
+              }
+            },
+            "links" : { }
+          },
+          "204" : {
+            "description" : "NoContent",
+            "content" : { },
+            "links" : { }
+          },
+          "404" : {
+            "description" : "NotFound",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ValidationProblemDetails"
+                },
+                "examples" : { }
+              }
+            },
+            "links" : { }
+          },
+          "409" : {
+            "description" : "Conflict",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ValidationProblemDetails"
+                },
+                "examples" : { }
+              }
+            },
+            "links" : { }
+          }
+        }
+      },
+      "parameters" : [ ]
+    }
+  },
+  "components" : {
+    "schemas" : {
+      "AccesGroupeResponse" : {
+        "type" : "object",
+        "properties" : {
+          "estActif" : {
+            "type" : "boolean"
+          },
+          "idSociete" : {
+            "type" : "string",
+            "format" : "uuid"
+          },
+          "identifiant" : {
+            "type" : "integer",
+            "format" : "int32"
+          },
+          "libelle" : {
+            "type" : "string"
+          },
+          "estGroupeSpecial" : {
+            "type" : "boolean"
+          }
+        }
+      },
+      "ReferenceApplicationResponse" : {
+        "type" : "object",
+        "properties" : {
+          "estActif" : {
+            "type" : "boolean"
+          },
+          "identifiant" : {
+            "type" : "integer",
+            "format" : "int32"
+          },
+          "libelle" : {
+            "type" : "string"
+          }
+        }
+      },
+      "AccesUtilisateurResponse" : {
+        "type" : "object",
+        "properties" : {
+          "estActif" : {
+            "type" : "boolean"
+          },
+          "identifiant" : {
+            "type" : "integer",
+            "format" : "int32"
+          },
+          "idUtilisateur" : {
+            "type" : "integer",
+            "format" : "int32"
+          },
+          "idAccesGroupe" : {
+            "type" : "integer",
+            "format" : "int32"
+          }
+        }
+      },
+      "UpdateUtilisateurRequest" : {
+        "type" : "object",
+        "properties" : {
+          "estActif" : {
+            "type" : "boolean"
+          },
+          "nom" : {
+            "type" : "string"
+          },
+          "prenom" : {
+            "type" : "string"
+          },
+          "email" : {
+            "type" : "string"
+          }
+        }
+      },
+      "AccesModuleResponse" : {
+        "type" : "object",
+        "properties" : {
+          "estActif" : {
+            "type" : "boolean"
+          },
+          "identifiant" : {
+            "type" : "integer",
+            "format" : "int32"
+          },
+          "idAccesApplication" : {
+            "type" : "integer",
+            "format" : "int32"
+          },
+          "idRefModule" : {
+            "type" : "integer",
+            "format" : "int32"
+          }
+        }
+      },
+      "CreateReferenceFonctionnaliteRequest" : {
+        "type" : "object",
+        "properties" : {
+          "estActif" : {
+            "type" : "boolean"
+          },
+          "estDefault" : {
+            "type" : "boolean"
+          },
+          "libelle" : {
+            "type" : "string"
+          },
+          "permission" : {
+            "$ref" : "#/components/schemas/Permission"
+          },
+          "idRefModule" : {
+            "type" : "integer",
+            "format" : "int32"
+          }
+        }
+      },
+      "UpdateAccesUtilisateurRequest" : {
+        "type" : "object",
+        "properties" : {
+          "estActif" : {
+            "type" : "boolean"
+          }
+        }
+      },
+      "ReferenceModuleResponse" : {
+        "type" : "object",
+        "properties" : {
+          "estActif" : {
+            "type" : "boolean"
+          },
+          "idRefApplication" : {
+            "type" : "integer",
+            "format" : "int32"
+          },
+          "identifiant" : {
+            "type" : "integer",
+            "format" : "int32"
+          },
+          "libelle" : {
+            "type" : "string"
+          }
+        }
+      },
+      "UpdateAccesGroupeRequest" : {
+        "type" : "object",
+        "properties" : {
+          "estActif" : {
+            "type" : "boolean"
+          },
+          "libelle" : {
+            "type" : "string"
+          },
+          "estGroupeSpecial" : {
+            "type" : "boolean"
+          }
+        }
+      },
+      "UpdateReferenceModuleRequest" : {
+        "type" : "object",
+        "properties" : {
+          "estActif" : {
+            "type" : "boolean"
+          },
+          "libelle" : {
+            "type" : "string"
+          }
+        }
+      },
+      "CreateAccesUtilisateurRequest" : {
+        "type" : "object",
+        "properties" : {
+          "estActif" : {
+            "type" : "boolean"
+          },
+          "idUtilisateur" : {
+            "type" : "integer",
+            "format" : "int32"
+          },
+          "idAccesGroupe" : {
+            "type" : "integer",
+            "format" : "int32"
+          }
+        }
+      },
+      "AccesFonctionnaliteResponse" : {
+        "type" : "object",
+        "properties" : {
+          "estActif" : {
+            "type" : "boolean"
+          },
+          "idAccesModule" : {
+            "type" : "integer",
+            "format" : "int32"
+          },
+          "identifiant" : {
+            "type" : "integer",
+            "format" : "int32"
+          },
+          "idRefFonctionnalite" : {
+            "type" : "integer",
+            "format" : "int32"
+          }
+        }
+      },
+      "Permission" : {
+        "type" : "string",
+        "enum" : [ "Allow", "Restrict", "Read", "Write" ]
+      },
+      "CreateAccesFonctionnaliteRequest" : {
+        "type" : "object",
+        "properties" : {
+          "estActif" : {
+            "type" : "boolean"
+          },
+          "idAccesModule" : {
+            "type" : "integer",
+            "format" : "int32"
+          },
+          "idRefFonctionnalite" : {
+            "type" : "integer",
+            "format" : "int32"
+          }
+        }
+      },
+      "CreateAccesGroupeRequest" : {
+        "type" : "object",
+        "properties" : {
+          "estActif" : {
+            "type" : "boolean"
+          },
+          "idSociete" : {
+            "type" : "string",
+            "format" : "uuid"
+          },
+          "libelle" : {
+            "type" : "string"
+          },
+          "estGroupeSpecial" : {
+            "type" : "boolean"
+          }
+        }
+      },
+      "UpdateAccesFonctionnaliteRequest" : {
+        "type" : "object",
+        "properties" : {
+          "estActif" : {
+            "type" : "boolean"
+          }
+        }
+      },
+      "CreateAccesApplicationRequest" : {
+        "type" : "object",
+        "properties" : {
+          "estActif" : {
+            "type" : "boolean"
+          },
+          "idRefApplication" : {
+            "type" : "integer",
+            "format" : "int32"
+          },
+          "idAccesGroupe" : {
+            "type" : "integer",
+            "format" : "int32"
+          }
+        }
+      },
+      "ValidationProblemDetails" : {
+        "type" : "object",
+        "properties" : {
+          "instance" : {
+            "type" : "string",
+            "nullable" : true
+          },
+          "detail" : {
+            "type" : "string",
+            "nullable" : true
+          },
+          "title" : {
+            "type" : "string",
+            "nullable" : true
+          },
+          "type" : {
+            "type" : "string",
+            "nullable" : true
+          },
+          "errors" : {
+            "type" : "object",
+            "additionalProperties" : {
+              "type" : "array",
+              "items" : {
+                "type" : "string"
+              }
+            },
+            "nullable" : true,
+            "readOnly" : true
+          },
+          "status" : {
+            "type" : "integer",
+            "format" : "int32",
+            "nullable" : true
+          }
+        },
+        "additionalProperties" : {
+          "type" : "object"
+        }
+      },
+      "CreateUtilisateurRequest" : {
+        "type" : "object",
+        "properties" : {
+          "estActif" : {
+            "type" : "boolean"
+          },
+          "nom" : {
+            "type" : "string"
+          },
+          "prenom" : {
+            "type" : "string"
+          },
+          "email" : {
+            "type" : "string"
+          }
+        }
+      },
+      "CreateReferenceModuleRequest" : {
+        "type" : "object",
+        "properties" : {
+          "estActif" : {
+            "type" : "boolean"
+          },
+          "idRefApplication" : {
+            "type" : "integer",
+            "format" : "int32"
+          },
+          "libelle" : {
+            "type" : "string"
+          }
+        }
+      },
+      "AccesApplicationResponse" : {
+        "type" : "object",
+        "properties" : {
+          "estActif" : {
+            "type" : "boolean"
+          },
+          "idRefApplication" : {
+            "type" : "integer",
+            "format" : "int32"
+          },
+          "identifiant" : {
+            "type" : "integer",
+            "format" : "int32"
+          },
+          "idAccesGroupe" : {
+            "type" : "integer",
+            "format" : "int32"
+          }
+        }
+      },
+      "UpdateReferenceFonctionnaliteRequest" : {
+        "type" : "object",
+        "properties" : {
+          "estActif" : {
+            "type" : "boolean"
+          },
+          "estDefault" : {
+            "type" : "boolean"
+          },
+          "libelle" : {
+            "type" : "string"
+          }
+        }
+      },
+      "ReferenceFonctionnaliteResponse" : {
+        "type" : "object",
+        "properties" : {
+          "estActif" : {
+            "type" : "boolean"
+          },
+          "estDefault" : {
+            "type" : "boolean"
+          },
+          "identifiant" : {
+            "type" : "integer",
+            "format" : "int32"
+          },
+          "libelle" : {
+            "type" : "string"
+          },
+          "permission" : {
+            "$ref" : "#/components/schemas/Permission"
+          },
+          "idRefModule" : {
+            "type" : "integer",
+            "format" : "int32"
+          }
+        }
+      },
+      "CreateReferenceApplicationRequest" : {
+        "type" : "object",
+        "properties" : {
+          "estActif" : {
+            "type" : "boolean"
+          },
+          "libelle" : {
+            "type" : "string"
+          }
+        }
+      },
+      "UpdateAccesApplicationRequest" : {
+        "type" : "object",
+        "properties" : {
+          "estActif" : {
+            "type" : "boolean"
+          }
+        }
+      },
+      "UtilisateurResponse" : {
+        "type" : "object",
+        "properties" : {
+          "estActif" : {
+            "type" : "boolean"
+          },
+          "identifiant" : {
+            "type" : "integer",
+            "format" : "int32"
+          },
+          "nom" : {
+            "type" : "string"
+          },
+          "prenom" : {
+            "type" : "string"
+          },
+          "email" : {
+            "type" : "string"
+          }
+        }
+      },
+      "UpdateReferenceApplicationRequest" : {
+        "type" : "object",
+        "properties" : {
+          "estActif" : {
+            "type" : "boolean"
+          },
+          "libelle" : {
+            "type" : "string"
+          }
+        }
+      },
+      "AccesByUtilisateurResponse" : {
+        "type" : "array",
+        "items" : {
+          "type" : "object",
+          "properties" : {
+            "idSociete" : {
+              "type" : "string",
+              "format" : "uuid"
+            },
+            "applications" : {
+              "type" : "array",
+              "items" : {
+                "type" : "object",
+                "properties" : {
+                  "idApplication" : {
+                    "type" : "integer",
+                    "format" : "int32"
+                  },
+                  "modules" : {
+                    "type" : "array",
+                    "items" : {
+                      "type" : "object",
+                      "properties" : {
+                        "fonctionnalites" : {
+                          "type" : "array",
+                          "items" : {
+                            "type" : "object",
+                            "properties" : {
+                              "libelle" : {
+                                "type" : "string"
+                              },
+                              "permission" : {
+                                "$ref" : "#/components/schemas/Permission"
+                              }
+                            }
+                          }
+                        },
+                        "idModule" : {
+                          "type" : "integer",
+                          "format" : "int32"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "CreateAccesModuleRequest" : {
+        "type" : "object",
+        "properties" : {
+          "estActif" : {
+            "type" : "boolean"
+          },
+          "idAccesApplication" : {
+            "type" : "integer",
+            "format" : "int32"
+          },
+          "idRefModule" : {
+            "type" : "integer",
+            "format" : "int32"
+          }
+        }
+      },
+      "UpdateAccesModuleRequest" : {
+        "type" : "object",
+        "properties" : {
+          "estActif" : {
+            "type" : "boolean"
+          }
+        }
+      }
+    },
+    "responses" : {
+      "401Unauthorized" : {
+        "description" : "",
+        "content" : {
+          "application/json" : {
+            "schema" : {
+              "$ref" : "#/components/schemas/ValidationProblemDetails"
+            },
+            "examples" : { }
+          }
+        }
+      },
+      "409Conflict" : {
+        "description" : "",
+        "content" : {
+          "application/json" : {
+            "schema" : {
+              "$ref" : "#/components/schemas/ValidationProblemDetails"
+            },
+            "examples" : { }
+          }
+        }
+      },
+      "400BadRequest" : {
+        "description" : "",
+        "content" : {
+          "application/json" : {
+            "schema" : {
+              "$ref" : "#/components/schemas/ValidationProblemDetails"
+            },
+            "examples" : { }
+          }
+        }
+      },
+      "404NotFound" : {
+        "description" : "",
+        "content" : {
+          "application/json" : {
+            "schema" : {
+              "$ref" : "#/components/schemas/ValidationProblemDetails"
+            },
+            "examples" : { }
+          }
+        }
+      },
+      "204NoContent" : {
+        "description" : "",
+        "content" : { }
+      },
+      "500ServerError" : {
+        "description" : "",
+        "content" : {
+          "application/json" : {
+            "schema" : {
+              "$ref" : "#/components/schemas/ValidationProblemDetails"
+            },
+            "examples" : { }
+          }
+        }
+      }
+    },
+    "parameters" : {
+      "limitParam" : {
+        "name" : "limit",
+        "in" : "query",
+        "required" : false,
+        "allowEmptyValue" : false,
+        "style" : "form",
+        "explode" : true,
+        "schema" : {
+          "type" : "integer",
+          "format" : "int32"
+        }
+      },
+      "userParam" : {
+        "name" : "x-User",
+        "in" : "header",
+        "required" : true,
+        "allowEmptyValue" : false,
+        "style" : "simple",
+        "explode" : false,
+        "schema" : {
+          "type" : "string"
+        }
+      },
+      "offSetParam" : {
+        "name" : "offSet",
+        "in" : "query",
+        "required" : false,
+        "allowEmptyValue" : false,
+        "style" : "form",
+        "explode" : true,
+        "schema" : {
+          "type" : "integer",
+          "format" : "int32"
+        }
+      },
+      "orderByParam" : {
+        "name" : "orderBy",
+        "in" : "query",
+        "required" : false,
+        "allowEmptyValue" : false,
+        "style" : "form",
+        "explode" : true,
+        "schema" : {
+          "type" : "string"
+        }
+      },
+      "orderOrientationParam" : {
+        "name" : "orderOrientation",
+        "in" : "query",
+        "required" : false,
+        "allowEmptyValue" : false,
+        "style" : "form",
+        "explode" : true,
+        "schema" : {
+          "type" : "string"
+        }
+      },
+      "idParam" : {
+        "name" : "id",
+        "in" : "path",
+        "required" : true,
+        "allowEmptyValue" : false,
+        "style" : "simple",
+        "explode" : false,
+        "schema" : {
+          "type" : "integer",
+          "format" : "int32"
+        }
+      },
+      "ifMatchParam" : {
+        "name" : "If-Match",
+        "in" : "header",
+        "required" : true,
+        "allowEmptyValue" : false,
+        "style" : "simple",
+        "explode" : false,
+        "schema" : {
+          "type" : "string"
+        }
+      }
+    },
+    "examples" : { },
+    "requestBodies" : { },
+    "headers" : {
+      "hashCodeHeader" : {
+        "required" : false,
+        "style" : "simple",
+        "explode" : false,
+        "schema" : {
+          "type" : "string"
+        }
+      }
+    },
+    "securitySchemes" : {
+      "apiKey" : {
+        "type" : "apiKey",
+        "name" : "x-Gateway-APIKey",
+        "in" : "header"
+      }
+    },
+    "links" : { },
+    "callbacks" : { }
+  }
+}
