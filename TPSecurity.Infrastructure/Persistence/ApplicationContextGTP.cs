@@ -41,6 +41,8 @@ namespace TPSecurity.Infrastructure.Persistence
 
         public virtual DbSet<RefModuleDTO> RefModule { get; set; }
 
+        public virtual DbSet<UtilisateurDTO> Utilisateur { get; set; }
+
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             if (!optionsBuilder.IsConfigured)
