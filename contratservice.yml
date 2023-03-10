@@ -1451,7 +1451,7 @@ components:
           type: integer
         libelle: 
           type: string
-        estDefault:
+        estDefaut:
           type: boolean
         permission: 
             $ref: '#/components/schemas/Permission'
@@ -1464,7 +1464,7 @@ components:
           type: integer
         libelle:
           type: string
-        estDefault:
+        estDefaut:
           type: boolean
         permission: 
             $ref: '#/components/schemas/Permission'
@@ -1475,7 +1475,7 @@ components:
       properties:
         libelle:
           type: string
-        estDefault:
+        estDefaut:
           type: boolean
         estActif:
           type: boolean
